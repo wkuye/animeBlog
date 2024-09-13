@@ -2,5 +2,5 @@
 <%@genres.each do |genre_item| %>
 <p><%= genre_item.genre_type %></p>
   <p><%= genre_item.body %></p>
-  <%= image_tag genre_item.thumb_image %>
+  <%= image_tag genre_item.thumb_image unless genre_item.thumb_image.nil?%>
 <% end %>
