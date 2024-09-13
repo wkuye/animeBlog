@@ -7,6 +7,10 @@ class GenresController < ApplicationController
     @genre = Genre.new
   end
 
+  def show
+    @genre = Genre.find(params[:id])
+  end
+
   def create
     @genre = Genre.new(params.require(:genre).permit(:genre_type, :body))
 
