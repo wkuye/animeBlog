@@ -1,6 +1,8 @@
 <h1>Genres</h1>
+<p><%= link_to"New Genre", new_genre_path %></p>
 <%@genres.each do |genre_item| %>
 <p><%= genre_item.genre_type %></p>
   <p><%= genre_item.body %></p>
   <%= image_tag genre_item.thumb_image unless genre_item.thumb_image.nil?%>
+  <%= link_to "Edit" ,edit_genre_path(genre_item.id) %>
 <% end %>
