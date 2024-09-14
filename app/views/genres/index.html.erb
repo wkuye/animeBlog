@@ -5,4 +5,5 @@
   <p><%= genre_item.body %></p>
   <%= image_tag genre_item.thumb_image unless genre_item.thumb_image.nil?%>
   <%= link_to "Edit" ,edit_genre_path(genre_item.id) %>
+  <%= link_to "Delete Genre", genre_item,  data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
 <% end %>

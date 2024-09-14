@@ -11,6 +11,8 @@ class GenresController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
+
+
   def create
     @genre = Genre.new(params.require(:genre).permit(:genre_type, :body))
 
@@ -37,6 +39,13 @@ class GenresController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
 
       end
+    end
+  end
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    respond_to do |format|
+      format.html { redirect_to genre_url, notice: "Genre was successfully destroyed." }
     end
   end
 end
