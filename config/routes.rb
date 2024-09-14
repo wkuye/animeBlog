@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :genres
-
+  resources :genres, except:  [ :show ]
+  get "genre/:id", to: "genres#show", as: "genre_show"
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
   get "about", to: "pages#about"
