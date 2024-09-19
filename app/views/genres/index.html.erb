@@ -1,0 +1,9 @@
+<h1>Genres</h1>
+<p><%= link_to"New Genre", new_genre_path %></p>
+<%@genres.each do |genre_item| %>
+<p><%= link_to "#{genre_item.genre_type}", genre_show_path(genre_item.id) %></p>
+  <p><%= genre_item.body %></p>
+  <%= image_tag genre_item.thumb_image unless genre_item.thumb_image.nil?%>
+  <%= link_to "Edit" ,edit_genre_path(genre_item.id) %>
+  <%= link_to "Delete Genre", genre_item,  data: { turbo_method: :delete, confirm: 'Are you sure?' } %>
+<% end %>
