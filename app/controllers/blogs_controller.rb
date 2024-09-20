@@ -26,9 +26,9 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
-
+        format.turbo_stream
       else
-        format.html { render :new}
+        format.html { render :new, status: :unprocessable_entity }
 
       end
     end
@@ -74,6 +74,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :status,)
+      params.require(:blog).permit(:title, :body,)
     end
 end
