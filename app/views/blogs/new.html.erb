@@ -1,11 +1,17 @@
-<% content_for :title, "New blog" %>
+<h1>New Genre</h1>
+<%= form_for(@blog) do |f| %>
 
-<h1>New blog</h1>
+  <div class="field">
+    <%=f.label :title %>
+    <%=f.text_area :title %>
+  </div>
 
-<%= render "form", blog: @blog %>
+  <div class="field">
+    <%=f.label :body %>
+    <%=f.text_area :body %>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Back to blogs", blogs_path %>
-</div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get "contact", to: "pages#contact"
   get "about", to: "pages#about"
   # get "home/contact"
-  resources :blogs
+  resources :blogs do
+    member do
+      get :toggle_status
+      end
+    end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
