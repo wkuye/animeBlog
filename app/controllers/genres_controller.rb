@@ -5,6 +5,7 @@ class GenresController < ApplicationController
 
   def new
     @genre = Genre.new
+    3.times { @genre.animes.build }
   end
 
   def show
@@ -14,7 +15,7 @@ class GenresController < ApplicationController
 
 
   def create
-    @genre = Genre.new(params.require(:genre).permit(:genre_type, :body))
+    @genre = Genre.new(params.require(:genre).permit(:genre_type, :body, animes_attributes: [ :title, :description, :airing, :episodes]))
 
     respond_to do |format|
       if @genre.save

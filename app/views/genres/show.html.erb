@@ -2,3 +2,20 @@
 <%=image_tag @genre.main_image %>
 <em><%=@genre.genre_type %></em>>
 <p><%=@genre.body %></p>
+
+<h2>Animes</h2>
+<% @genre.animes.each do |g| %>
+  <p>
+    <%=g.title %>
+  </p>
+  <p>
+    <%=g.description %>
+  </p>
+  <p>
+    <%=g.airing %>
+  </p>
+  <p>
+    <%=g.episodes %>
+  </p>
+<% end %>
+
