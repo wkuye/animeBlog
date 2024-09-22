@@ -1,4 +1,5 @@
 class Genre < ApplicationRecord
+  has_many :technologies
   includes Placeholder
   validates_presence_of :genre_type, :body, :main_image, :thumb_image
 

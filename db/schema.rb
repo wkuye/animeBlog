@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_171813) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_21_152302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_171813) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "title"
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_technologies_on_genre_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -92,4 +100,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_171813) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "topics"
+  add_foreign_key "technologies", "genres"
 end

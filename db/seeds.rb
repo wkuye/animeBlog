@@ -37,3 +37,10 @@ end
   topic_id: Topic.last.id
   )
 end
+
+3.times do |technology|
+  Genre.last.technologies.create!(
+    title: "tech #{technology}",
+    genre_id: Genre.last.id,
+  )
+end
