@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @blog %>
-
+<h1>Show</h1>
+<header>
+  <%=@blog.title %>
+</header>
+<em><%=@blog.body %></em>>
 <div>
   <%= link_to "Edit this blog", edit_blog_path(@blog) %> |
   <%= link_to "Back to blogs", blogs_path %>

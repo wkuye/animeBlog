@@ -6,10 +6,12 @@
 
 <div id="blogs">
   <% @blogs.each do |blog| %>
-    <%= render blog %>
+
     <p>
-      <%= link_to "Show this blog", blog %>
+      <%=link_to blog.title, blog_path(blog.id) %>
     </p>
+    <p><%=blog.body %></p>
+ <p><%=link_to blog.status, toggle_status_blog_path(blog)%></p>
   <% end %>
 </div>
 

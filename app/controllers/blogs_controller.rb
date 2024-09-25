@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :set_blog, only: %i[ show edit update destroy toggle_status ]
 
   # GET /blogs or /blogs.json
   def index
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
-
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
 
@@ -57,6 +57,15 @@ class BlogsController < ApplicationController
     end
   end
 
+  def toggle_status
+    if @blog.draft?
+      @blog.published!
+    elsif @blog.published?
+      @blog.draft!
+    end
+    redirect_to blogs_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
@@ -65,6 +74,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.fetch(:blog, {})
+      params.require(:blog).permit(:title, :body,)
     end
 end

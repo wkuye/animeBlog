@@ -11,6 +11,18 @@
     <%=f.text_area :body %>
   </div>
 
+  <ul>
+    <%= f.fields_for :animes do |anime_form| %>
+    <li><%=anime_form.label :title %></li>
+      <li><%=anime_form.text_field :title %></li>
+      <li><%=anime_form.label :description %></li>
+      <li><%=anime_form.text_field :description %></li>
+
+      <li><%=anime_form.label :episodes %></li>
+      <li><%=anime_form.text_field :episodes %></li>
+    <% end %>
+  </ul>
+
   <div>
     <%= f.submit %>
   </div>

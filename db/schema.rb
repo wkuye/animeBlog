@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_124518) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_22_004836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,11 +44,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_124518) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
-    t.string "about"
+    t.string "description"
+    t.text "main_image"
+    t.text "thumb_image"
     t.boolean "airing"
     t.integer "episodes"
+    t.bigint "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_animes_on_genre_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -58,7 +62,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_124518) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "status", default: 0
+    t.bigint "topic_id"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
+    t.index ["topic_id"], name: "index_blogs_on_topic_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -81,6 +87,23 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_124518) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "title"
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_technologies_on_genre_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "animes", "genres"
+  add_foreign_key "blogs", "topics"
+  add_foreign_key "technologies", "genres"
 end
