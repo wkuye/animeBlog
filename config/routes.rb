@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  #changed the last domain name from genres/log_out to genres/logout , we also did it for the rest, the path being empty removes the prefix 
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up:'register'}
+
   resources :genres, except:  [ :show ]
   get "genre/:id", to: "genres#show", as: "genre_show"
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
-  get "about", to: "pages#about"
+  get "home", to: "pages#home"
   # get "home/contact"
   resources :blogs do
     member do
