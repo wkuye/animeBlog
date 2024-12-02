@@ -15,7 +15,7 @@ class GenresController < ApplicationController
 
 
   def create
-    @genre = Genre.new(params.require(:genre).permit(:genre_type, :body, animes_attributes: [ :title, :description, :airing, :episodes]))
+    @genre = Genre.new(genre_params)
 
     respond_to do |format|
       if @genre.save
@@ -33,7 +33,7 @@ class GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     respond_to do |format|
-      if @genre.update(params.require(:genre).permit(:genre_type, :body))
+      if @genre.update(genre_params)
         format.html { redirect_to genres_url(@genres), notice: "Genre was successfully updated." }
 
       else
@@ -49,4 +49,8 @@ class GenresController < ApplicationController
       format.html { redirect_to genre_url, notice: "Genre was successfully destroyed." }
     end
   end
+
+  private  def genre_params
+  params.require(:genre).permit(:genre_type, :body, animes_attributes: [ :title, :description, :airing, :episodes])
+end
 end
