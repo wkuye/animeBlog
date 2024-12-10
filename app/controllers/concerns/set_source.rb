@@ -1,5 +1,6 @@
 module SetSource
   extend ActiveSupport::Concern
+  
 included do
   before_action :sessions_function
 end

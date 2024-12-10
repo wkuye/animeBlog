@@ -27,9 +27,11 @@ class GenresController < ApplicationController
       end
     end
   end
+
   def edit
     @genre = Genre.find(params[:id])
   end
+  
   def update
     @genre = Genre.find(params[:id])
     respond_to do |format|
