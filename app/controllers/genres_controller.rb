@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  layout "genre"
   def index
     @genres = Genre.all
   end
