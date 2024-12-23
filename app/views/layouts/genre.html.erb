@@ -28,8 +28,7 @@
  
     <%= yield %>
     <%= render "shared/nav", location:'bottom' %>
-    <% if session[:source] %>
-    <p>thanks for the follow <%= session[:source] %></p>
+    <%= session_helper %>
     <% end %>
   </body>
 </html>
