@@ -1,2 +1,5 @@
-<div id="<%= dom_id blog %>">
-</div>
+<p>
+    <%=link_to blog.title, blog_path(blog.id) %>
+  </p>
+  <p><%=blog.body %></p>
+<p><%=link_to blog.status, toggle_status_blog_path(blog)%></p>
