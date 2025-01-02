@@ -64,4 +64,4 @@ end
 
 gem "webpacker", "~> 5.4"
 gem 'jquery-rails'
-gem 'Wale_view_tool', git: 'git@github.com:wkuye/Wale_view_tool.git'
+gem 'Wale_view_tool', 
