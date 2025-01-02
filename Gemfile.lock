@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:wkuye/Wale_view_tool.git
+  revision: 0c5075394d32edd81d1e9571008a56756a952767
+  specs:
+    Wale_view_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -353,6 +359,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  Wale_view_tool!
   bootsnap
   bootstrap (~> 5.3.3)
   brakeman

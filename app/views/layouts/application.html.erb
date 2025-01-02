@@ -27,8 +27,9 @@
     <p class="alert"><%= alert %></p>
     <%= render "shared/nav", location: 'top' %>
     <%= login_helper %>
- 
+    
     <%= yield %>
+    <%= copyright_generator %>
    <%= session_helper %>
   </body>
 </html>

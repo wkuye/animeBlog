@@ -17,4 +17,8 @@ module ApplicationHelper
     end 
     
   end
+
+  def copyright_generator
+    @copyright= AnimeViewTool::Renderer.copyright 'Kuye Olawale', 'All rights reserved'
+  end
 end
