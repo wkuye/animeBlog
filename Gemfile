@@ -9,7 +9,7 @@ gem "pg"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 gem 'sassc-rails'
-
+gem 'bootstrap', '~> 5.3.3'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -63,3 +63,4 @@ group :test do
 end
 
 gem "webpacker", "~> 5.4"
+gem 'jquery-rails'
