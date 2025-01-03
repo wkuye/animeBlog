@@ -64,4 +64,5 @@ end
 
 gem "webpacker", "~> 5.4"
 gem 'jquery-rails'
-gem 'Wale_view_tool', 
+gem 'Wale_view_tool'
+gem 'petergate', '~> 3.0'
