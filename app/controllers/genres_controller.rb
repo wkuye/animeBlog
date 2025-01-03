@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new, :update]}, site_admin: :all
   layout "genre"
   def index
     @genres = Genre.all
