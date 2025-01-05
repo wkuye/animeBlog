@@ -24,13 +24,13 @@
 
   <body body class="d-flex h-100 text-center text-white bg-dark">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render "shared/nav", location: 'top' %>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <%= render "shared/application_nav" %>
     <%= login_helper %>
     
     <%= yield %>
     <%= copyright_generator %>
    <%= session_helper %>
+  </div>
   </body>
 </html>
