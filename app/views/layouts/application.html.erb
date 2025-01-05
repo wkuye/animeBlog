@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= content_for(:title) || @title_default %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <%= csrf_meta_tags %>
@@ -16,12 +17,12 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     
-    <%= stylesheet_link_tag 'application', "data-turbo-track": "reload" %>
-    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body body class="d-flex h-100 text-center text-white bg-dark">
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
