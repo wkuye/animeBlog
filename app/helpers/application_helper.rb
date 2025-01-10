@@ -1,9 +1,10 @@
 module ApplicationHelper
-  def login_helper (style)
+  def login_helper
     if current_user.is_a?(GuestUser)
-      ( link_to "Register", new_user_registration_path, class:style) +
+      (link_to "Log in", new_user_session_path, class: "btn login-btn" )+
+      
       " ".html_safe +
-          (link_to "Login", new_user_session_path, class: style)
+      ( link_to "Get Started", new_user_registration_path, class: "btn register-btn") 
     
     else
     #this combine the register and the login together and the br moves the login to the next line 

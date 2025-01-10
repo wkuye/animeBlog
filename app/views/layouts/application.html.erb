@@ -22,12 +22,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body body class="d-flex h-100 text-center text-white bg-dark">
+  <body body class="d-flex h-100 text-center text-white flex-column ", style="background-color: black;">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <%= render "shared/application_nav" %>
-   
-    
+  
     <%= yield %>
   <%= render "shared/application_footer" %>
     
