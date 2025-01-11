@@ -32,6 +32,7 @@ body {
  padding-left: 35px;
  padding-right: 35px;
  padding-top: 18px;
+ z-index: 1;
 }
 
 .nav {
@@ -60,7 +61,7 @@ body {
 
 .nav-link.active, .nav-link:hover {
   color: white;
-  border-bottom: 2px solid white;
+ 
 }
 
 .auth-links {
@@ -96,19 +97,63 @@ main {
   height: 100vh;
   border-radius: 12px;
   
-  background-color: red;
+  background-color: transparent;
   
 }
 
-.nav-index0{
-  height: 50vh;
+.nav-index0 {
+  height: 80vh;
+  position: relative; /* Allow child elements to position absolutely */
   display: flex;
   flex-direction: column;
-  
- border-radius: 10px;
-
+  border-radius: 10px;
+  overflow: hidden; /* Prevent iframe from overflowing */
+  z-index: 0; /* Content inside .nav-index0 stays above the iframe */
 }
 
+.nav-index0 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+overflow:inherit;
+  z-index: -1; /* Place iframe behind other content */
+}
+
+.nav-index0 .anime_image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container perfectly */
+}
+
+.anime_image:hover{
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  z-index: -1;
+}
+
+.anime_info{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  position: absolute;
+  margin-top: 30vh;
+  padding-left: 50px;
+}
+
+.anime_info h1{
+  font-weight: bold;
+}
+
+.anime_info p {
+
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 400px;
+}
 
 
 /* Responsive Design */
@@ -121,6 +166,10 @@ main {
 
   .nav {
     flex-direction: column;
+  }
+
+  .nav-index0{
+    height: 70vh;
   }
 
   .auth-links {

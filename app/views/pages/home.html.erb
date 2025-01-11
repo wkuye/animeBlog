@@ -4,6 +4,10 @@
       <h1  class= "home-header">Home</h1>
       <div class="nav-card_container">
       <div class="nav-index0">
+        <img src="<%=home_image_thumb 21 %>" alt="Description of image" class="anime_image">
+
+
+        <%=render "shared/home_video_thumb" %>
         <div class="nav-container">
           <div class="logo">
             <h3>Anime B</h3>
@@ -18,6 +22,11 @@
         
         </div>
         <hr></hr>
+    <div class="anime_info">
+      <h1><%=anime_details(21)&.title %></h1>
+      <p><%= truncate_after_second_period(anime_details(21)&.description ) %></p>
+ 
+    </div>
       </div>
      
      

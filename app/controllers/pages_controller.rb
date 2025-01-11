@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
+
   def home
-    @anime=Anime.all
+    @animes=Anime.all
   end
 
   def about
@@ -8,4 +9,5 @@ class PagesController < ApplicationController
 
   def contact
   end
+
 end

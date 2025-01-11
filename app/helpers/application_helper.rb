@@ -23,4 +23,27 @@ module ApplicationHelper
   def copyright_generator
   WaleViewTool::Renderer.copyright 'Kuye Olawale', 'All rights reserved'
   end
+
+  def home_video_thumb_nail_helper( id)
+    
+    anime=Anime.find_by_id(id.to_i)
+    anime_video= anime.thumb_video_url
+    anime_video
+  end
+
+  def home_image_thumb(id)
+    anime=Anime.find_by_id(id.to_i)
+    anime_image= anime.thumb_image
+    anime_image
+  end
+
+  def anime_details(id)
+    anime=Anime.find_by_id(id.to_i)
+    anime
+  end
+
+  def truncate_after_second_period(text)
+    sentences = text.split('.')
+    sentences.first(2).join('.') + '.'
+  end
 end
