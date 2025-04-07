@@ -1,10 +1,10 @@
-//= require jquery3
+//= require rails-ujs
+//= require jquery 
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-//= require rails-ujs
+//= require anime_loader
+//= require anime_hover
+//= require anime
+//= require news_show
 //= require_tree .
-import "bootstrap"
-import "@popperjs/core"
-
-import { Turbo } from "@hotwired/turbo-rails"
-

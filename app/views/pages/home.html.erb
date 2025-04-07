@@ -1,43 +1,110 @@
 
 
-    <div class="content">
+    <div class="content" >
       <h1  class= "home-header">Home</h1>
       <div class="nav-card_container">
-      <div class="nav-index0">
-        <img src="<%=home_image_thumb 21 %>" alt="Description of image" class="anime_image">
-
-
-        <%=render "shared/home_video_thumb" %>
-        <div class="nav-container">
-          <div class="logo">
-            <h3>Anime B</h3>
+        <div class="nav-index0">
+          <div class="media-wrapper">
+            <img src="<%= home_image_main @int %>" alt="Description of image" class="anime_image">
+            <div class="anime_video">
+              <%= render partial: "shared/home_video_thumb", locals: {height: 720, width:1280, id:@int} %>
+            </div>
+       
           </div>
-          <nav class="nav">
-            <%= render "shared/application_nav" %>
-          </nav>
-          <div class="auth-links">
-            <%= login_helper %>
+          <div class="anime_info">
+            <h1><%= anime_details(@int)&.title %></h1>
+            <p><%= truncate_after_second_period(anime_details(@int)&.description) %></p>
+            
+            <button class="btn learn-more">
+              <p>Learn More</p>
+            </button>
+          
+          </div>
+          <div class="nav-container">
+            <div class="logo">
+              <h3>Anime B</h3>
+            </div>
+            <nav class="nav">
+              <%= render "shared/application_nav" %>
+            </nav>
+            <div class="auth-links">
+              <%= login_helper %>
+            </div>
+          </div>
+          <hr></hr>
+        
+   
+        </div>
+        
+      <div class="nav-index1">
+        <div class="special">
+          <h6>Special for you</h6>
+        </div>
+        
+              <div class="anime-grid" id="anime-list">
+            <% @animes.each do |anime| %>
+            <%= render partial: "shared/anime_list", locals: {anime: anime} %>
+            <% end %>
            
           </div>
-        
+          <button id="load-more-btn" class="load-more" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
+          </button>
+       <%= render "shared/collection_container" %>
+      
+       <div class="news-container">
+      
+    <div class="nav-header">
+      <h6>News</h6>
+    </div>
+    <div class="news-imagethumb">
+      <img src="<%= news_thumb @news_int %>" alt="Description of image" class="news_image">
+      <div class="news-thumb-info">
+        <p><%=news_thumb_stamp @news_int%> ago</p>
+        <h2><%=news_thumb_title @news_int%></h2>
+        <div class="spacer"></div>
+        <%=render partial: "shared/blob_button" ,locals: {title: "Read More"} %>
+     
+      </div>
+    
+      
+    </div>
+    <div class="news-grid" >
+      <% @news.each do |newsdet| %>
+        <div class="news-card" news-id="<%=newsdet.id%>">
+          <img src="<%= newsdet.image %>" alt="<%= newsdet.title %>" class="news-card-image">
+          <div class="news-card-overlay">
+            <p class="news-time"><%= time_ago_in_words(newsdet.created_at) %> ago</p>
+            <h3 class="news-card-title"><%= newsdet.title %></h3>
+          </div>
+          <%= link_to news_path(newsdet), class: "news-link-absolute" do %>
+          <!-- No text needed, just an empty block to fill the card area -->
+        <% end %>
         </div>
-        <hr></hr>
-    <div class="anime_info">
-      <h1><%=anime_details(21)&.title %></h1>
-      <p><%= truncate_after_second_period(anime_details(21)&.description ) %></p>
- 
-    </div>
-      </div>
-     
-     
- 
-      </div>
+      
+      <% end %>
     </div>
 
-  
-</body>
-</html>
+    <!-- Show More Button -->
+    <div class="show-more-container">
+      <button class="show-more-btn"  onclick="showMoreNews()">Show More</button>
+    </div>
+    <div class="sized-box">
 
+    </div>
 
+  <div class="socials">
+     <div class="telegram">
+      <%= content_tag(:i, "", class: "fab fa-telegram fa-2x") %>
+     </div>
+     <div class="discord">
+     <%= content_tag(:i, "", class: "fab fa-discord fa-2x") %>
+     </div>
+     <div class="instagram">
+      <%= content_tag(:i, "", class: "fab fa-instagram fa-2x") %>
+     </div>
+  </div>
 
-
+  </div>
+</div>
+      </div>
+    </div>

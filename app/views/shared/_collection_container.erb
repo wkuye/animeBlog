@@ -1,0 +1,35 @@
+   <% if !current_user.is_a?(GuestUser) %>
+ <div class="collections">     
+        
+   <div class="collection-header"> 
+
+      <h6>Featured Collections</h6>
+
+
+<button class="btn-create">
+  <%= raw BootstrapIcons::BootstrapIcon.new("plus").to_svg %> Create New
+</button>
+    </div>         
+         <% if @collection_animes.present?%>
+          <div class="collection-list">
+            <% current_user.collection.each do |collection| %>
+<div class="collection-card">
+  <h3><%=collection.name%></h3>
+  <div class="cards-container">
+
+ <%@collection_animes.each_with_index do |collection_anime, index|%>
+     <div class="stacked-card <%= %w[card-left card-center card-right][index %3] %>">
+      <img src="<%= collection_anime.thumb_image %>" alt="<%= collection_anime.title %>">
+     </div>
+ <%end %>
+  </div>
+</div>
+            <%end %>
+          </div>
+          <%else %>
+          <div class="no-collections">
+<h4>No collections found</h4>
+          </div>
+<% end%>
+ </div>
+ <% end%>

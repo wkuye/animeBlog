@@ -1,4 +1,9 @@
 @import "bootstrap";
+$cyan: #0505A9;
+$dark: #FFFFFF;
+$borderW: 2px;
+$numOfBlobs: 4;
+@import "font-awesome";
 /*
  * Globals
  */
@@ -11,21 +16,21 @@
 }
 
 html, body {
-  height: 100%;
+//  height: 350vh;
+min-height: 350vh;
+height: auto;
   font-family: Arial, sans-serif;
-}
-
-body {
   display: flex;
+  text-align: center;
   flex-direction: column;
-  background-color: #000; /* Black background */
-  color: white; /* Default text color */
+color: white;
+background: #000;
+overflow: auto;
 }
 
 
 
 .nav-container {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +49,12 @@ body {
 .content{
   padding-left: 35px; 
   padding-right: 35px;
+  flex-grow: 1; /* Makes the content area grow to fill the space */
+  display: flex;
+  flex-direction: column;
 }
+
+
 
 .home-header{
   margin-top: 30px;
@@ -87,16 +97,14 @@ body {
   color: black;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
-}
 
 .nav-card_container {
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Ensures it takes up most of the viewport */
+  max-height: 100000px; 
   border-radius: 12px;
-  
+ overflow: hidden;
   background-color: transparent;
   
 }
@@ -106,41 +114,51 @@ main {
   position: relative; /* Allow child elements to position absolutely */
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+ 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   overflow: hidden; /* Prevent iframe from overflowing */
-  z-index: 0; /* Content inside .nav-index0 stays above the iframe */
-}
 
-.nav-index0 iframe {
+}
+.media-wrapper , .anime_image, .anime_video {
   position: absolute;
-  top: 0;
-  left: 0;
+  width: 100%; 
+  height: 100vh;
+  display: flex;
+  object-fit:cover;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow: hidden;
 
-overflow:inherit;
-  z-index: -1; /* Place iframe behind other content */
 }
 
-.nav-index0 .anime_image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the container perfectly */
+.anime_video {
+  opacity: 0;
+  pointer-events: none; /* Prevent accidental clicks */
 }
 
-.anime_image:hover{
-  width: 150%;
-  height: 150%;
-  position: absolute;
-  z-index: -1;
+.media-wrapper:hover .anime_image {
+  opacity: 0;
+  transform: scale(1.05); /* Subtle zoom for effect */
+
 }
+
+.media-wrapper:hover .anime_video {
+  opacity: 1;
+  transform: scale(1.05); /* Matches image zoom for consistency */
+
+}
+
 
 .anime_info{
   display: flex;
   flex-direction: column;
   text-align: start;
   position: absolute;
-  margin-top: 30vh;
+  margin-top: 20vh;
+  align-items: flex-start;
   padding-left: 50px;
+  max-width: 600px;  
+  
 }
 
 .anime_info h1{
@@ -148,11 +166,632 @@ overflow:inherit;
 }
 
 .anime_info p {
+  text-align: start;
+}
 
-  line-height: 1.6;
-  text-align: justify;
-  margin: 0 auto;
-  max-width: 400px;
+.learn-more {
+  background-color: white;
+  color: black;
+  font-size: 12;
+  width: 105px;
+  font-weight:500;
+  height: 40px;
+}
+
+.special h6 {
+  position: absolute;
+  padding-left: 50px;
+  font-weight:bold;
+ transform: translateY(-80px);
+}
+
+.nav-index1{
+height: auto;
+max-height: 1000000000px;
+width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  position: relative;
+  transition: height 0.3s ease-in-out;
+
+}
+
+
+
+
+.anime-grid{
+  display: flex;
+  padding-left: 50px;
+  height: auto;
+  padding-right: 50px;
+  gap: 20px;
+}
+
+
+.anime-card{
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 228px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    opacity: 0; 
+    animation: smoothFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    will-change: opacity, transform; 
+overflow: hidden;
+  }
+
+  .anime-card:hover .hover-video{
+opacity: 1;
+  }
+
+  .anime-card:hover .card-image{
+    opacity: 0;
+  }
+
+  .anime-card-wrapper , .card-image, .hover-video {
+    position: absolute;
+    width: 100%; 
+    height: 228px;
+    display: flex;
+    object-fit:cover;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow: hidden;
+  }
+
+
+
+  .hover-video{
+    object-fit:cover;
+ opacity: 0;
+  }
+
+  .card-image{
+    object-fit:fill; 
+    opacity: 1;
+  }
+ 
+  .anime-card h3{
+    position: absolute;
+    top: 75%; 
+ left: 5%; 
+    margin: 0; 
+    color: white; 
+    text-align: start;
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .anime-card p{
+    position: absolute;
+    left: 5%;
+    bottom: 1px;
+    font-size: 11px;
+  }
+  
+ 
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  .card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+  }
+
+  .anime_info h1{
+    margin-top: 75px;
+    font-weight: bold;
+  }
+
+
+  .load-more{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: 31px;
+    top: 50px;
+    border: 0px;
+    border-radius: 50%;
+    background-color: white;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    display: block;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .load-more:hover{
+background-color: #848486;
+pointer-events: auto;
+  }
+
+  .collections{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+
+  .collection-list{
+    height: 220px;
+    position: relative;
+    display: flex;
+ 
+    padding-left: 50px;
+  padding-right: 50px;
+  }
+  
+  .logout-btn {
+    background-color: red;
+    color: white;
+  }
+.collection-card{
+  height:200px;
+  width: 300px;
+  background-color: #212121;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 15px;
+  border-radius: 10px;
+
+}
+
+.collection-header {
+  display: flex;
+  position: relative;
+justify-content: space-between;
+  align-items: flex-start;
+ height: fit-content;
+ padding-left: 50px;
+ padding-right: 50px;
+}
+
+.collection-header h6 {
+  font-weight: bold;
+
+}
+
+.btn-create {
+  background-color: white;
+  color: black;
+  border: none;
+  width: 140px;
+  height: 30px;
+  border-radius: 10px;
+  justify-content: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: medium;
+  gap: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Ensures it looks like a button */
+  padding: 10px 15px;
+}
+
+ .collection-card h3{
+  color: white;
+margin-top: 20px;
+font-weight: bold;
+  position: relative;
+  align-self: center;
+  font-size: medium;
+}
+
+ .cards-container, .stack-cards{
+
+  height:100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.stack-cards{
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+
+}
+
+
+/* Card positions */
+.card-left  {
+  position: absolute;
+  background-color: coral;
+height: 120px;
+width: 110px;
+border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transform: rotate(-15deg) translateX(-80px);
+  z-index: 1;
+}
+
+.card-center  {
+  height: 100px;
+  width: 110px;
+  background-color: blueviolet;
+  position: absolute;
+border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transform: scale(1.1) translateY(25px);
+
+  z-index: 2;
+}
+
+.card-right {
+  height: 100px;
+  width: 110px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: blueviolet;
+  position: absolute;
+  transform: rotate(15deg) translateX(80px) translateY(20px);
+  z-index: 3;
+}
+
+.card-left img, .card-center img ,.card-right img{
+object-fit: cover;
+width: 100%;
+height: 100%;
+border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+
+.no-collections{
+ display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 220px;
+  bottom: 40px;
+  justify-content: center;
+}
+
+.no-collections h4{
+  align-self: center;
+  font-weight: bold;
+}
+
+.news-container {
+  height: 100%;
+ display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items:start;
+top: 30px;
+}
+
+
+
+.nav-header h6{
+  font-size: medium;
+  font-weight: bold;
+  margin-top: 30px;
+padding-left: 50px;
+margin-bottom: 30px;
+}
+.news-imagethumb{
+height: 520px;
+width: 100%;
+position: relative;
+display: flex;
+flex-direction: column;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+
+}
+.news-thumb-info {
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 90px;
+  padding-left: 50px;
+  z-index: 1;
+
+}
+
+.news_image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 0;
+}
+
+.news-thumb-info p {
+text-align: start;
+  color: #79808B;
+}
+
+.news-thumb-info h2 {
+  font-weight: bold;
+ 
+  width: 450px;
+  text-align: start;
+}
+
+/* Spacer to push elements down */
+.news-thumb-info .spacer {
+  flex-grow: 1; /* Takes up remaining space */
+}
+
+.news-grid {
+  display: grid;
+  gap: 20px;
+  max-width: 1200px;
+ padding-left: 50px;
+ padding-right: 50px;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+  transform: translateY(-30px);
+}
+
+.news-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.news-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+}
+
+.news-card:hover .news-card-image {
+  filter: brightness(75%);
+}
+
+.news-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  text-align: left;
+}
+
+.news-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+.show-more-container {
+width: 100%;
+  height: fit-content;
+}
+
+.show-more-btn {
+  background-color: white;
+  color: black;
+width: 80%;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background-color: #ddd;
+}
+
+
+
+.news-card:nth-child(5n+1),
+.news-card:nth-child(5n+2) {
+  grid-column: span 3;
+height: 250px;
+}
+
+.news-card:nth-child(5n+3),
+.news-card:nth-child(5n+4),
+.news-card:nth-child(5n+5),
+.news-card:nth-child(5n) {
+  grid-column: span 2;
+  height: 350px;
+}
+
+.news-container .sized-box{
+ height: 40px;
+}
+
+.socials{
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  margin-bottom: 40px;
+ align-items: center;
+ justify-content: center;
+  gap: 20px;
+}
+.telegram{
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 12px;
+}
+.discord{
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 12px;
+}
+.instagram{
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 12px;
+}
+//to prevent the link to from disrupting the grid and covers the entire news card and doesnt affect layout flow for the news grid
+.news-link-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+news-link{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+$cyan: #0505A9;
+$dark: #FFFFFF;
+$borderW: 2px;
+
+.blob-btn {
+  $numOfBlobs: 4;
+  
+  position: absolute;
+  left: 50px;
+  padding: 20px 46px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $cyan;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius:10px;
+  
+  &:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $borderW solid $cyan;
+    border-radius:10px;
+  }
+  
+  &:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: $borderW*1.5;
+    top: $borderW*1.5;
+    width: 100%;
+    height: 100%;
+
+    transition: all 0.3s 0.2s;
+    border-radius:10px;
+  }
+  
+  &:hover {
+    color: $dark;
+    border-radius:10px;
+    
+    &:after {
+      transition: all 0.3s;
+      left: 0;
+      top: 0;
+      border-radius:30px;
+    }
+  }
+  
+  &__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius:10px;
+    background:#ffffff;
+  }
+  
+  // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
+  &__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+  
+  &__blob {
+    position: absolute;
+    top: $borderW;
+    width: 100% / $numOfBlobs;
+    height: 100%;
+    background: $cyan;
+    border-radius: 100%;
+    transform: translate3d(0,150%,0) scale(1.7);
+    transition: transform 0.45s;
+    
+    @supports(filter: url('#goo')) {
+      transform: translate3d(0,150%,0) scale(1.4);
+    }
+    
+    @for $i from 1 through $numOfBlobs {
+      &:nth-child(#{$i}) {
+        left: ($i - 1) * (120% / $numOfBlobs);
+        transition-delay: ($i - 1) * 0.08s;
+      }
+    }
+    
+    .blob-btn:hover & {
+      transform: translateZ(0) scale(1.7);
+      
+      @supports(filter: url('#goo')) {
+        transform: translateZ(0) scale(1.4);
+      }
+    }
+  }
+}
+
+
+
+
+  @keyframes smoothFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95); /* Start lower and slightly smaller */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-40px) scale(1); /* Settle into place */
+    }
 }
 
 

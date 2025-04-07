@@ -1,0 +1,11 @@
+<div class="anime-card" data-id="<%= anime.id %>">
+  <div class="anime-card-wrapper">
+  <img src="<%= anime.thumb_image %>" class="card-image">
+  <div class="hover-video">
+  <%= render partial: "shared/home_video_thumb", locals: {height: 228, width:200, id:anime.id} %>
+  </div>
+  </div>
+
+  <h3><%= anime.title %></h3>
+  <p><%= anime.year %></p>
+</div>

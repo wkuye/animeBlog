@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_10_211929) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,12 +47,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_211929) do
     t.string "description"
     t.text "main_image"
     t.text "thumb_image"
-    t.boolean "airing"
+    t.boolean "airing", default: false, null: false
     t.integer "episodes"
     t.bigint "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "thumb_video_url"
+    t.integer "year"
+    t.bigint "collection_id"
+    t.index ["collection_id"], name: "index_animes_on_collection_id"
     t.index ["genre_id"], name: "index_animes_on_genre_id"
   end
 
@@ -66,6 +69,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_211929) do
     t.bigint "topic_id"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
     t.index ["topic_id"], name: "index_blogs_on_topic_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -98,6 +109,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_211929) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_installs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "image"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "slug"
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -133,5 +153,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_211929) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "animes", "genres", on_delete: :cascade
   add_foreign_key "blogs", "topics"
+  add_foreign_key "collections", "users"
   add_foreign_key "technologies", "genres"
 end

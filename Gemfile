@@ -62,7 +62,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "webpacker", "~> 5.4"
-gem 'jquery-rails'
+gem "jquery-rails"
 gem 'Wale_view_tool' 
 gem 'petergate', '~> 3.0'
+gem 'bootstrap-icons'
+gem "kaminari", "~> 1.2"
+gem 'rails-ujs'
+# Gemfile
+gem "font-awesome-sass", "~> 6.0"
+

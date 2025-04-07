@@ -15,20 +15,20 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
-    
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "anime_hover" %>
+    <%= javascript_include_tag "anime_loader",  defer: true%>
+    <%= javascript_include_tag "news_show"%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
-
-  <body body class="d-flex h-100 text-center text-white flex-column ", style="background-color: black;">
-
-  
+  <body  data-excluded-id="<%= @int %>" news-excluded-id="<%=@news_int%>" >
     <%= yield %>
   <%= render "shared/application_footer" %>
     
    <%= session_helper %>
-  </div>
+
   </body>
+
 </html>
