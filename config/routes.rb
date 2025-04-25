@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  #changed the last domain name from genres/log_out to genres/logout , we also did it for the rest, the path being empty removes the prefix 
   devise_for :users, path: "", path_names: {sign_in: "login", sign_out: "logout", sign_up:"register"} # rubocop:disable Layout/SpaceAfterColon
 
   resources :genres, except:  [ :show ]
@@ -13,8 +12,17 @@ Rails.application.routes.draw do
 resources :news, param: :slug
 get "news/:id", to: "news#show"
 
-   # rubocop:disable Layout/TrailingWhitespace
-  # get "home/contact"
+resources :animes, param: :slug
+get "/load_more_anime_overview", to: "animes#load_more_anime"
+post "/animes/:slug/add_collection/:collection_id",
+     to:   "animes#add_collection",
+     as:   "add_collection"
+
+resources :animes, only: [ :show ], param: :slug do
+  resources :reviews, only: [ :create ]
+end
+
+
   resources :blogs do
     member do
       get :toggle_status

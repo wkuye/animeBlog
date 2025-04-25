@@ -21,7 +21,6 @@ window.loadMoreAnime = function () {
 
     // Pass loaded IDs to the server to avoid reloading them
     loadedAnimeIds.forEach(id => params.append('loaded_ids[]', id));
-
     const excludedId = document.body.getAttribute("data-excluded-id");
     params.append('excluded_id', excludedId);
 
@@ -39,12 +38,11 @@ window.loadMoreAnime = function () {
     
         if (!data || data.length === 0) {
             console.warn("No more anime to load!");
-            const excludedId = document.body.getAttribute("data-excluded-id");
-            params.append('excluded_id', excludedId);
+       
             loadedAnimeIds.clear();
             animeContainer.innerHTML = "";
     
-            fetch(`/load_more_anime?reset=true`, {
+            fetch(`/load_more_anime?reset=true&excluded_id=${excludedId}`, {
                 headers: { 'Accept': 'application/json' }
             })
             .then(response => response.json())
@@ -82,7 +80,8 @@ function renderAnimeCards(animeList) {
         const height = 228;
         const width = 200;
         const iframeSrc = `${anime.thumb_video_url}?autoplay=1&mute=1&modestbranding=1&controls=0&loop=1`;
-    
+        const pageType = document.body.getAttribute("data-page-type");
+const isShowPage = pageType === "show";
         card.innerHTML = `
            <iframe 
           width="${width}px" 
@@ -95,7 +94,16 @@ function renderAnimeCards(animeList) {
             <img src="${anime.thumb_image}" alt="${anime.title}" class="card-image">
             <h3>${anime.title}</h3>
             <p>${anime.year}</p>
+            <a href="/animes/${anime.slug}" class="anime-link"></a>
         `;
+        if (isShowPage) {
+            card.innerHTML += `
+              <div class="top-container-rating">
+                <i class="fas fa-star star-icon"></i>
+                <p>${anime.rating}</p>
+              </div>
+            `;
+          }
 
         // Animation delay for smooth appearance
         card.style.animationDelay = `${index * 0.3}s`;

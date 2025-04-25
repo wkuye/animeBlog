@@ -3,13 +3,12 @@ class PagesController < ApplicationController
     @int = Anime.ids.sample
     @animes = Anime.where.not(id: @int).limit(6)
     unless current_user.is_a?(GuestUser)
-      collection = Collection.find_by(user_id: current_user.id)
-      @collection_animes = collection ? collection.animes : []
+      collection = current_user.collection
+      @collection_animes = collection ? collection : []
     end
     @news_int = News.ids.sample
     @news=News.where.not(id: @news_int).limit(7)
   end
-  
 
   def about
   end

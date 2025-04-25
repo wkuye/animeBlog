@@ -1,0 +1,51 @@
+<div class="overview">
+    <div class="sized-box"></div>
+    <div class="row">
+      <div class="col-md-4 details">
+     <h2>Details</h2>
+     <div class="details-grid">
+  
+        <p>Type</p>
+        <p style="margin-left: 20px; color:white">TV Show</p>
+  
+  
+        <p>Episodes</hp>
+        <p style="margin-left: 20px; color:white" ><%=anime.episodes%></p>
+  
+   
+        <p>Genres</p>
+        <p  style="margin-left: 20px; color:white"><%=anime.genre.genre_type%></p>
+     
+   
+        <p>Airing</p>
+        <p  style="margin-left: 20px; color:white"><%=anime.airing%></p>
+      
+     
+        <p>Year</p>
+        <p  style="margin-left: 20px; color:white"><%=anime.year%></p>
+     
+    
+        <p>Source</p>
+        <p  style="margin-left: 20px; color:white">Manga</p>
+    
+      
+     </div>
+     
+      </div>
+      <div class="col-md-8 description">
+        <h2>Description</h2>
+        <p><%=anime.description%></p>
+      </div>
+    </div>
+    <div class="special-overview">
+      <h2>Special for you</h2>
+      <div class="anime-grid" id="anime-list" style="margin-top: 50px; padding:0;">
+        <% @animes.each do |anime_card| %>
+        <%= render partial: "shared/anime_list", locals: {anime: anime_card ,anime_index:anime} %>
+        <% end %>
+       
+      </div>
+      <button id="load-more-btn" class="load-more-overview" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
+      </button>
+    </div>
+  </div>

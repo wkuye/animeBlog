@@ -1,6 +1,10 @@
 class Anime < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   belongs_to :genre
-  belongs_to :collection, optional: true
+  has_many :reviews
+  has_many :anime_collections
+  has_many :collections, through: :anime_collections
   includes Placeholder
   validates_presence_of :title, :description, :main_image, :thumb_image,  :episodes, :thumb_video_url
   after_initialize :set_defaults

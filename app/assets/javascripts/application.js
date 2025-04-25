@@ -7,4 +7,7 @@
 //= require anime_hover
 //= require anime
 //= require news_show
+//= require tab_controller
+//= require review_bottomsheet
+//= require animation_collection
 //= require_tree .

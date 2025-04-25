@@ -12,15 +12,17 @@
     </div>         
          <% if @collection_animes.present?%>
           <div class="collection-list">
-            <% current_user.collection.each do |collection| %>
+            <%@collection_animes.each do |collection| %>
 <div class="collection-card">
   <h3><%=collection.name%></h3>
   <div class="cards-container">
 
- <%@collection_animes.each_with_index do |collection_anime, index|%>
+ <%collection.animes.each_with_index do |collection_anime, index|%>
+
      <div class="stacked-card <%= %w[card-left card-center card-right][index %3] %>">
       <img src="<%= collection_anime.thumb_image %>" alt="<%= collection_anime.title %>">
      </div>
+   
  <%end %>
   </div>
 </div>

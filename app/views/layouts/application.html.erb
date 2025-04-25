@@ -16,14 +16,17 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= javascript_include_tag "anime_hover" %>
-    <%= javascript_include_tag "anime_loader",  defer: true%>
+    <%= javascript_include_tag "anime_loader"%>
     <%= javascript_include_tag "news_show"%>
+    <%= javascript_include_tag "tab_controller"%>
+    <%= javascript_include_tag "animation_collection"%>
+    <%= javascript_include_tag "review_bottomsheet"%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 
   </head>
-  <body  data-excluded-id="<%= @int %>" news-excluded-id="<%=@news_int%>" >
+  <body  data-excluded-id="<%= @anime&.id || @int || '' %>" news-excluded-id="<%=@news_int%>" data-page-type="<%= @anime.present? ? 'show' : 'home' %>">
     <%= yield %>
   <%= render "shared/application_footer" %>
     

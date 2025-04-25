@@ -5,7 +5,7 @@ window.attachAnimeCardListeners = function () {
     console.log("Attaching hover listeners...");
 
     const animeContainer = document.getElementById("anime-list");
-    const loadMoreBtn = document.querySelector('.load-more');
+    const loadMoreBtn =  document.querySelector('.load-more')??document.querySelector('.load-more-overview');
 
     if (!animeContainer || !loadMoreBtn) {
         console.warn("Anime container or button not found!");

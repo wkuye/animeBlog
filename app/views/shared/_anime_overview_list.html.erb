@@ -1,0 +1,15 @@
+
+<div class="anime-overview-card" data-id="<%= anime.id %>">
+
+    <div class="anime-overview-card-wrapper">
+    <img src="<%= anime.thumb_image %>" class="card-overview-image">
+    <div class="hover-overview-video">
+    <%= render partial: "shared/home_video_thumb", locals: {height: 228, width:200, id:anime.id} %>
+    </div>
+    </div>
+  
+    <h3><%= anime.title %></h3>
+    <p><%= anime.year %></p>
+      <%= link_to anime_path(anime.slug), class: 'anime-link' do%>
+     <%end%>
+  </div>

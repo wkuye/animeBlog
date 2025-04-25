@@ -74,4 +74,29 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
     news_slug=news.slug
     news_slug
   end
+
+  def get_rating(id)
+    anime_rating= Rating.find_by(anime_id: id)
+    rating= anime_rating.rating
+    rating
+  end
+
+
+  def profile_pic (profile_pic)
+    if profile_pic.attached?
+     profile_picture= image_tag profile_pic
+    else
+     profile_picture=image_tag "default_avatar.jpg", size: "100x100"
+    end
+   profile_picture
+  end
+
+  def  collection_first_pic (id)
+    collection= Collection.find_by_id(id)
+     puts "col #{collection.name}"
+    collection_anime= collection.animes.first
+   
+    collection_image=collection_anime.thumb_image
+    collection_image
+  end
 end

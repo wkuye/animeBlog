@@ -70,4 +70,5 @@ gem "kaminari", "~> 1.2"
 gem 'rails-ujs'
 # Gemfile
 gem "font-awesome-sass", "~> 6.0"
+gem 'image_processing', '~> 1.2'
 

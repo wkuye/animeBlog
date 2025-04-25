@@ -7,9 +7,8 @@
           <div class="media-wrapper">
             <img src="<%= home_image_main @int %>" alt="Description of image" class="anime_image">
             <div class="anime_video">
-              <%= render partial: "shared/home_video_thumb", locals: {height: 720, width:1280, id:@int} %>
+              <%= render partial: "shared/home_video_thumb", locals: {id:@int} %>
             </div>
-       
           </div>
           <div class="anime_info">
             <h1><%= anime_details(@int)&.title %></h1>
@@ -32,27 +31,21 @@
             </div>
           </div>
           <hr></hr>
-        
-   
         </div>
-        
       <div class="nav-index1">
         <div class="special">
           <h6>Special for you</h6>
         </div>
-        
               <div class="anime-grid" id="anime-list">
             <% @animes.each do |anime| %>
-            <%= render partial: "shared/anime_list", locals: {anime: anime} %>
+            <%= render partial: "shared/anime_list", locals: {anime: anime, anime_index:nil} %>
             <% end %>
            
           </div>
           <button id="load-more-btn" class="load-more" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
           </button>
-       <%= render "shared/collection_container" %>
-      
-       <div class="news-container">
-      
+       <%= render "shared/collection_container" %>  
+       <div class="news-container">  
     <div class="nav-header">
       <h6>News</h6>
     </div>
@@ -63,47 +56,16 @@
         <h2><%=news_thumb_title @news_int%></h2>
         <div class="spacer"></div>
         <%=render partial: "shared/blob_button" ,locals: {title: "Read More"} %>
-     
       </div>
-    
-      
     </div>
-    <div class="news-grid" >
-      <% @news.each do |newsdet| %>
-        <div class="news-card" news-id="<%=newsdet.id%>">
-          <img src="<%= newsdet.image %>" alt="<%= newsdet.title %>" class="news-card-image">
-          <div class="news-card-overlay">
-            <p class="news-time"><%= time_ago_in_words(newsdet.created_at) %> ago</p>
-            <h3 class="news-card-title"><%= newsdet.title %></h3>
-          </div>
-          <%= link_to news_path(newsdet), class: "news-link-absolute" do %>
-          <!-- No text needed, just an empty block to fill the card area -->
-        <% end %>
-        </div>
-      
-      <% end %>
-    </div>
-
+    <%=render "shared/news_grid"%>
     <!-- Show More Button -->
     <div class="show-more-container">
       <button class="show-more-btn"  onclick="showMoreNews()">Show More</button>
     </div>
     <div class="sized-box">
-
     </div>
-
-  <div class="socials">
-     <div class="telegram">
-      <%= content_tag(:i, "", class: "fab fa-telegram fa-2x") %>
-     </div>
-     <div class="discord">
-     <%= content_tag(:i, "", class: "fab fa-discord fa-2x") %>
-     </div>
-     <div class="instagram">
-      <%= content_tag(:i, "", class: "fab fa-instagram fa-2x") %>
-     </div>
-  </div>
-
+    <%=render "shared/socials"%>
   </div>
 </div>
       </div>

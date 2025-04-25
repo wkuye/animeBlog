@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_23_195759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "anime_collections", force: :cascade do |t|
+    t.bigint "anime_id", null: false
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_anime_collections_on_anime_id"
+    t.index ["collection_id"], name: "index_anime_collections_on_collection_id"
+  end
+
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -54,8 +63,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
     t.datetime "updated_at", null: false
     t.string "thumb_video_url"
     t.integer "year"
-    t.bigint "collection_id"
-    t.index ["collection_id"], name: "index_animes_on_collection_id"
+    t.string "slug"
+    t.float "rating"
     t.index ["genre_id"], name: "index_animes_on_genre_id"
   end
 
@@ -120,6 +129,26 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
     t.string "slug"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "anime_id", null: false
+    t.float "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_ratings_on_anime_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "anime_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "spoiler"
+    t.integer "rating"
+    t.index ["anime_id"], name: "index_reviews_on_anime_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "technologies", force: :cascade do |t|
     t.string "title"
     t.bigint "genre_id", null: false
@@ -151,8 +180,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_04_145056) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "anime_collections", "animes"
+  add_foreign_key "anime_collections", "collections"
   add_foreign_key "animes", "genres", on_delete: :cascade
   add_foreign_key "blogs", "topics"
   add_foreign_key "collections", "users"
+  add_foreign_key "ratings", "animes"
+  add_foreign_key "reviews", "animes"
+  add_foreign_key "reviews", "users"
   add_foreign_key "technologies", "genres"
 end
