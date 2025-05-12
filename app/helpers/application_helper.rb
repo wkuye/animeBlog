@@ -95,8 +95,17 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
     collection= Collection.find_by_id(id)
      puts "col #{collection.name}"
     collection_anime= collection.animes.first
-   
     collection_image=collection_anime.thumb_image
     collection_image
+  end
+
+  def star_rating(rating, max = 5)
+    content_tag :div, class: "star-rating" do
+      (1..max).map do |i|
+        classes = [ "fa", "fa-star" ]
+        classes << (i <= rating ? "active" : "inactive")
+        content_tag(:i, "", class: classes.join(" "))
+      end.join.html_safe
+    end
   end
 end

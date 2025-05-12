@@ -11,7 +11,7 @@
             <%=content_tag(:i , " Watch Trailer", class:"fa fa-play-circle", )%>
           </div>
         <div class="nav-container""> 
-          <div class="logo">
+          <div class="nav-logo">
             <h3>Anime B</h3>
           </div>
           <nav class="nav">
@@ -24,9 +24,9 @@
         <hr></hr>
       </div>
       <div class="anime-description">
-<div class="card-title">
+<div class="card-title"> 
 <div class="cover-card">
-  <img  class="cover-img" src="<%=@anime.thumb_image%>">
+  <%=image_tag(@anime.thumb_image, class:'cover-img')%> 
 </div>
 <div class="card-row">
 <h1><%=@anime.title%></h1>
@@ -34,53 +34,7 @@
   <%= content_tag(:i, "", class: "fas fa-star star-icon") %> 
   <p><%= @anime.rating%></p>
 </div>
-<div class="collection-wrapper">
-  <%if !current_user.is_a?(GuestUser)%>
-  <div class="add-collection">
-   <%=content_tag(:i, "  Add to Collection", class:"fa fa-plus collection-btn")%>
-  </div>
-  <div class="collection-animation">
-  
-    <div class="first-dot">
-      <%=image_tag('dbz.jpg', class:'image')%>
-    </div>
-    <div class="second-dot">
-      <%=image_tag('dbz.jpg', class:'image')%>
-    </div>
-    <div class="user-collections">
-    <%if @user_collections.present?%>
-      <% @user_collections.each do |user_collection|  %>
-      <div class="collection-container">
-        <div class="collection-pic">
-       <%=image_tag("#{collection_first_pic (user_collection.id)}", alt: "External Image", class:"image")%>
-        </div>
-        <div class="collection-details">
-          <h3><%=user_collection.name%><h3>
-            <div class="collection-details-row">
-              <p><%=user_collection.animes.length%> items</p>
-              <%if user_collection.animes.include?(@anime)%>
-              <%=content_tag(:i, '' ,class:'fa-solid fa-check')%>
-              <p>Added</p>
-              <%end%>
-            </div>
-        </div>
-        <%= button_to add_collection_path(@anime.slug, collection_id: user_collection),
-        method: :post,
-        class: "add-collection-link" do %>
-        <%end%>
-      </div>
-      <%end%>
-      <%else%>
-      <div class="collection-container" style="justify-content: center;">
-        <p style="padding-top: 10px;">no collections found</p>
-      </div>
-      
-    <%end%>
-    </div>
-  </div>
-  <%end%>
-</div>
-
+<%=render 'shared/collection_wrapper'%>
 </div>
 </div>
 <div class="anime-tabs">
@@ -93,83 +47,13 @@
   <%=render partial:"shared/overview" , locals:{anime: @anime}%>
   </div>
   <div class="tab-body" id="reviews" style="display: none;">
-  <div class="reviews-tab">
-    <h2>Recent Reviews</h2>
-    <div class="review-btn">
-      <%=content_tag(:i, "  Write a Review", class:"fa fa-plus review-text")%>
-    </div>
-    <div class="comments">
-      <%@reviews.each do |review| %>
- <div class="review-card">
-  <div class="row">
-    <div class="col-md-2">
-      <div class="profile-pic">
-     <%=profile_pic review.user.profile_picture%>
-      </div>
-    </div>
-    <div class="col-md-10 review-details">
-      <div class="name-time">
-        <%if review.spoiler===true%>
-        <h3 class="spoiler">Spoiler</h3>
-        <%end%>
-        <h3><%=review.user.name%></h3>
-        <h4><%=review.created_at.strftime("%d %B %Y")%></h4>
-      </div>
-      <div class="user-comment">
-        <p><%=review.comment%></p>
-      </div>
-    </div>
-  </div>
- </div>
-      <%end%>
-    </div>
-  </div>
- 
+<%=render 'shared/review_tab' %> 
   </div>
 </div>
 <div class="review-bottomsheet" sheet-bool="<%=@review_error?'sheets': ''%>">
-  <div class="modal">
-    <span class="close">&times;</span>
-    <h2>Add A Review?</h2>
-
-    <%= form_with(model: [@anime, @review],  local: true,  html: { class: "form" }) do |f| %>
-    
-    <% if @review.errors.any? %>
-    <div class="bottom-sheet-errors">
-      <h2><%= pluralize(@review.errors.count, "error") %> prevented this review from being saved:</h2>
-      <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="rate-stars">
-    <%=f.label "rate"%>
-    <div class="stars">
-      <% 5.downto(1) do |i| %>
-        <%= f.radio_button :rating, i, id: "star#{i}" %>
-        <%= f.label :"star#{i}", "★", for: "star#{i}" %>
-      <% end %>
-    </div>
-  </div>
-   
-     <div class="sized-box"></div>
-   <%=f.label "Review", class:"review-form-text"%>
-    <%= f.text_area :comment, placeholder: "Write your review…" %>
-  
-    <label class="spoiler">
-      <%= f.hidden_field :spoiler, value: false %>
-      <%= f.check_box :spoiler %>
-      Contains spoilers?
-    </label>
-  
-    <%= f.submit "Save", class: "save-btn" %>
-  <% end %>
-  
-  </div>
+ <%=render 'shared/review_modal'%>
 </div>
-      </div>
+     </div>
     </div>
   </div>
 

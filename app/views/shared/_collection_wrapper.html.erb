@@ -1,0 +1,46 @@
+<div class="collection-wrapper">
+    <%if !current_user.is_a?(GuestUser)%>
+    <div class="add-collection">
+     <%=content_tag(:i, "  Add to Collection", class:"fa fa-plus collection-btn")%>
+    </div>
+    <div class="collection-animation">
+    
+      <div class="first-dot">
+        <%=image_tag(@anime.thumb_image, class:'image')%>
+      </div>
+      <div class="second-dot">
+        <%=image_tag(@anime.thumb_image, class:'image')%>
+      </div>
+      <div class="user-collections">
+      <%if @user_collections.present?%>
+        <% @user_collections.each do |user_collection|  %>
+        <div class="collection-container">
+          <div class="collection-pic">
+         <%=image_tag("#{collection_first_pic (user_collection.id)}", alt: "External Image", class:"image")%>
+          </div>
+          <div class="collection-details">
+            <h3><%=user_collection.name%><h3>
+              <div class="collection-details-row">
+                <p><%=user_collection.animes.length%> items</p>
+                <%if user_collection.animes.include?(@anime)%>
+                <%=content_tag(:i, '' ,class:'fa-solid fa-check')%>
+                <p>Added</p>
+                <%end%>
+              </div>
+          </div>
+          <%= button_to add_collection_path(@anime.slug, collection_id: user_collection),
+          method: :post,
+          class: "add-collection-link" do %>
+          <%end%>
+        </div>
+        <%end%>
+        <%else%>
+        <div class="collection-container" style="justify-content: center;">
+          <p style="padding-top: 10px;">no collections found</p>
+        </div>
+        
+      <%end%>
+      </div>
+    </div>
+    <%end%>
+  </div>

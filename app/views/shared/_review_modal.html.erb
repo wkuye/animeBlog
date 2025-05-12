@@ -1,0 +1,42 @@
+<div class="modal">
+    <span class="close">&times;</span>
+    <h2>Add A Review?</h2>
+
+    <%= form_with(model: [@anime, @review],  local: true,  html: { class: "form" }) do |f| %>
+    
+    <% if @review.errors.any? %>
+    <div class="bottom-sheet-errors">
+      <h2><%= pluralize(@review.errors.count, "error") %> prevented this review from being saved:</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="rate-stars">
+    <%= f.label :rating, "Rate" %>
+    <div class="stars">
+      <% 1.upto(5) do |i| %>
+        <label class="star">
+          <%= f.radio_button :rating, i, id: "star#{i}" %>
+          <span class="icon">★</span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+   
+     <div class="sized-box"></div>
+   <%=f.label "Review", class:"review-form-text"%>
+    <%= f.text_area :comment, placeholder: "Write your review…" %>
+  
+    <label class="spoiler">
+      <%= f.hidden_field :spoiler, value: false %>
+      <%= f.check_box :spoiler %>
+      Contains spoilers?
+    </label>
+  
+    <%= f.submit "Save", class: "save-btn" %>
+  <% end %>
+  
+  </div>

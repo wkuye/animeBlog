@@ -17,7 +17,7 @@ $numOfBlobs: 4;
 
 html, body {
 //  height: 350vh;
-min-height: 150vh;
+min-height: 110vh;
 
 height: auto;
   font-family: Arial, sans-serif;
@@ -29,6 +29,7 @@ height: auto;
 color: white;
 background: #000;
 overflow: auto;
+overflow-x: hidden;
 }
 
 
@@ -1138,30 +1139,33 @@ border-radius: 50%;
   margin-bottom: 1rem;
   font-size: 1.4rem;
 }
+/* STAR RATING (pure CSS with :has) */
 .stars {
-  direction: rtl; /* Reverse visual direction for hover and checked logic */
-  unicode-bidi: bidi-override;
-  display: inline-block;
+  display: flex;
+  flex-direction: row-reverse;  /* visually 5→1, though DOM is 1→5 */
+  gap: 0.25em;
 }
 
-.stars input[type="radio"] {
-  display: none; /* Hide radio buttons */
+.stars .star input {
+  display: none;
 }
 
-.stars label {
+.stars .star .icon {
   font-size: 2rem;
   color: #ccc;
+  transition: color 0.15s;
   cursor: pointer;
 }
 
-/* Hover effect: highlight hovered star + those to its left */
-.stars label:hover,
-.stars label:hover ~ label {
+/* Hover: highlight hovered star + those to its left */
+.stars .star:hover .icon,
+.stars .star:hover ~ .star .icon {
   color: gold;
 }
 
-/* Checked effect: highlight selected star + those to its left */
-.stars input[type="radio"]:checked ~ label {
+/* Checked: any label with a checked input, plus all labels after it in DOM */
+.stars .star:has(input:checked) .icon,
+.stars .star:has(input:checked) ~ .star .icon {
   color: gold;
 }
 
@@ -1397,8 +1401,338 @@ textarea {
 background: transparent;
 border: none;
   z-index: 5;  
-
 }
+
+.login-container form {
+  width: 450px;      
+  text-align: left;  
+}
+
+.login-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: #111111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlideIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.login-container h2{
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.login-google{
+  height: 50px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+justify-content: center;
+margin-bottom: 35px;
+}
+
+.review-rating{
+  display:flex;
+    align-items: start;
+    margin-left: 5px;
+}
+
+.star-rating {
+  display:flex;
+  align-items: start;
+  i {
+    // base size, spacing, etc.
+    font-size: 13px;
+    &.active {
+      color: #f5a623;  // gold
+    }
+    &.inactive {
+      color: #ddd;     // light gray
+    }
+  }
+}
+.google{
+  font-size: smaller;
+  font: medium;
+}
+
+
+.label{
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 5px; 
+ 
+}
+
+/* now style only the inputs */
+.login-container input.input-field {
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  border: 3px solid #A1A1A1;
+  color:            #333333;   /* dark grey text */
+  padding: 0 12px;
+  margin-bottom: 20px;
+}
+
+
+
+.login-container input.input-field:focus {
+  border-color:     #6c63ff;
+  box-shadow:       0 0 6px rgba(108,99,255,0.5);
+}
+
+.remember-me{
+  margin-bottom: 20px;
+}
+
+.actions .login-btn{
+  width: 450px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+.password-row{
+  display: flex;
+  width: 100%;
+ justify-content: space-between;
+}
+
+.fp-login{
+  text-decoration: none;
+  color:#9D9D9D ;
+}
+
+.bottom-login{
+  display: flex;
+  width: 450px;
+  margin-top: 50px;
+}
+
+.sign-up-text{
+  color:#5C934A ;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.signup-body{
+  min-height: 80vh;
+  background-color: #111111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlideIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.signup-body h2{
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.card-body{
+  text-align: left;
+  width: 450px;
+  margin-bottom: 15px;
+  transform: translateY(20px);
+  animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+.f-field{
+  transform: translateY(20px);
+  animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+.f-field:nth-child(1) { animation-delay: 0.3s; }
+.f-field:nth-child(2) { animation-delay: 0.45s; }
+
+.card-body:nth-child(1) { animation-delay: 0.3s; }
+.card-body:nth-child(2) { animation-delay: 0.45s; }
+.card-body:nth-child(3) { animation-delay: 0.6s; }
+.card-body:nth-child(4) { animation-delay: 0.75s; }
+.card-body:nth-child(5) { animation-delay: 0.9s; }
+
+.card-body input.input-field {
+  width: 100%;
+  height: 35px;
+  border-radius: 10px;
+  border: 3px solid #A1A1A1;
+  color:            #333333;   /* dark grey text */
+  padding: 0 12px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.card-body input.input-field:focus {
+  border-color:     #6c63ff;
+  box-shadow:       0 0 6px rgba(108,99,255,0.5);
+}
+
+.actions-signup .login-btn{
+  width: 450px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  animation: fadeSlideIn 0.5s ease-out forwards;
+  animation-delay: 1.05s;
+}
+
+.field-error{
+  color: red;
+}
+
+.signup-body p{
+  margin-top: 20px;
+  color: #929292;
+}
+
+.signup-body p ~ p{
+  color: #5C934A ;
+  margin-top: 0px;
+}
+
+.password-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.password-body h2{
+  margin-top: 190px;
+  margin-bottom: 30px;
+}
+
+.forgotten-field{
+  text-align: left;
+  width: 450px;
+  margin-bottom: 15px;
+}
+
+.forgotten-field input.input-field {
+  width: 100%;
+  height: 35px;
+  border-radius: 10px;
+  border: 3px solid #A1A1A1;
+  color:            #333333;   /* dark grey text */
+  padding: 0 12px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.forgotten-field input.input-field:focus {
+  border-color:     #6c63ff;
+  box-shadow:       0 0 6px rgba(108,99,255,0.5);
+}
+
+.actions-f .login-btn{
+  width: 450px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logo{
+  background-color: transparent;  
+  display: inline-block;
+}
+
+
+.logo, .logo img {
+  top: 40px;
+  left: 30px;
+  position: absolute;
+  display: block; 
+  height: 250px;
+  width: 260px;
+
+  background-color: transparent
+}
+
+
+
+
+.logo-1, .logo-1 img {
+  bottom: 40px;
+  left:30px;
+  position: absolute;
+  display: block; 
+  height: 250px;
+  width: 260px;
+
+  background-color: transparent
+}
+
+.logo-2,.logo-2 img {
+  top: 40px;
+  right: 30px;
+  position: absolute;
+  display: block; 
+  height: 250px;
+  width: 260px;
+
+  background-color: transparent
+}
+
+.logo-3,.logo-3 img {
+  bottom: 40px;
+  right:30px;
+  position: absolute;
+  display: block; 
+  height: 250px;
+  width: 260px;
+  background-color: transparent
+}
+
+.logo,
+.logo-1,
+.logo-2,
+.logo-3 {
+  animation: float 6s ease-in-out infinite;
+}
+
+.login-btn {
+  transition: transform 0.2s ease;
+}
+.login-btn:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+
+
+@keyframes float {
+  0%   { transform: translateY(0)    rotate(0deg);}
+  50%  { transform: translateY(-20px) rotate(3deg);}
+  100% { transform: translateY(0)    rotate(0deg);}
+}
+
+/* form fade & slide in */
+@keyframes fadeSlideIn {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0   ); }
+}
+
+/* button pulse on hover */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 
 
 @keyframes popIn {

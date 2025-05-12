@@ -10,4 +10,5 @@
 //= require tab_controller
 //= require review_bottomsheet
 //= require animation_collection
+//= require anime.js
 //= require_tree .

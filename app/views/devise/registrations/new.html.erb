@@ -1,44 +1,64 @@
-<h2>Sign up</h2>
-<div class="card" style="margin-top:20px">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="card-body">
-    <h6 style="margin-top: 30px;"><b><%= f.label :email %><br /></b></h6> 
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    
-  </div>
-  <div class="card-body">
-    <h6 ><b><%= f.label :name %><br /></b></h6>
-    <%= f.text_field :name%>
-    
-  </div>
-  <div class="card-body">
-   <h6><b> <%= f.label :username %><br /></b></h6>
-    <%= f.text_field :username%>
-    
-  </div>
-  <div class="card-body">
-    <h6><b><%= f.label :password %><br /></b></h6>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    
-    <% if params[:user] && params[:user][:password] && params[:user][:password].length < 6 %>
-      <em>(Password must be at least 6 characters long)</em>
+<div class="signup-body">
+  <div class="logo"><%=image_tag 'bleach.png'%></div>
+  <div class="logo-1"><%=image_tag 'onepiece.png'%></div>
+  <div class="logo-2"><%=image_tag 'naruto.png'%></div>
+  <div class="logo-3"><%=image_tag 'dbz.png'%></div>
+  <h2>Create An Account</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+   
+    <div class="card-body">
+      <b><%= f.label :email %><br /></b> 
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-field" %>
+      <% if resource.errors[:email].any? %>
+      <% resource.errors.full_messages_for(:email).each do |msg| %>
+        <div class="field-error"><%= msg %></div>
+      <% end %>
     <% end %>
-  </div>
-  
-
-  <div class="card-body">
-    <h6><b><%= f.label :password_confirmation %><br /></b></h6>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
- 
+    </div>
+    <div class="card-body">
+      <h6 ><b><%= f.label :name %><br /></b></h6>
+      <%= f.text_field :name, class:"input-field" %>
+      <% if resource.errors[:name].any? %>
+      <% resource.errors.full_messages_for(:name).each do |msg| %>
+        <div class="field-error"><%= msg %></div>
+      <% end %>
+    <% end %>
+    </div>
+    <div class="card-body">
+     <h6><b> <%= f.label :username %><br /></b></h6>
+      <%= f.text_field :username, class:"input-field"%>
+      <% if resource.errors[:email].any? %>
+      <% resource.errors.full_messages_for(:username).each do |msg| %>
+        <div class="field-error"><%= msg %></div>
+      <% end %>
+    <% end %>
+    </div>
+    <div class="card-body">
+      <h6><b><%= f.label :password %><br /></b></h6>
+      <%= f.password_field :password, autocomplete: "new-password",  class:"input-field"%>
+      
+      <% if params[:user] && params[:user][:password] && params[:user][:password].length < 6 %>
+        <em style="color: red;">(Password must be at least 6 characters long)</em>
+      <% end %>
+    </div>
     
-  </div>
-  <div class="d-flex justify-content-center align-items-center flex-column">
-    <%= f.submit "Submit", class: "btn btn-dark mb-3" %>
+  
+    <div class="card-body">
+      <h6><b><%= f.label :password_confirmation %><br /></b></h6>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-field" %>
+      <% if resource.errors[:email].any? %>
+      <% resource.errors.full_messages_for(:password).each do |msg| %>
+        <div class="field-error"><%= msg %></div>
+      <% end %>
+    <% end %>
+    </div>
+    <div class="actions-signup">
+      <%= f.submit "Sign up", class: "login-btn" %>
+    </div>
     <%= render "devise/shared/links" %>
-  </div>
+  <% end %>
+   <p>By signing up you agree to</p>
+   <p>Terms & Privacy</p>
   
   
-<% end %>
 </div>
-
