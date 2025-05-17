@@ -1,15 +1,20 @@
 
-     <%= link_to "Home", root_path , class:"nav-link active", aria_current:"page" %>
+     <%= link_to "Home",  root_path , class: "nav-link  #{'active' if current_page?(root_path)}",
+        aria_current: ('page' if current_page?(root_path)) %>
    
 
-        <%= link_to "Contact", contact_path, class:"nav-link" %>
+        <%= link_to "Contact", contact_path,
+        class: "nav-link #{'active' if current_page?(contact_path)}",
+        aria_current: ('page' if current_page?(contact_path)) %>
    
- 
-        <%= link_to "About", about_path, class:"nav-link" %>
       
-        <%= link_to "Blogs", blogs_path,  class:"nav-link"%>
+        <%= link_to "Blogs", blogs_path,
+        class: "nav-link #{'active' if current_page?(blogs_path)}",
+        aria_current: ('page' if current_page?(blogs_path)) %>
     
-        <%= link_to "genre", genres_path, class:"nav-link" %>
+        <%= link_to "genre", genres_path,
+        class: "nav-link #{'active' if current_page?(genres_path)}",
+        aria_current: ('page' if current_page?(genres_path)) %>
  
         
    

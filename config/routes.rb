@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :genres, except:  [ :show ]
   get "genre/:id", to: "genres#show", as: "genre_show"
-  get "about", to: "pages#about"
   get "contact", to: "pages#contact"
+  post "contact_dev", to: "pages#contact_dev"
   get "home", to: "pages#home"
   get "/load_more_anime", to: "pages#load_more_anime"
   get "/show_more_news", to: "pages#show_more_news"
