@@ -6,12 +6,12 @@
   <%= render partial: "shared/home_video_thumb", locals: {id:anime.id} %>
   </div>
   </div>
-  <% if !anime_index.nil?%>
-  <div class="top-container-rating">
+ 
+  <div class="<%=!anime_index.nil? ? 'top-container-rating': 'top-kon-rating'%>">
    <%= content_tag(:i, "", class: "fas fa-star star-icon") %> 
    <p><%= anime.rating%></p>
   </div>
-  <%end%>
+  
   <h3><%= anime.title %></h3>
   <p><%= anime.year %></p>
     <%= link_to anime_path(anime.slug), class: 'anime-link' do%>

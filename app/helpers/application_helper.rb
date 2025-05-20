@@ -108,4 +108,10 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
       end.join.html_safe
     end
   end
+
+  def ids_to_slug(id)
+    anime= Anime.find_by_id(id)
+    anime_slug= anime.slug
+    anime_slug
+  end
 end

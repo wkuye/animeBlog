@@ -1,45 +1,49 @@
+<div class="content">
+  <h1 class="home-header">Contact Me</h1>
+  <div class="nav-card_container">
+    <%= image_tag 'akat.png', class: 'contact-bg', width: '100%', height: '100%' %>
 
-    <div class="content" >
-      <h1  class= "home-header">Contact Me</h1>
-      <div class="nav-card_container">
-   <%=image_tag'Naruto-contact.jpg', class:'contact-bg', width:'100%', height:'100%'%>
-          <div class="nav-container">
-            <div class="nav-logo">
-              <h3>Anime B</h3>
-            </div>
-            <nav class="nav">
-              <%= render "shared/application_nav" %>
-            </nav>
-            <div class="auth-links">
-              <%= login_helper %>
-            </div>
-          </div>
-          <hr></hr>
-          <div class="content-text">
-             <p>if you need any help or if you'd just like to say hello, don't hesitate to contact me!</p>
-          </div>
-         
-<div class="contact-form">
-   <%= form_with url: contact_dev_path, local: true do |f| %>
-    <div class="contact-field">
-      <%= f.label :name %>
-      <%= f.text_field :name, required: true ,class: "wide-input"%>
-    </div>
-    <div class="contact-field">
-      <%= f.label :email %>
-      <%= f.email_field :email, required: true,class: "wide-input" %>
-    </div>
-    <div class="contact-field">
-      <%= f.label :message %>
-      <%= f.text_area :message, rows: 5, required: true %>
-    </div>
-    <div class="contact-actions">
-      <%= f.submit "Send", class: "send" %>
-    </div>
-  <% end %>
-</div>
-<div class="sized-box"></div>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h3>Anime B</h3>
+        </div>
+        <nav class="nav">
+          <%= render "shared/application_nav" %>
+        </nav>
+        <div class="auth-links">
+          <%= login_helper %>
+        </div>
       </div>
+
+      <hr>
+
+      <div class="content-text">
+        <p>If you need any help or just want to say hello, don't hesitate to contact me!</p>
+      </div>
+
+      <div class="form-wrapper">
+        <div class="contact-form">
+          <%= form_with url: contact_dev_path, local: true do |f| %>
+            <div class="contact-field">
+              <%= f.label :name %>
+              <%= f.text_field :name, required: true, class: "wide-input", placeholder:"Your Name"%>
+            </div>
+            <div class="contact-field">
+              <%= f.label :email %>
+              <%= f.email_field :email, required: true, class: "wide-input", placeholder:"Your Email" %>
+            </div>
+            <div class="contact-field">
+              <%= f.label :message %>
+              <%= f.text_area :message, rows: 5, required: true, class: "wide-input", placeholder:"Your Mesaage" %>
+            </div>
+            <div class="contact-actions">
+              <%= f.submit "Send", class: "send-button" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="sized-box"></div>
     </div>
 
-
+</div>

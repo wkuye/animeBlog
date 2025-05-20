@@ -103,6 +103,13 @@ const isShowPage = pageType === "show";
                 <p>${anime.rating}</p>
               </div>
             `;
+          }else{
+                  card.innerHTML += `
+              <div class="top-kon-rating">
+                <i class="fas fa-star star-icon"></i>
+                <p>${anime.rating}</p>
+              </div>
+            `;
           }
 
         // Animation delay for smooth appearance

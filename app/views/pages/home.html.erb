@@ -14,9 +14,10 @@
             <h1><%= anime_details(@int)&.title %></h1>
             <p><%= truncate_after_second_period(anime_details(@int)&.description) %></p>
             
-            <button class="btn learn-more">
+            <%=button_to "Learn More", anime_path(ids_to_slug(@int)), class:"btn learn-more", method: :get%>
+            <!-- <button class="btn learn-more">
               <p>Learn More</p>
-            </button>
+            </button> -->
           
           </div>
           <div class="nav-container">
