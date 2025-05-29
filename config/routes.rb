@@ -17,6 +17,8 @@ get "/load_more_anime_overview", to: "animes#load_more_anime"
 post "/animes/:slug/add_collection/:collection_id",
      to:   "animes#add_collection",
      as:   "add_collection"
+resources :blogs, param: :slug
+get '/blogs/:slug', to: 'blogs#show'
 
 resources :animes, only: [ :show ], param: :slug do
   resources :reviews, only: [ :create ]

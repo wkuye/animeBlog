@@ -1,10 +1,204 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-body {
-background-color: grey;
+@import "font-awesome";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-//the a stands for link in css
-.bottom a{
-    color: purple
+ body {
+//  height: 350vh;
+min-height: 100vh;
+height: auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+color: white;
+background: #000;
+overflow: auto;
+overflow-x: hidden;
+}
+
+.blogs-container{
+    position: relative;
+flex-grow: 1;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-right: 20px;
+}
+
+.blogs-container h1{
+  text-align: start;
+  padding-left: 10px;
+  padding-top: 30px;
+}
+
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ z-index: 1;
+ background-color: transparent;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: white;
+ 
+}
+
+.auth-links {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-btn {
+  background-color: rgb(84, 74, 74);
+  color: white;
+}
+
+.register-btn {
+  background-color: white;
+  color: black;
+}
+
+.blog-grid{
+  height: 100%;
+  width: 100%;
+  padding-left: 10px;
+  display: grid;
+  padding-top: 10px;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  justify-self: start;
+  justify-items: center;
+}
+
+.blog-card{
+  position: relative;
+  height: 350px;
+  width: 250px;
+  background-color: #14181C;
+  text-align: start;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.blog-image{
+  width: 100%;
+  height: 150px;
+  object-fit: fill;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.blog-card h1{
+  font-size: medium;
+  padding-left: 6px;
+  font-weight: bold;
+}
+
+.blog-card p{
+  padding-left: 6px;
+  color: #909394;
+  font-size: small;
+}
+
+.blog-about{
+  position: sticky;
+  top: 80px;
+  height: 650px;
+  width: 100%;
+  padding-left: 8px;
+  display: flex;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  padding-right: 8px;
+  background-color: #15181D;
+ flex-direction: column;
+  border-radius: 10px;
+}
+
+.blog-social{
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    height: 100%;
+}
+.telegram{
+  height: 50px;
+  width: 50px;
+  background-color:#777B7B;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  margin-top:20px;
+  border-radius: 12px;
+}
+.discord{
+  height: 50px;
+  width: 50px;
+  background-color: #777B7B;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.instagram{
+  height: 50px;
+  width: 50px;
+  background-color: #777B7B;
+  color: black;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+.about-section{
+  margin-top: 20px;
+  padding-left: 8px;
+}
+.about-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-section p {
+  font-size: 1rem;
+   text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  padding-right: 9px;
+}
+.blog-link{
+   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }

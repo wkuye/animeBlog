@@ -1,11 +1,60 @@
-<p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Blogs" %>
+<div class="blogs-container">
+     <div class="nav-container">
+            <div class="nav-logo">
+              <h3>Anime B</h3>
+            </div>
+            <nav class="nav">
+              <%= render "shared/application_nav" %>
+            </nav>
+            <div class="auth-links">
+              <%= login_helper %>
+            </div>
+          </div>
+          <h1>Blogs</h1>
+          <div class="row">
+            <div class="col-md-9">
+                  <div class="blog-grid">
+<%@blogs.each do |blog|%>
+<div class="blog-card">
+  <%=image_tag blog.blog_image, class:"blog-image"%>
+  <h1><%=blog.title%></h1>
+  <p><%=blog.body%></p>
+  <%=link_to  blog_path(blog.slug), class:"blog-link" do%>
+  <%end%>
+</div>
 
-<h1>Anime BLOG</h1>
+  <!-- <p><%= markdown(blog.description) %><p> -->
+<%end%>
+          </div>
+            </div>
+              <div class="col-md-3">
+            <div class="blog-about">
+              <section class="about-section">
+  <h2>About This Blog</h2>
+  <p>
+    Welcome to <strong>Anime B</strong>, your portal to the world of anime! This blog is created by fans, for fans exploring the epic battles, emotional-journeys, and inspiring characters that define our favorite shows. Whether you're a newcomer or a lifelong otaku, you'll find content here that celebrates everything from classic series like Naruto and One Piece to modern masterpieces like Jujutsu Kaisen  and Attack on Titan.
+    Join us as we dive deep into anime storylines, character arcs, fan theories, and more. Our goal is to create a fun, thoughtful, and inclusive space for anime lovers around the world.
+  </p>
+</section>
+  <div class="blog-social">
+     <div class="telegram">
+     <%= content_tag(:i, "", class: "fab fa-telegram fa-2x") %>
+    </div>
+    <div class="discord">
+    <%= content_tag(:i, "", class: "fab fa-discord fa-2x") %>
+    </div>
+    <div class="instagram">
+     <%= content_tag(:i, "", class: "fab fa-instagram fa-2x") %>
+    </div>
+  </div>
 
-<div >
-  <%= render @blogs %>
+            </div>
+          </div>
+      
+          </div>
+        
 
 </div>
 

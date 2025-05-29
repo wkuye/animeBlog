@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit update destroy toggle_status ]
+  before_action :set_blog, only: %i[ show edit destroy toggle_status ]
   layout "blog"
-  access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new, :update]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new]}, site_admin: :all
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
@@ -31,7 +31,6 @@ class BlogsController < ApplicationController
     else
       @blog.title = "Guest"
     end
-    
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
@@ -44,17 +43,17 @@ class BlogsController < ApplicationController
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
-  def update
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
+  # def update
+  #   respond_to do |format|
+  #     if @blog.update(blog_params)
+  #       format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
 
-      else
-        format.html { render :edit, status: :unprocessable_entity }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
 
-      end
-    end
-  end
+  #     end
+  #   end
+  # end
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
@@ -78,7 +77,7 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.friendly.find(params[:id])
+      @blog = Blog.friendly.find(params[:slug])
     end
 
     # Only allow a list of trusted parameters through.

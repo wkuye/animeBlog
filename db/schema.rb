@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_23_195759) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_26_154149) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,10 +74,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_23_195759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.integer "status", default: 0
-    t.bigint "topic_id"
+    t.text "description"
+    t.text "blog_image"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
-    t.index ["topic_id"], name: "index_blogs_on_topic_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -183,7 +182,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_23_195759) do
   add_foreign_key "anime_collections", "animes"
   add_foreign_key "anime_collections", "collections"
   add_foreign_key "animes", "genres", on_delete: :cascade
-  add_foreign_key "blogs", "topics"
   add_foreign_key "collections", "users"
   add_foreign_key "ratings", "animes"
   add_foreign_key "reviews", "animes"

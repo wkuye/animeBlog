@@ -20,15 +20,8 @@
   </head>
 
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  
-    <%= login_helper %>
- 
     <%= yield %>
-    <%= render "shared/nav", location:'bottom' %>
-    <%= session_helper %>
-    
+     <%= render "shared/application_footer" %>
+     <%= session_helper %>
   </body>
 </html>
