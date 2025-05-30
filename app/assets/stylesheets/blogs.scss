@@ -7,6 +7,17 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
  body {
 //  height: 350vh;
 min-height: 100vh;
@@ -187,8 +198,7 @@ flex-grow: 1;
 
 .about-section p {
   font-size: 1rem;
-   text-align: justify;
-  text-justify: inter-word;
+   text-align: start;
   hyphens: auto;
   padding-right: 9px;
 }
@@ -201,4 +211,140 @@ flex-grow: 1;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+}
+.blog-show-body{
+  background-color: white;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+padding-right: 20px;
+padding-left: 55px;
+  scroll-behavior: smooth;
+}
+
+.blog-title{
+  display: block;
+  width: 550px;
+  color: black;
+  text-align: start;
+  font-weight:bolder;
+  margin-top: 40px;
+}
+
+.author-section{
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+
+  color: black;
+}
+
+.author-section p{
+  margin-top: 8px;
+}
+
+.author-section .blog-author-image{
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+
+.author-section p:nth-child(1) {
+  margin-left: 8px;
+}
+
+.author-section p:nth-child(2) {
+  margin-left: 9px;
+  font-weight: bolder;
+}
+
+.author-section p:nth-child(3) {
+  margin-left: 5px;
+  font-weight: 200;
+}
+
+.author-section p:nth-child(4) {
+  margin-left: 3px;
+  font-weight: 200;
+}
+
+.author-section p:nth-child(5) {
+  margin-left: auto;
+  font-weight: 200;
+}
+
+.blog-show-image{
+  height: 650px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-top: 25px;
+}
+
+.blog-show-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.blog-text{
+  margin-top: 10px;
+  color: black;
+  text-align: start;
+}
+.spacer{
+  flex-grow: 1;
+}
+
+.back-top {
+  display: flex;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%; /* Use 50% for a perfect circle */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Added proper box-shadow */
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(85, 85, 236);
+  position: relative; /* Added */
+  cursor: pointer;
+  margin-top: 30px;
+  align-self: center;
+  margin-bottom: 30px;
+}
+
+.back-top-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+.ar-up{
+  margin-top: 20px;
+}
+.admin-utils{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.admin-utils a{
+  text-decoration: none;
+}
+
+.delete-btn{
+  background-color: transparent;
+  border: none;
+  color: red;
 }

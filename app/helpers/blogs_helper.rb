@@ -10,4 +10,6 @@ module BlogsHelper
     )
     markdown.render(text).html_safe
  end
+
+ 
 end
