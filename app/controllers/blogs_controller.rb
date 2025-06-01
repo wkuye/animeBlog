@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit destroy toggle_status ]
+  before_action :set_blog, only: %i[ show edit destroy toggle_status update]
   layout "blog"
   access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new]}, site_admin: :all
   # GET /blogs or /blogs.json
@@ -19,41 +19,39 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
 
+
+
   # GET /blogs/1/edit
   def edit
+    @blog_image=@blog.image
+    @blog_author=@blog.author
   end
 
   # POST /blogs or /blogs.json
   def create
+
     @blog = Blog.new(blog_params)
-    if current_user.present?
-      @blog.title = current_user.name
-    else
-      @blog.title = "Guest"
-    end
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
-     
+        format.html { redirect_to blogs_path, notice: "Blog was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-
       end
     end
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @blog.update(blog_params)
-  #       format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
+  def update
+    respond_to do |format|
+      if @blog.update(blog_params)
+        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
 
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
 
-  #     end
-  #   end
-  # end
+      end
+    end
+  end
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
@@ -82,6 +80,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit( :body)
+      params.require(:blog).permit(:body, :title, :description, :image, :author, :read, :blog_image)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_30_113042) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_01_202413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,10 +75,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_30_113042) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.text "description"
-    t.text "blog_image"
     t.string "author"
     t.string "image"
     t.string "read"
+    t.string "blog_image"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
   end
 

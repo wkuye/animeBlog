@@ -348,3 +348,109 @@ padding-left: 55px;
   border: none;
   color: red;
 }
+.b-name{
+  display: flex;
+  text-align: justify;
+}
+
+
+
+.new-blog-link{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+   
+  
+}
+
+.new{
+  position: absolute;
+   height: 100%;
+   width: 100%;
+   font-size: medium;
+   font-family: "Playfair Display", Georgia, "Times New Roman", serif
+}
+
+.new-blog{
+  display: flex;
+  position: relative;
+  color: blue;
+   padding-right: 10px;
+   width: 110px;
+   height: 20px;
+   overflow: hidden;
+   margin-top: 40px;
+}
+
+.new-blog-body{
+  position: relative;
+height: 100%;
+width: 100%;
+  display: flex;
+  flex-direction: column;
+padding-right: 20px;
+padding-left: 55px;
+text-align: start;
+color: white;
+  scroll-behavior: smooth;
+  z-index: 1;
+}
+
+.new-blog-body h1{
+margin-top: 40px;
+}
+
+.new-form{
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-form .field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 70%;
+  margin-bottom: 10px;
+}
+.new-form .d-field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.new-form .actions{
+  margin-bottom: 20px;
+  width: fit-content;
+  border: none;
+}
+.new-form .submit{
+background-color: rgb(109, 109, 231);
+border: none;
+width: 115px;
+border-radius: 10px;
+}
+.blog-video{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.n-blog{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+    min-height: 100vh;
+  height: auto;
+  width: 100%;
+}
