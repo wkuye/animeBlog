@@ -1,10 +1,298 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-body {
-    background-color: black;
-    color: white;
+@import "font-awesome";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.bottom a{
-    color: brown;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+   overscroll-behavior: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+ body {
+//  height: 350vh;
+min-height: 100vh;
+height: auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+color: white;
+ background: linear-gradient(135deg, #051937, #002449);
+overflow: auto;
+overflow-x: hidden;
+
+}
+
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ z-index: 1;
+ background-color: transparent;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: white;
+ 
+}
+
+.auth-links {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-btn {
+  background-color: rgb(84, 74, 74);
+  color: white;
+}
+
+.register-btn {
+  background-color: white;
+  color: black;
+}
+
+
+.genres-container{
+    position: relative;
+flex-grow: 1;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding-left: 35px;
+    padding-top: 40px;
+    padding-right: 25px;
+}
+
+.genre-body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.genre-head{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+width: 100%;
+margin-top: 40px;
+align-items: center;
+
+}
+
+
+
+.new-genre-link{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+   
+  
+}
+
+.new{
+  position: absolute;
+   height: 100%;
+   width: 100%;
+   font-size: medium;
+   font-family: "Playfair Display", Georgia, "Times New Roman", serif
+}
+.new-genre{
+  display: flex;
+  position: relative;
+  color: blue;
+   width: 120px;
+   height: 20px;
+   overflow: hidden;
+}
+
+.genre-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  width: 100%;
+  justify-items: center;
+}
+
+.genre-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  margin-top: 80px;
+  width: 350px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.genre-card:hover .second-genre-card,
+.genre-card:hover .third-genre-card{
+  opacity: 1;
+}
+
+.genre-image{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+  object-fit:fill;
+  z-index: -1;
+}
+.genre-des{
+position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  width: 100%;
+  align-items: start;
+  padding-left: 15px;
+  padding-top: 10px;
+  bottom: 0;
+  background-color: #001222;
+  padding-right: 15px;
+  border-bottom-left-radius: 10px;
+}
+
+.second-genre-card{
+  position: absolute;
+  border-bottom-left-radius: 10px;
+  height: 200px;
+  width: 82%;  
+  z-index: -2;
+  opacity: 0;
+  bottom: 130px; /* Offset vertically (or adjust) */
+  right: 144px; /* Offset horizontally (or adjust) */
+   transition: 0.7s ease-in 0.3s;
+}
+
+
+.third-genre-card{
+  position: absolute;
+  border-bottom-left-radius: 10px;
+  height: 180px;
+  width: 65%;  
+  opacity: 0;
+  z-index: -3;
+  bottom: 180px; /* Offset vertically (or adjust) */
+  right: 114px; /* Offset horizontally (or adjust) */
+  transition: 0.7s ease-in 0.5s;
+}
+
+.genre-show-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer{
+  z-index: 10;
+}
+
+.gshow-body{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-left: 40px;
+}
+
+.gshow-body h1{
+  margin-top: 60px;
+  margin-bottom: 25px;
+}
+
+.gshow-body h2{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.genre-show-image{
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.alphabet-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.alphabet-filter a {
+  text-decoration: none;
+  color: #f06292;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.alphabet-filter .active-letter {
+  background-color: #f06292;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.genre-column {
+  flex: 1 1 300px;
+  text-align: start;
+ margin-bottom: 20px;
+}
+
+.anime-title{
+  color: #D5015B;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.anime-title:hover {
+  color: white;
+}
+
+.g-bod{
+  text-align: start;
 }

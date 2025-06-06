@@ -17,12 +17,12 @@
   <div class="rate-stars">
     <%= f.label :rating, "Rate" %>
     <div class="stars">
-      <% 1.upto(5) do |i| %>
-        <label class="star">
-          <%= f.radio_button :rating, i, id: "star#{i}" %>
-          <span class="icon">★</span>
-        </label>
-      <% end %>
+     <% 5.downto(1) do |i| %>
+  <label class="star">
+    <%= f.radio_button :rating, i, id: "star#{i}" %>
+    <span class="icon">★</span>
+  </label>
+<% end %>
     </div>
   </div>
    

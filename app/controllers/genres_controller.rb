@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  before_action :set_genre, only: %i[ show edit destroy update]
   access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new, :update]}, site_admin: :all
   layout "genre"
   def index
@@ -7,12 +8,13 @@ class GenresController < ApplicationController
 
   def new
     @genre = Genre.new
-    3.times { @genre.animes.build }
   end
 
-  def show
-    @genre = Genre.find(params[:id])
-  end
+def show
+  @title_default = @genre.genre_type
+  @active_letter = params[:letter]&.upcase || "A"
+  @genre_letter = @genre.animes.where("title LIKE ?", "#{@active_letter}%").order(:title) .page(params[:page])
+end
 
 
 
@@ -31,11 +33,9 @@ class GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(params[:id])
   end
   
   def update
-    @genre = Genre.find(params[:id])
     respond_to do |format|
       if @genre.update(genre_params)
         format.html { redirect_to genres_url(@genres), notice: "Genre was successfully updated." }
@@ -47,11 +47,14 @@ class GenresController < ApplicationController
     end
   end
   def destroy
-    @genre = Genre.find(params[:id])
     @genre.destroy
     respond_to do |format|
       format.html { redirect_to genre_url, notice: "Genre was successfully destroyed." }
     end
+  end
+
+  def set_genre
+     @genre = Genre.friendly.find(params[:slug])
   end
 
   private  def genre_params

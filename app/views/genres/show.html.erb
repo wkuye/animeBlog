@@ -1,22 +1,37 @@
-<h1>Show</h1>
-<%=image_tag @genre.main_image %>
-<em><%=@genre.genre_type %></em>>
-<p><%=@genre.body %></p>
-
+<div class="gshow-body">
+<h1><%=@genre.genre_type %></h1>
+<%=image_tag random_image(@genre.id), class:"genre-show-image", height:"290px", width:"300px" %>
+<h2>About <%=@genre.genre_type%></h2>
+<p class="g-bod"><%=@genre.body%></p>
 <h2>Animes</h2>
-<% @genre.animes.each do |g| %>
-  <p>
-    <%=g.title %>
-  </p>
-  <p>
-    <%=g.description %>
-  </p>
-  <p>
-    <%=g.airing %>
-  </p>
-  <p>
-    <%=g.episodes %>
-  </p>
- 
-<% end %>
+<div class="alphabet-filter">
+  <% ("A".."Z").each do |letter| %>
+    <% if letter == @active_letter %>
+      <span class="active-letter"><%= letter %></span>
+    <% else %>
+      <%= link_to letter, genre_show_path(letter: letter) %>
+    <% end %>
+  <% end %>
+</div>
+<div class="genre-list">
+  <% if @genre_letter.any? %>
+    <% @genre_letter.each_slice((@genre_letter.count / 2.0).ceil) do |column| %>
+      <div class="genre-column">
+        <% column.each do |anime| %>
+        <%= link_to "#{anime.title}", anime_path(anime.slug) , class:"anime-title"%>
+
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No anime titles start with "<%= @active_letter %>".</p>
+  <% end %>
+</div>
+
+<%= paginate @genre_letter %>
+</div>
+
+
+
+
 

@@ -1,3 +1,33 @@
-<h1>Genres</h1>
-<p><%= link_to"New Genre", new_genre_path %></p>
-<%= render @genres %>
+<% content_for :title, "Genres" %>
+<div class="genres-container">
+  <div class="nav-container">
+            <div class="nav-logo">
+              <h3>Anime B</h3>
+            </div>
+            <nav class="nav">
+              <%= render "shared/application_nav" %>
+            </nav>
+            <div class="auth-links">
+              <%= login_helper %>
+            </div>
+          </div>
+          <div class="genre-body">
+            <div class="genre-head">
+               <h1>Genres</h1>
+               <div class="new-genre">
+             <% if logged_in?(:site_admin) %>
+              <%= content_tag(:i, " New genres", class: "fa-solid fa-plus new") %>
+  <%= link_to new_genre_path, class: "new-genre-link" do %>
+  <% end %>
+<% end %> 
+            </div>
+            </div>
+       
+<div class="genre-grid">
+  <%= render @genres %>
+</div>
+
+   </div>
+          </div>
+         
+

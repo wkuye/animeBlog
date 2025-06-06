@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, path: "", path_names: {sign_in: "login", sign_out: "logout", sign_up:"register"} # rubocop:disable Layout/SpaceAfterColon
 
-  resources :genres, except:  [ :show ]
-  get "genre/:id", to: "genres#show", as: "genre_show"
+  resources :genres, param: :slug, except:  [ :show ]
+  get "genre/:slug", to: "genres#show", as: "genre_show"
   get "contact", to: "pages#contact"
   post "contact_dev", to: "pages#contact_dev"
   get "home", to: "pages#home"

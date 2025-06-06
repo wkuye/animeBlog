@@ -1,5 +1,25 @@
-<p><%= link_to "#{genre.genre_type}", genre_show_path(genre.id) %></p>
+
+
+<div class="genre-card">
+
+    <%=image_tag first_image(genre.id), class:"genre-image"%>
+    <div class="genre-des">
+    <h2><%=genre.genre_type%></h2>
+    <p><%=genre_anime_count(genre.id)%> shows</p>
+    </div>
+    <div class="second-genre-card">
+   <%=image_tag second_image(genre.id), class:"genre-image"%>
+</div>
+     <div class="third-genre-card">
+   <%=image_tag third_image(genre.id), class:"genre-image"%>
+</div>
+<%=link_to genre_show_path(genre.slug), class:"genre-show-link" do%>
+<%end%>
+   </div>
+
+
+<!-- <p><%= link_to "#{genre.genre_type}", genre_show_path(genre.slug) %></p>
   <p><%= genre.body %></p>
   <%= image_tag genre.thumb_image unless genre.thumb_image.nil?%>
   <%= link_to "Edit" ,edit_genre_path(genre.id) if logged_in?(:site_admin) %>
-  <%= link_to "Delete Genre", genre,  data: { turbo_method: :delete, confirm: 'Are you sure?' } if logged_in?(:site_admin) %>
+  <%= link_to "Delete Genre", genre,  data: { turbo_method: :delete, confirm: 'Are you sure?' } if logged_in?(:site_admin) %> -->

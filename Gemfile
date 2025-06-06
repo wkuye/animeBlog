@@ -66,7 +66,6 @@ gem "jquery-rails"
 gem 'Wale_view_tool' 
 gem 'petergate', '~> 3.0'
 gem 'bootstrap-icons'
-gem "kaminari", "~> 1.2"
 gem 'rails-ujs'
 # Gemfile
 gem "font-awesome-sass", "~> 6.0"
@@ -74,3 +73,5 @@ gem 'image_processing', '~> 1.2'
 gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 gem 'carrierwave'
 
+
+gem "kaminari", "~> 1.2"

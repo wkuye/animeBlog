@@ -17,8 +17,9 @@
           <div class="spacer"></div>
           <div class="new-blog">
  <% if logged_in?(:site_admin) %>
+  <%= content_tag(:i, " New blog", class: "fa-solid fa-plus new ") %>
   <%= link_to new_blog_path, class: "new-blog-link" do %>
-    <%= content_tag(:i, " New blog", class: "fa-solid fa-plus new ") %>
+   
   <% end %>
 <% end %> 
           </div>
