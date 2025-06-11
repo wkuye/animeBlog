@@ -11,4 +11,6 @@
 //= require review_bottomsheet
 //= require animation_collection
 //= require anime.js
+//= require save_button
+//= require cocoon
 //= require_tree .

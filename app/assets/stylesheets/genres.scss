@@ -27,7 +27,7 @@ height: auto;
   text-align: center;
   flex-direction: column;
 color: white;
- background: linear-gradient(135deg, #051937, #002449);
+ background-color: black;
 overflow: auto;
 overflow-x: hidden;
 
@@ -131,10 +131,14 @@ align-items: center;
 .new-genre{
   display: flex;
   position: relative;
-  color: blue;
+  color:   #f06292;
    width: 120px;
    height: 20px;
    overflow: hidden;
+}
+
+.new-genre:hover{
+  color: #D5015B;
 }
 
 .genre-grid{
@@ -180,7 +184,7 @@ position: absolute;
   padding-left: 15px;
   padding-top: 10px;
   bottom: 0;
-  background-color: #001222;
+  background-color: rgb(27, 25, 25);
   padding-right: 15px;
   border-bottom-left-radius: 10px;
 }
@@ -235,7 +239,7 @@ position: absolute;
 }
 
 .gshow-body h1{
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 25px;
 }
 
@@ -258,7 +262,7 @@ position: absolute;
 
 .alphabet-filter a {
   text-decoration: none;
-  color: #f06292;
+  color: #D5015B;
   font-weight: bold;
   padding: 4px 8px;
 }
@@ -295,4 +299,154 @@ position: absolute;
 
 .g-bod{
   text-align: start;
+}
+
+
+.new-form{
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-form .field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 70%;
+  margin-bottom: 10px;
+}
+.new-form .d-field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.new-form .actions{
+  margin-bottom: 20px;
+  width: fit-content;
+  border: none;
+  margin-top: 20px;
+}
+.new-form .submit{
+background-color: rgb(109, 109, 231);
+border: none;
+width: 115px;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.blog-video{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.n-blog{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+    min-height: 100vh;
+  height: auto;
+  width: 100%;
+}
+
+.new-genre-body{
+  position: relative;
+height: 100%;
+width: 100%;
+  display: flex;
+  flex-direction: column;
+padding-right: 30px;
+padding-left: 55px;
+margin-top: 50px;
+text-align: start;
+color: white;
+  scroll-behavior: smooth;
+  z-index: 1;
+}
+
+.add-anime{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #D5015B;
+}
+
+.add-anime-form{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+ 
+}
+
+.save-btn{
+display: none;
+margin-top: 15px;
+margin-bottom: 10px;
+}
+
+.nested-fields{
+  display: flex;
+}
+
+.remove-btn{
+  margin-left: 15px;
+
+}
+
+.remove-btn a{
+  text-decoration: none;
+  color: #D5015B;
+}
+
+.back-genre{
+  color: #D5015B;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-genres{
+  color: #D5015B;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+
+.admin-utils{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 60px;
+}
+
+  .logout-btn {
+    background-color: red;
+    color: white;
+  }
+
+  .edit-genre{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+   .edit-genre h1{
+    margin-top: 30px;
+   }
+
+   .delete-btn{
+  background-color: transparent;
+  border: none;
+  color: red;
 }

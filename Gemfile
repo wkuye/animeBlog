@@ -72,6 +72,6 @@ gem "font-awesome-sass", "~> 6.0"
 gem 'image_processing', '~> 1.2'
 gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 gem 'carrierwave'
-
+gem "cocoon"
 
 gem "kaminari", "~> 1.2"

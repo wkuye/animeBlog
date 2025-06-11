@@ -20,6 +20,5 @@
 
 <!-- <p><%= link_to "#{genre.genre_type}", genre_show_path(genre.slug) %></p>
   <p><%= genre.body %></p>
-  <%= image_tag genre.thumb_image unless genre.thumb_image.nil?%>
   <%= link_to "Edit" ,edit_genre_path(genre.id) if logged_in?(:site_admin) %>
   <%= link_to "Delete Genre", genre,  data: { turbo_method: :delete, confirm: 'Are you sure?' } if logged_in?(:site_admin) %> -->

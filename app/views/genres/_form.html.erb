@@ -1,28 +1,40 @@
-<%= form_for(@genre) do |f| %>
-
-  <div class="field">
-    <%=f.label :genre_type %>
-    <%=f.text_area :genre_type %>
-  </div>
-
-  <div class="field">
-    <%=f.label :body %>
-    <%=f.text_area :body %>
-  </div>
-
-  <ul>
-    <%= f.fields_for :animes do |anime_form| %>
-    <li><%=anime_form.label :title %></li>
-      <li><%=anime_form.text_field :title %></li>
-      <li><%=anime_form.label :description %></li>
-      <li><%=anime_form.text_field :description %></li>
-
-      <li><%=anime_form.label :episodes %></li>
-      <li><%=anime_form.text_field :episodes %></li>
-    <% end %>
-  </ul>
-
-  <div>
-    <%= f.submit %>
+<% if genre.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.name.downcase %> from being saved:</h2>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
+
+<%= form_with(model: genre, html:{class:"new-form"}, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :genre_type %>
+    <%= form.text_field :genre_type, placeholder:"Genre name"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body, placeholder:"Give a breif summary about your Genre"%>
+  </div>
+
+  <div class="field">
+    <h2>Animes</h2>
+    <%= link_to_add_association 'Add Anime', form, :anime_genres, class:"add-anime", data: {association_insertion_method: 'after' } %>
+    <div class="anime-list">
+ <%=form.fields_for :anime_genres do |f| %>
+  <%=render'type_anime_genre_fields', f: f%>
+    <%end%>
+    </div>
+   
+  </div>
+  
+
+
+  <div class="actions">
+    <%= form.submit class:"submit"%>
+  </div>
+<% end %>
+

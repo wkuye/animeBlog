@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.collection_select :anime_id,  @available_animes, :id, :title, prompt: "Select an Anime" %>
+  <div class="remove-btn">
+<%= link_to_remove_association 'Remove', f%>
+  </div>
+</div>

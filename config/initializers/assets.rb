@@ -12,6 +12,7 @@ Rails.application.config.assets.precompile += %w[news_show.js]
 Rails.application.config.assets.precompile += %w[tab_controller.js]
 Rails.application.config.assets.precompile += %w[review_bottomsheet.js]
 Rails.application.config.assets.precompile += %w[animation_collection.js]
+Rails.application.config.assets.precompile += %w[save_button.js]
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

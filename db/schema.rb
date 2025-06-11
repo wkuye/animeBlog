@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_05_122931) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_06_225214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_05_122931) do
     t.index ["collection_id"], name: "index_anime_collections_on_collection_id"
   end
 
+  create_table "anime_genres", force: :cascade do |t|
+    t.bigint "anime_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_anime_genres_on_anime_id"
+    t.index ["genre_id"], name: "index_anime_genres_on_genre_id"
+  end
+
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -58,14 +67,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_05_122931) do
     t.text "thumb_image"
     t.boolean "airing", default: false, null: false
     t.integer "episodes"
-    t.bigint "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "thumb_video_url"
     t.integer "year"
     t.string "slug"
     t.float "rating"
-    t.index ["genre_id"], name: "index_animes_on_genre_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -104,8 +111,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_05_122931) do
   create_table "genres", force: :cascade do |t|
     t.string "genre_type"
     t.text "body"
-    t.text "main_image"
-    t.text "thumb_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -185,7 +190,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_05_122931) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "anime_collections", "animes"
   add_foreign_key "anime_collections", "collections"
-  add_foreign_key "animes", "genres", on_delete: :cascade
+  add_foreign_key "anime_genres", "animes"
+  add_foreign_key "anime_genres", "genres"
   add_foreign_key "collections", "users"
   add_foreign_key "ratings", "animes"
   add_foreign_key "reviews", "animes"

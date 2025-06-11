@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to anime_path(anime), notice: "Review posted!"
     else
-        Rails.logger.debug "Review errors: #{@review.errors.full_messages.inspect}"
         render "animes/show", status: :unprocessable_entity
     end
   end
