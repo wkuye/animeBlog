@@ -273,6 +273,10 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redcarpet (3.6.1)
+    redis (5.4.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.24.0)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
@@ -409,6 +413,7 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rails-ujs
   redcarpet (~> 3.3, >= 3.3.4)
+  redis (>= 4.0.1)
   rubocop-rails-omakase
   sassc-rails
   selenium-webdriver

@@ -12,5 +12,6 @@
 //= require animation_collection
 //= require anime.js
 //= require save_button
+//= require cable
 //= require cocoon
 //= require_tree .

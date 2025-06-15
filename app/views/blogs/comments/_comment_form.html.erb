@@ -1,0 +1,7 @@
+  <%= form_with model:@comment, url:'#' do |f| %>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content , class:'form-control'%>
+    </div>
+    <%= f.submit 'post comment', class:'btn btn-primary' %>
+    <%end%>

@@ -27,6 +27,16 @@
   <div class="blog-text">
     <%=markdown(@blog.description)%>
   </div>
+
+<div>
+  <%unless current_user.is_a? GuestUser %>
+   <%=render 'blogs/comments/comment_form' %>
+<%end%>
+</div>
+
+  <div id="comments" data-blog-id="<%=@blog.id%>">
+   <%=render @blog.comments %> 
+  </div>
   
   <div class="back-top">
     <%=content_tag(:i, "", class:"fa-solid fa-chevron-up ar-up")%>
