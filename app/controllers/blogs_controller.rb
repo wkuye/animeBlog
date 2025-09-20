@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
     @title_default= @blog.title
       @blog = Blog.includes(:comments).friendly.find(params[:slug])
       @comment=Comment.new
+
   end
 
   

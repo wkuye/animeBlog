@@ -1,34 +1,48 @@
-<div class="reviews-tab">
-    <h2>Recent Reviews</h2>
-    <div class="review-btn">
-      <%=content_tag(:i, "  Write a Review", class:"fa fa-plus review-text")%>
-    </div>
-    <div class="comments">
-      <%@reviews.each do |review| %>
- <div class="review-card">
-  <div class="row">
-    <div class="col-md-2">
-      <div class="profile-pic">
-     <%=profile_pic review.user.profile_picture%>
-      </div>
-    </div>
-    <div class="col-md-10 review-details">
-      <div class="name-time">
-        <%if review.spoiler===true%>
-        <h3 class="spoiler">Spoiler</h3>
-        <%end%>
-        <h3><%=review.user.name%></h3>
-        <h4><%=review.created_at.strftime("%d %B %Y")%></h4>
-        <span class="review-rating">
-          <%= star_rating(review.rating) %>
-        </span>
-      </div>
-      <div class="user-comment">
-        <p><%=review.comment%></p>
-      </div>
-    </div>
+<div class="reviews-tab" data-controller="review-bottomsheet">
+  <h2>Recent Reviews</h2>
+
+  <!-- Write review button -->
+  <div 
+    class="review-btn"
+    data-action="click->review-bottomsheet#open">
+    <%= content_tag(:i, " Write a Review", class: "fa fa-plus review-text") %>
   </div>
- </div>
-      <%end%>
-    </div>
+
+  <!-- The modal/bottomsheet (this is the sheetTarget) -->
+  <div 
+    class="review-bottomsheet" 
+    data-review-bottomsheet-target="sheet"
+    sheet-bool="<%= @review.errors.any? ? 'true' : 'false' %>">
+    <%= render 'shared/review_modal' %>
   </div>
+
+  <!-- Comments -->
+  <div class="comments">
+    <% @reviews.each do |review| %>
+      <div class="review-card">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="profile-pic">
+              <%= profile_pic review.user.profile_picture %>
+            </div>
+          </div>
+          <div class="col-md-10 review-details">
+            <div class="name-time">
+              <% if review.spoiler %>
+                <h3 class="spoiler">Spoiler</h3>
+              <% end %>
+              <h3><%= review.user.name %></h3>
+              <h4><%= review.created_at.strftime("%d %B %Y") %></h4>
+              <span class="review-rating">
+                <%= star_rating(review.rating) %>
+              </span>
+            </div>
+            <div class="user-comment">
+              <p><%= review.comment %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

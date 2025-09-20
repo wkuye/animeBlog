@@ -466,3 +466,93 @@ border-radius: 10px;
     justify-self: start;
   
   }
+
+  .comment-card{
+  height:auto;
+  min-height: 50px;
+    width: auto;         
+  max-width: 100%;     
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  text-align: start;
+}
+
+.comments{
+  display: flex;
+  height: auto;
+  max-width: 65%;
+  flex-direction: column;
+  margin-top: 40px;
+  color: #000;
+
+}
+
+.profile-pic{
+height: 50px;
+width: 50px;
+border-radius: 50%;
+}
+
+.profile-pic img{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
+.texts p ,.texts h3{
+  color: black;
+  overflow-wrap: anywhere;    /* modern browsers */
+  white-space: normal;
+  text-align: left;
+}
+
+.texts h3{
+  font-size:medium;
+  font-weight: bold;
+  justify-self: start;
+}
+
+.texts p{
+  font-size: small;
+  justify-self: start;
+}
+
+
+.own-comment {
+  background-color: aliceblue;
+  width: auto;
+}
+
+.other-comment {
+  width: auto;
+  background-color: beige;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-card.animate-in {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+
+
+.post{
+  margin-top: 10px;
+}

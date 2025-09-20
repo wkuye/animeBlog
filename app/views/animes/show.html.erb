@@ -37,7 +37,9 @@
 <%=render 'shared/collection_wrapper'%>
 </div>
 </div>
-<div class="anime-tabs">
+<div class="anime-tabs" 
+     data-controller="tabs"
+     data-initial-tab="<%= @review.errors.any? ? "reviews" : "overview" %>">
   <ul class="tab-header">
     <li class="active" data-tab="overview"  overview-id="overview-id">Overview</li>
     <li data-tab="reviews" reviews-id="reviews-id">Reviews</li>
@@ -50,9 +52,15 @@
 <%=render 'shared/review_tab' %> 
   </div>
 </div>
-<div class="review-bottomsheet" sheet-bool="<%=@review_error?'sheets': ''%>">
- <%=render 'shared/review_modal'%>
-</div>
+<div 
+  class="review-bottomsheet <%= "active" if @review.errors.any? %>" 
+  data-controller="review-bottomsheet" 
+  data-review-bottomsheet-target="sheet" 
+>
+  
+  <%= render 'shared/review_modal' %>
+ </div>
+
      </div>
     </div>
   </div>

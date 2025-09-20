@@ -20,7 +20,7 @@ post "/animes/:slug/add_collection/:collection_id",
      to:   "animes#add_collection",
      as:   "add_collection"
 resources :blogs, param: :slug
-get '/blogs/:slug', to: 'blogs#show'
+get "/blogs/:slug", to: "blogs#show"
 
 resources :animes, only: [ :show ], param: :slug do
   resources :reviews, only: [ :create ]
@@ -30,12 +30,11 @@ resources :genres, only: [  :create], param: :slug do
   resources :anime_genres, only: [ :create]
 end
 
+resources :blogs, param: :slug do
+  resources :comments, only: [:create]
+end
 
-  resources :blogs do
-    member do
-      get :toggle_status
-      end
-    end
+
 
  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -48,7 +47,7 @@ end
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-
+  mount ActionCable.server => '/cable'
   # Defines the root path route ("/")
   # root "posts#index"
 end

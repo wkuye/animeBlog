@@ -1,5 +1,6 @@
 <div class="modal">
-    <span class="close">&times;</span>
+    <span class="close" data-action="click->review-bottomsheet#close">&times;</span>
+
     <h2>Add A Review?</h2>
 
     <%= form_with(model: [@anime, @review],  local: true,  html: { class: "form" }) do |f| %>

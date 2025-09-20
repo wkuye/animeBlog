@@ -1,12 +1,19 @@
-<div class="comment-card">
- <div class="card">
-    <div class="card-block">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-11">
-                <%=comment.content%>
-            </div>
+<div class="comments">
+ <div class="comment-card  <%= comment.user_id == current_user&.id ? 'own-comment' : 'other-comment' %>" data-comment-id="<%=comment.user_id%>" data-current-user-id="<%=current_user&.id%>">
+  <div class="row">
+    <div class="col-md-1">
+        <div class="profile-pic">
+          <%= profile_pic comment.user_id %>
         </div>
     </div>
- </div>
+    <div class="col-md-11">
+      <div class="texts">
+<h3><%= getUserName(comment.user_id) %></h3> 
+        <p><%= comment.content %></p>
+      </div>
+  
+    </div>
+  </div>
+
+  </div>
 </div>

@@ -1,5 +1,5 @@
 
-<div class="blog-show-body">
+<div class="blog-show-body" >
   <div class="admin-utils">
   <%= link_to "Back to blogs", blogs_path %>
   <%if current_user.has_role?(:site_admin) %>
@@ -34,8 +34,9 @@
 <%end%>
 </div>
 
-  <div id="comments" data-blog-id="<%=@blog.id%>">
-   <%=render @blog.comments %> 
+  <div id="comments" data-blog-slug="<%=@blog.slug%>">
+  <%= render partial: "blogs/comments/comment", collection: @blog.comments, as: :comment %>
+
   </div>
   
   <div class="back-top">

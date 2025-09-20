@@ -1,7 +1,23 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment= @current_user.comments.build(comment_params)
+     blog =  Blog.find_by!(slug: params[:blog_slug])
+    @comment = blog.comments.build(comment_params)
+    @comment.user = current_user
+  if @comment.save
+    CommentChannel.broadcast_to(
+      blog,
+      {
+    profile_picture_url: url_for( current_user.profile_picture),
+    sent_by: current_user.name,
+    body: @comment.content
+  }
+    )
+head :no_content
+  else
+    render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+  end
+
   end
 
   def comment_params

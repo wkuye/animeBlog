@@ -74,3 +74,5 @@ gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 gem 'carrierwave'
 gem "cocoon"
 gem "kaminari", "~> 1.2"
+
+gem "jsbundling-rails", "~> 1.3"

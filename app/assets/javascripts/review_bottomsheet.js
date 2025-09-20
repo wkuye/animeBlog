@@ -1,4 +1,4 @@
-document.addEventListener( "DOMContentLoaded",()=>{
+document.addEventListener("turbolinks:load", () => {
     const review_btn= document.querySelector(".review-btn");
     const bottom_sheet=document.querySelector(".review-bottomsheet");
     const sheet= bottom_sheet.getAttribute("sheet-bool")
