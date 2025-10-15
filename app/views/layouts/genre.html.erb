@@ -14,15 +14,14 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag 'genres', "data-turbo-track": "reload" %>
-     <%= javascript_include_tag "save_button"%>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag "genres", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
   <body>
     <%= yield %>
     <%= render "shared/application_footer" %>
     <%= session_helper %>
-  
   </body>
 </html>
