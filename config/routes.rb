@@ -7,9 +7,13 @@ Rails.application.routes.draw do
 
   get "contact", to: "pages#contact"
   post "contact_dev", to: "pages#contact_dev"
+  get 'profile/:slug', to: 'pages#profile' ,as:'profile'
   get "home", to: "pages#home"
   get "/load_more_anime", to: "pages#load_more_anime"
   get "/show_more_news", to: "pages#show_more_news"
+
+patch '/profile/:slug/update_header', to: 'pages#update_header', as: :update_header
+
 
 resources :news, param: :slug
 get "news/:id", to: "news#show"
@@ -25,6 +29,9 @@ get "/blogs/:slug", to: "blogs#show"
 resources :animes, only: [ :show ], param: :slug do
   resources :reviews, only: [ :create ]
 end
+
+
+
 
 resources :genres, only: [  :create], param: :slug do
   resources :anime_genres, only: [ :create]

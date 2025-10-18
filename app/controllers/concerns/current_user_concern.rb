@@ -8,6 +8,7 @@ guest.name= "Guest User"
 guest.first_name = "Guest"
 guest.last_name= "User"
 guest.email =  "Guest@example.com"
+guest.slug = "Guest"
 guest
    end
 end

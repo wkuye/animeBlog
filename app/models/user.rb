@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  extend FriendlyId
   ############################################################################################
   ## PeterGate Roles                                                                        ##
   ## The :user role is added by default and shouldn't be included in this list.             ##
@@ -6,11 +7,12 @@ class User < ApplicationRecord
   ## The multiple option can be set to true if you need users to have multiple roles.       ##
   petergate(roles: [:site_admin], multiple: false)                                      ##
   ############################################################################################ 
-
+friendly_id :name, use: :slugged
  has_many :collection
 has_many :reviews
 has_many :comments, dependent: :destroy
-has_one_attached :profile_picture
+has_one_attached :profile_picture 
+has_one_attached :header_image
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -477,6 +477,24 @@ border-radius: 10px;
   border-radius: 30px;
 }
 
+.profile-avatar{
+height: 50px;
+width: 50px;
+border-radius: 50%;
+margin-left: 20px;
+}
+
+.profile-avatar img{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
+.link-prof{
+  display: flex;
+}
+
 .texts {
   display: flex;
   flex-direction: column;

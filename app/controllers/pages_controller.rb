@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  layout "application"
   def home
     @int = Anime.ids.sample
     @animes = Anime.where.not(id: @int).limit(6)
@@ -13,6 +14,31 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def profile
+    @int = Anime.ids.sample
+    @collection_count=current_user.collection.count
+    unless current_user.is_a?(GuestUser)
+      collection = current_user.collection
+      @collection_animes = collection ? collection : []
+    end
+  end
+
+  def update_header
+  @user = User.friendly.find(params[:slug]) 
+  if @user.update(user_params)
+    redirect_to profile_path(@user), notice: "Header updated successfully!"
+  else
+    redirect_to profile_path(@user), alert: "Header update failed."
+  end
+end
+
+private
+
+def user_params
+  params.require(:user).permit(:header_image)
+end
+
 
   def contact_dev
       ContactMailer.contact_email(

@@ -1,9 +1,9 @@
 module ApplicationHelper
   def login_helper
     if current_user.is_a?(GuestUser)
-      (link_to "Log in", new_user_session_path, class: "btn login-btn")+
+      (button_to "Log in", new_user_session_path, class: "btn login-btn")+
       " ".html_safe +
-      (link_to "Get Started", new_user_registration_path, class: "btn register-btn")
+      (button_to "Get Started", new_user_registration_path, class: "btn register-btn")
     else
    # this combine the register and the login together and the br moves the login to the next line
 button_to "Log out", destroy_user_session_path, method: :delete, class: "btn logout-btn"
@@ -82,7 +82,7 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
   end
 
 
-  def profile_pic (profile_pic)
+  def profile_avatar (profile_pic)
     if profile_pic.attached?
      profile_picture= image_tag profile_pic
     else
@@ -114,4 +114,6 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
     anime_slug= anime.slug
     anime_slug
   end
+
+
 end

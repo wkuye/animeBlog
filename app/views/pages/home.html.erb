@@ -26,9 +26,17 @@
             <nav class="nav">
               <%= render "shared/application_nav" %>
             </nav>
-            <div class="auth-links">
+         <div class="link-prof">
+ <div class="auth-links">
               <%= login_helper %>
             </div>
+            <div class="profile-avatar">
+              <%=link_to  profile_path(current_user.slug) , class:"prav-link"  do%>
+              <%=profile_avatar(current_user.profile_picture)  %>
+              <%end%>
+            </div>
+         </div>
+           
           </div>
           <hr></hr>
         </div>
