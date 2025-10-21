@@ -22,6 +22,7 @@ class PagesController < ApplicationController
       collection = current_user.collection
       @collection_animes = collection ? collection : []
     end
+    @collection=current_user.collection.build
   end
 
   def update_header
@@ -33,12 +34,27 @@ class PagesController < ApplicationController
   end
 end
 
-private
 
-def user_params
+def create_collection
+  @user = User.friendly.find(params[:slug])
+  @collection = @user.collections.build(collection_params)
+  if @collection.save
+    redirect_to profile_path(@user), notice: "Collection added!"
+  else
+    redirect_to profile_path(@user), alert: "Error adding collection."
+  end
+end
+
+
+
+
+private def user_params
   params.require(:user).permit(:header_image)
 end
 
+ def collection_params
+  params.require(:collection).permit(:name, :user_id,)
+end
 
   def contact_dev
       ContactMailer.contact_email(

@@ -58,6 +58,10 @@
             </div>
           </div>
         </div>
+         <div class="collection-bottomsheet">
+          <%= render 'shared/collection_modal' %>
+        </div>
+        <% if !current_user.is_a?(GuestUser) %>
       <div class="nav-index1">
     <div class="profile-collection">
        <ul class="tab-header" style="padding-top: 30px;">
@@ -69,7 +73,7 @@
       <%= content_tag(:i, " Create New", class:"fa fa-plus new-btn") %>
     </div>
   </div>
-     <% if !current_user.is_a?(GuestUser) %>
+     
  <div class="collections" style="min-height: 310px;">     
         
          <% if @collection_animes.present?%>
@@ -93,8 +97,13 @@
           </div>
 <% end%>
  </div>
- <% end%>
+
     </div>
 </div>
+ <%else%>
+ <div class="not-logged">
+  <p>Login to see your details</p>
+ </div>
+ <% end%>
       </div>
     </div>

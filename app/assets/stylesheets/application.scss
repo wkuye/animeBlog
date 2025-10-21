@@ -1943,6 +1943,7 @@ margin-left: 20px;
 .new-btn{
   color: black;
   font-size: small;
+  cursor: pointer;
   font-family: Arial, sans-serif;
 }
 
@@ -1957,6 +1958,65 @@ margin-left: 20px;
     font-weight: bold;
   }
 
+
+ .collection-bottomsheet  {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(0.5px);
+  display: none;              /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.cmodal{
+  display: none;
+}
+
+.collection-bottomsheet.active {
+  display: flex;
+}
+
+
+.collection-bottomsheet.active .cmodal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50vw;
+  height: auto;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  color: #eee;
+  animation: popIn 0.3s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.cmodal .collectionclose {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 1.4rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cmodal .close:hover { color: #aaa; }
+
+.not-logged{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+
+}
+
+.not-logged p{
+  font-size: larger;
+}
 
 @keyframes float {
   0%   { transform: translateY(0)    rotate(0deg);}

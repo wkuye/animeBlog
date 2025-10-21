@@ -9,6 +9,7 @@
 //= require news_show
 //= require tab_controller
 //= require review_bottomsheet
+//= require collection_bottomsheet
 //= require animation_collection
 //= require anime.js
 //= require save_button

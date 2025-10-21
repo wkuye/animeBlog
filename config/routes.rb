@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "/load_more_anime", to: "pages#load_more_anime"
   get "/show_more_news", to: "pages#show_more_news"
 
+  post "profile/:slug/add_collection", to: "pages#create_collection", as: :create_collection
+
 patch '/profile/:slug/update_header', to: 'pages#update_header', as: :update_header
 
 

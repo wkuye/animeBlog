@@ -1,0 +1,29 @@
+<div class="cmodal">
+    <span class="collectionclose">&times </span>
+
+    <h2>Create Collection?</h2>
+
+    <%= form_with(model: @collection, url: create_collection_path(current_user.slug), html: { class: "form" }) do |f| %>
+    
+    <% if @collection.errors.any? %>
+    <div class="bottom-sheet-errors">
+      <h2><%= pluralize(@collection.errors.count, "error") %> prevented this review from being saved:</h2>
+      <ul>
+        <% @collection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   
+     <div class="sized-box"></div>
+   <%=f.label "Review", class:"review-form-text"%>
+    <%= f.text_area :name, placeholder: "Collection name…" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  
+  
+    <%= f.submit "Create", class: "save-btn" %>
+  <% end %>
+  
+  </div>
