@@ -91,13 +91,19 @@ button_to "Log out", destroy_user_session_path, method: :delete, class: "btn log
    profile_picture
   end
 
-  def  collection_first_pic (id)
-    collection= Collection.find_by_id(id)
-     puts "col #{collection.name}"
-    collection_anime= collection.animes.first
-    collection_image=collection_anime.thumb_image
-    collection_image
+  def collection_first_pic(id)
+  collection = Collection.find_by_id(id)
+  puts "col #{collection&.name}"
+
+  collection_anime = collection&.animes&.first
+
+  if collection_anime&.thumb_image.present?
+    collection_anime.thumb_image
+  else
+    "suit.jpg"
   end
+  end
+
 
   def star_rating(rating, max = 5)
     content_tag :div, class: "star-rating" do

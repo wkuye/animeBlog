@@ -1,46 +1,50 @@
-console.log("hover_effects.js loaded!");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("hover_effects.js loaded!");
 
-// Define the function globally so it can be used in other files
-window.attachAnimeCardListeners = function () {
-    console.log("Attaching hover listeners...");
+  const animeContainer = document.getElementById("anime-list");
+  const loadMoreBtn =
+    document.querySelector(".load-more-overview") ??
+    document.querySelector(".load-more");
 
-    const animeContainer = document.getElementById("anime-list");
-    const loadMoreBtn =  document.querySelector('.load-more')??document.querySelector('.load-more-overview');
+  if (!animeContainer || !loadMoreBtn) {
+    console.warn("Anime container or button not found!");
+    return;
+  }
 
-    if (!animeContainer || !loadMoreBtn) {
-        console.warn("Anime container or button not found!");
-        return;
+  let hideTimeout;
+
+  const showButton = () => {
+    clearTimeout(hideTimeout);
+    loadMoreBtn.style.opacity = "1";
+    loadMoreBtn.style.visibility = "visible";
+  };
+
+  const hideButton = () => {
+    hideTimeout = setTimeout(() => {
+      loadMoreBtn.style.opacity = "0";
+      loadMoreBtn.style.visibility = "hidden";
+    }, 300);
+  };
+
+  // 💡 Use event delegation on the container
+  animeContainer.addEventListener("mouseenter", (event) => {
+    if (event.target.closest(".anime-card")) {
+      showButton();
     }
+  }, true);
 
-    let hideTimeout;
+  animeContainer.addEventListener("mouseleave", (event) => {
+    if (event.target.closest(".anime-card")) {
+      hideButton();
+    }
+  }, true);
 
-    animeContainer.addEventListener('mouseover', (event) => {
-        if (event.target.closest('.anime-card')) {
-            clearTimeout(hideTimeout);
-            loadMoreBtn.style.opacity = '1';
-            loadMoreBtn.style.visibility = 'visible';
-        }
-    });
+  loadMoreBtn.addEventListener("mouseenter", showButton);
+  loadMoreBtn.addEventListener("mouseleave", hideButton);
 
-    animeContainer.addEventListener('mouseout', (event) => {
-        if (event.target.closest('.anime-card')) {
-            hideTimeout = setTimeout(() => {
-                loadMoreBtn.style.opacity = '0';
-                loadMoreBtn.style.visibility = 'hidden';
-            }, 300);
-        }
-    });
-
-    loadMoreBtn.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimeout);
-        loadMoreBtn.style.opacity = '1';
-        loadMoreBtn.style.visibility = 'visible';
-    });
-
-    loadMoreBtn.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(() => {
-            loadMoreBtn.style.opacity = '0';
-            loadMoreBtn.style.visibility = 'hidden';
-        }, 300);
-    });
-};
+  // Reattach after AJAX / Turbo navigation
+  document.addEventListener("turbo:load", () => {
+    console.log("Turbo load: reattaching hover listeners...");
+    window.attachAnimeCardListeners?.();
+  });
+});

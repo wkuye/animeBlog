@@ -31,8 +31,8 @@
 <div class="card-row">
 <h1><%=@anime.title%></h1>
 <div class="star">
-  <%= content_tag(:i, "", class: "fas fa-star star-icon") %> 
-  <p><%= @anime.rating%></p>
+  <%= content_tag(:i, " #{@anime.rating}", class: "fas fa-star star-icons") %> 
+  
 </div>
 <%=render 'shared/collection_wrapper'%>
 </div>

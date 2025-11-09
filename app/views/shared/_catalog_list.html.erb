@@ -1,5 +1,5 @@
 
-<div class="anime-card" data-id="<%= anime.id %>" >
+<div class="anime-card" style="width:170px; margin-bottom:30px;"  data-id="<%= anime.id %>" >
   <div class="anime-card-wrapper">
   <img src="<%= anime.thumb_image %>" class="card-image">
   <div class="hover-video">
@@ -7,8 +7,10 @@
   </div>
   </div>
  
-   <div class="top-kon-rating">
+  <div class="top-kon-rating">
    <%= content_tag(:i, " #{anime.rating}", class: "fas fa-star star-icon") %> 
+
+
   </div>
   
   <h3><%= anime.title %></h3>

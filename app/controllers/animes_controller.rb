@@ -1,5 +1,6 @@
 class AnimesController< ApplicationController
-  before_action :set_animes, only: %i[show]
+  before_action :set_animes, only: %i[show ]
+  access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new]}, site_admin: :all
   def show
     unless current_user.is_a?(GuestUser)
       @user_collections = current_user.collection
@@ -8,6 +9,28 @@ class AnimesController< ApplicationController
  @reviews=Review.where(anime_id: @anime.id).order(created_at: :desc).all
  @review  = @anime.reviews.build  # for the form
   end
+
+     def index
+     @genres=Genre.all
+
+        if params[:year].present? && params[:year] != "all"
+         @animes = Anime.where(year: params[:year])
+        else 
+        @animes = Anime.all
+        end
+  
+        if params[:genre].present?
+         @animes = Genre.where(genre_type: params[:genre]).first.animes
+        end
+         if params[:airing].present?
+         @animes = Anime.where(airing: params[:airing])
+         end
+        respond_to do |format|
+        format.html # normal page load
+        format.turbo_stream # for Turbo updates
+        end
+     end
+
 
   def set_animes
     @anime=Anime.friendly.find(params[:slug])

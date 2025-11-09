@@ -1,4 +1,4 @@
-<% content_for :title, "Home" %>
+<% content_for :title, "Profile" %>
     <div class="content" >
       <h1  class= "home-header">Profile</h1>
       <div class="nav-card_container">
@@ -79,7 +79,14 @@
          <% if @collection_animes.present?%>
           <div class="collection-profile">
             <%@collection_animes.each do |collection| %>
-<div class="collection-card">
+     
+<div class="collection-card" style="margin-bottom: 70px;">
+   <%= button_to delete_collection_path(collection.id),
+              method: :delete,
+              class: "delete-btn" do %>
+
+  <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
+      <%end%>
   <h3><%=collection.name%></h3>
   <div class="cards-container">
  <%collection.animes.each_with_index do |collection_anime, index|%>
@@ -89,6 +96,7 @@
  <%end %>
   </div>
 </div>
+
             <%end %>
           </div>
           <%else %>

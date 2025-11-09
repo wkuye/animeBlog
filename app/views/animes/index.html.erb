@@ -1,0 +1,133 @@
+<% content_for :title, "Home" %>
+
+<div class="content">
+  <h1 class="home-header">Home</h1>
+
+  <div class="nav-card_container" style="background-color:#111111;">
+    
+    <!-- Top Navigation -->
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h3>Anime B</h3>
+      </div>
+
+      <nav class="nav">
+        <%= render "shared/application_nav" %>
+      </nav>
+
+      <div class="link-prof">
+        <div class="auth-links">
+          <%= login_helper %>
+        </div>
+        <div class="profile-avatar">
+          <%= link_to profile_path(current_user.slug), class: "prav-link" do %>
+            <%= profile_avatar(current_user.profile_picture) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Anime Catalog Section -->
+    <div class="anime-index-container">
+      
+      <!-- Sort Header -->
+      <div class="catalog-sort-by">
+        <h3>Catalog</h3>
+        <div class="icon-text">
+          <p>Sort By</p>
+          <%= content_tag(:i, "", class: "fa-solid fa-caret-down drop") %>
+        </div>
+      </div>
+
+      <div class="row anime-structure">
+        
+        <!-- Year Filter Sidebar -->
+        <div class="col-md-2 filter">
+          <div id="year-filter-section"
+               data-controller="dropdown year-filter"
+               data-turbo-permanent
+               class="filter-section">
+
+            <div class="filter-header">
+              <p>Year</p>
+              <i class="fa-solid fa-chevron-down"
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+
+            <div class="year-filter" data-dropdown-target="menu">
+              <button data-year-filter-target="button"
+                      data-action="click->year-filter#select"
+                      class="year-btn active"
+                      data-year="all">All</button>
+
+              <% (1958..Time.current.year).to_a.reverse.each do |year| %>
+                <button data-year-filter-target="button"
+                        data-action="click->year-filter#select"
+                        class="year-btn"
+                        data-year="<%= year %>"><%= year %></button>
+              <% end %>
+            </div>
+            <hr>
+          </div>
+   
+          <div id="genre-filter-section"  class="genres-filter" data-turbo-permanent data-controller="dropdown genre-filter">
+<div class="filter-header">
+              <p>Genre</p>
+              <i class="fa-solid fa-chevron-down"
+              
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+            <div class="boxes"data-dropdown-target="menu" >
+              <%@genres.each do |genre|%>
+   <label >
+    <input type="checkbox" name="<%=genre.genre_type%>" value="<%=genre.genre_type%>" data-action="click->genre-filter#filter" data-genre-filter-target="gcheck" >
+    <%=genre.genre_type%>
+   </label>
+              <%end%>
+
+
+</div>
+
+          </div>
+          <hr>
+           <div id="airing-filter-section"  class="genres-filter" data-turbo-permanent data-controller="dropdown airing-filter">
+<div class="filter-header">
+              <p>Airing</p>
+              <i class="fa-solid fa-chevron-down"
+              
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+            <div class="boxes"data-dropdown-target="menu" >
+            
+   <label >
+    <input type="checkbox" name="true" value="true" data-action="click->airing-filter#filter" data-airing-filter-target="airing" >
+    true
+   </label>
+        
+   <label >
+    <input type="checkbox" name="false" value="false" data-action="click->airing-filter#filter" data-airing-filter-target="airing" >
+    false
+   </label>
+
+            </div>
+            <hr>
+</div>
+        </div>
+
+        <!-- Anime List -->
+        <div class="col-md-10">
+          <turbo-frame id="anime_list">
+            <div class="catalog-grid">
+              <% @animes.each do |anime| %>
+                <%= render 'shared/catalog_list', anime: anime %>
+              <% end %>
+            </div>
+          </turbo-frame>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,10 @@
         class: "nav-link #{'active' if current_page?(contact_path)}",
         aria_current: ('page' if current_page?(contact_path)) %>
    
-      
+      <%= link_to "Animes", animes_path,
+        class: "nav-link #{'active' if current_page?(animes_path)}",
+        aria_current: ('page' if current_page?(animes_path)) %>
+
         <%= link_to "Blogs", blogs_path,
         class: "nav-link #{'active' if current_page?(blogs_path)}",
         aria_current: ('page' if current_page?(blogs_path)) %>

@@ -40,17 +40,17 @@
           </div>
           <hr></hr>
         </div>
-      <div class="nav-index1">
+      <div class="nav-index1" data-controller="hover">
         <div class="special">
           <h6>Special for you</h6>
         </div>
-              <div class="anime-grid" id="anime-list">
+              <div class="anime-grid" id="anime-list" data-hover-target="list">
             <% @animes.each do |anime| %>
-            <%= render partial: "shared/anime_list", locals: {anime: anime, anime_index:nil} %>
+            <%= render partial: "shared/anime_list", locals: {anime: anime, anime_index:anime} %>
             <% end %>
            
           </div>
-          <button id="load-more-btn" class="load-more" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
+          <button  data-hover-target="button"  id="load-more-btn" class="load-more" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
           </button>
        <%= render "shared/collection_container" %>  
        <div class="news-container">  

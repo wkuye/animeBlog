@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @int = Anime.ids.sample
     @animes = Anime.where.not(id: @int).limit(6)
     unless current_user.is_a?(GuestUser)
-      collection = current_user.collection
+      collection = current_user.collection.limit(3)
       @collection_animes = collection ? collection : []
     end
     @news_int = News.ids.sample
@@ -22,7 +22,7 @@ class PagesController < ApplicationController
       collection = current_user.collection
       @collection_animes = collection ? collection : []
     end
-    @collection=current_user.collection.build
+    @collection=Collection.new
   end
 
   def update_header
@@ -32,12 +32,22 @@ class PagesController < ApplicationController
   else
     redirect_to profile_path(@user), alert: "Header update failed."
   end
-end
+  end
+
+  def destroy
+   @collection= Collection.find_by_id(params[:id])
+   @collection.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to profile_path(current_user.slug), notice: "Collection was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
 
 
 def create_collection
   @user = User.friendly.find(params[:slug])
-  @collection = @user.collections.build(collection_params)
+  @collection = @user.collection.build(collection_params)
   if @collection.save
     redirect_to profile_path(@user), notice: "Collection added!"
   else
