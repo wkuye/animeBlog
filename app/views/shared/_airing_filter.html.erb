@@ -1,0 +1,22 @@
+ <div id="airing-filter-section"  class="genres-filter" data-turbo-permanent data-controller="dropdown airing-filter">
+<div class="filter-header">
+              <p>Airing</p>
+              <i class="fa-solid fa-chevron-up"
+              
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+            <div class="boxes"data-dropdown-target="menu" >
+            
+   <label >
+    <input type="checkbox" name="true" value="true" data-action="click->airing-filter#filter" data-airing-filter-target="airing" >
+    true
+   </label>
+        
+   <label >
+    <input type="checkbox" name="false" value="false" data-action="click->airing-filter#filter" data-airing-filter-target="airing" >
+    false
+   </label>
+
+            </div>
+            <hr>
+</div>

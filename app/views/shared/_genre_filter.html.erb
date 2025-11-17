@@ -1,0 +1,20 @@
+ <div id="genre-filter-section"  class="genres-filter" data-turbo-permanent data-controller="dropdown genre-filter">
+<div class="filter-header">
+              <p>Genre</p>
+              <i class="fa-solid fa-chevron-up"
+              
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+            <div class="boxes"data-dropdown-target="menu" >
+              <%@genres.each do |genre|%>
+   <label >
+    <input type="checkbox" name="<%=genre.genre_type%>" value="<%=genre.genre_type%>" data-action="click->genre-filter#filter" data-genre-filter-target="gcheck" >
+    <%=genre.genre_type%>
+   </label>
+              <%end%>
+
+
+</div>
+
+          </div>
+          <hr>

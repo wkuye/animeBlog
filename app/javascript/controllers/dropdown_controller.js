@@ -11,10 +11,7 @@ export default class extends Controller {
       console.warn("Missing target: menu")
       return
     }
-
-    // Start visible
-    this.menuTarget.style.display = "none"
-    this.isVisible = false
+   
   }
 
   toggle(event) {

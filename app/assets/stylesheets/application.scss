@@ -1270,8 +1270,6 @@ textarea {
   transition: 
     opacity 0.5s ease 2.5s,
     transform 0.5s ease 2.5s;
-    
- 
 }
 
 
@@ -1340,7 +1338,6 @@ textarea {
 .second-dot,
 .user-collections {
   transform: scale(0) translateY(10px);
-
 }
 
 
@@ -2022,7 +2019,9 @@ margin-left: 20px;
 .catalog-sort-by{
   display: flex;
   margin-top: 60px;
+  margin-bottom: 10px;
 justify-content: space-between;
+
 
 }
 
@@ -2117,6 +2116,95 @@ justify-content: space-between;
   align-items: start;
 
 }
+
+/* Wrapper ensures dropdown positions correctly */
+.sort-wrapper {
+  position: relative;
+}
+
+/* Trigger button */
+.sort-trigger {
+  display: inline-flex;
+  align-items: center;
+ 
+  padding: 8px 10px;
+  background: #1d1d1d;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  width: max-content;
+  user-select: none;
+}
+
+.sort-trigger:hover {
+  background: #252525;
+}
+
+/* Arrow rotation */
+.sort-arrow {
+  transition: transform 0.2s ease;
+}
+
+.sort-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown box */
+.sort-dropdown {
+  display: none;
+  position: absolute;
+  top: 100px; 
+  right: 0;
+  background: #1b1b1b;
+  border: 1px solid #333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+  width: 200px;
+  animation: fadeIn 0.2s ease-out;
+  z-index: 10;
+}
+
+/* Show when active */
+.sort-dropdown.active {
+  display: block;
+  z-index: 100;
+}
+
+/* Select styling */
+.sort-select {
+  width: 100%;
+  padding: 8px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Button */
+.sort-btn {
+  width: 100%;
+  background: #ff0055;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.sort-btn:hover {
+  background: #ff3377;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
 
 @keyframes float {
   0%   { transform: translateY(0)    rotate(0deg);}

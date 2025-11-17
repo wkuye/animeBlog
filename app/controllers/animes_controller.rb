@@ -11,25 +11,41 @@ class AnimesController< ApplicationController
   end
 
      def index
-     @genres=Genre.all
+  @genres = Genre.all
 
-        if params[:year].present? && params[:year] != "all"
-         @animes = Anime.where(year: params[:year])
-        else 
-        @animes = Anime.all
-        end
-  
-        if params[:genre].present?
-         @animes = Genre.where(genre_type: params[:genre]).first.animes
-        end
-         if params[:airing].present?
-         @animes = Anime.where(airing: params[:airing])
-         end
-        respond_to do |format|
-        format.html # normal page load
-        format.turbo_stream # for Turbo updates
-        end
+  @animes = Anime.all
+
+  # YEAR FILTER
+  if params[:year].present? && params[:year] != "all"
+    @animes = @animes.where(year: params[:year])
+  end
+
+  # GENRE FILTER
+  if params[:genre].present?
+    genre = Genre.find_by(genre_type: params[:genre])
+    @animes = @animes.joins(:genres).where(genres: { id: genre.id }) if genre
+  end
+
+  # AIRING FILTER
+  if params[:airing].present?
+    @animes = @animes.where(airing: params[:airing])
+  end
+
+  case params[:sort]
+    when "title"
+      @animes = @animes.order(title: :asc)
+    when "rating"
+      @animes = @animes.order(rating: :desc)
+    when "latest"
+      @animes = @animes.order(created_at: :desc)
+    end
+
+  respond_to do |format|
+    format.html
+    format.turbo_stream { render layout: false }
+  end
      end
+
 
 
   def set_animes

@@ -1,0 +1,26 @@
+<div id="year-filter-section"
+               data-controller="dropdown year-filter"
+               data-turbo-permanent
+               class="filter-section">
+
+            <div class="filter-header">
+              <p>Year</p>
+              <i class="fa-solid fa-chevron-up"
+                 data-action="click->dropdown#toggle"></i>
+            </div>
+
+            <div class="year-filter" data-dropdown-target="menu">
+              <button data-year-filter-target="button"
+                      data-action="click->year-filter#select"
+                      class="year-btn active"
+                      data-year="all">All</button>
+
+              <% (1958..Time.current.year).to_a.reverse.each do |year| %>
+                <button data-year-filter-target="button"
+                        data-action="click->year-filter#select"
+                        class="year-btn"
+                        data-year="<%= year %>"><%= year %></button>
+              <% end %>
+            </div>
+            <hr>
+          </div>
