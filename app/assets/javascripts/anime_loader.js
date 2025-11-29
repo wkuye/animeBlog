@@ -94,23 +94,17 @@ const isShowPage = pageType === "show";
             <img src="${anime.thumb_image}" alt="${anime.title}" class="card-image">
             <h3>${anime.title}</h3>
             <p>${anime.year}</p>
+              <div class="top-kon-rating">
+                <i class="fas fa-star star-icon"> ${anime.rating}</i>
+       
+              </div>
             <a href="/animes/${anime.slug}" class="anime-link"></a>
         `;
-        if (isShowPage) {
-            card.innerHTML += `
-              <div class="top-container-rating">
-                <i class="fas fa-star star-icon"></i>
-                <p>${anime.rating}</p>
-              </div>
-            `;
-          }else{
-                  card.innerHTML += `
-              <div class="top-kon-rating">
-                <i class="fas fa-star star-icon"></i>
-                <p>${anime.rating}</p>
-              </div>
-            `;
-          }
+     
+            
+            
+            
+          
 
         // Animation delay for smooth appearance
         card.style.animationDelay = `${index * 0.3}s`;

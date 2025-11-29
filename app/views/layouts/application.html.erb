@@ -24,11 +24,12 @@
 
 
 
+
   </head>
   <body  data-excluded-id="<%= @anime&.id || @int || '' %>" news-excluded-id="<%=@news_int%>" data-page-type="<%= @anime.present? ? 'show' : 'home' %>">
     <%= yield %>
-  <%= render "shared/application_footer" %>
-    
+  <%= render "shared/application_footer" , backgroundcolor:"#000;", color:"white"%>
+
    <%= session_helper %>
 
   </body>

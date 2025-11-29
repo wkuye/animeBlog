@@ -21,12 +21,12 @@
     <% @reviews.each do |review| %>
       <div class="review-card">
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-1">
             <div class="profile-pic">
               <%= profile_avatar review.user.profile_picture %>
             </div>
           </div>
-          <div class="col-md-10 review-details">
+          <div class="col-md-11 review-details" style="padding-left: 11px;">
             <div class="name-time">
               <% if review.spoiler %>
                 <h3 class="spoiler">Spoiler</h3>

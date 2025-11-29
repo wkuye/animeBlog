@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "/show_more_news", to: "pages#show_more_news"
   delete '/profile/:id/delete_collection', to: 'pages#destroy', as: :delete_collection
   post "profile/:slug/add_collection", to: "pages#create_collection", as: :create_collection
+  get "search", to: "search#index"
+
+
 
 patch '/profile/:slug/update_header', to: 'pages#update_header', as: :update_header
 

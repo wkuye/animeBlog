@@ -1,8 +1,7 @@
 class NewsController<ApplicationController
 before_action :set_news, only: %i[show]
   def  show
-    slug= params[:slug]
-    @news=News.find_by(slug:slug)
+    @related_news=News.where.not(slug: @news.slug).limit(4)
   end
 
   def set_news

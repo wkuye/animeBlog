@@ -8,7 +8,7 @@
    
     <div class="card-body">
       <b><%= f.label :email %><br /></b> 
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-field" %>
+      <%= f.email_field :email, autofocus: true,  autocomplete: "email", class:"input-field" %>
       <% if resource.errors[:email].any? %>
       <% resource.errors.full_messages_for(:email).each do |msg| %>
         <div class="field-error"><%= msg %></div>

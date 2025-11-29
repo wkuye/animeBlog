@@ -1,9 +1,9 @@
 module ApplicationHelper
   def login_helper
     if current_user.is_a?(GuestUser)
-      (button_to "Log in", new_user_session_path, class: "btn login-btn")+
+      (button_to "Log in", new_user_session_path, class: "btn login-btn" ,data:{turbo:false})+
       " ".html_safe +
-      (button_to "Get Started", new_user_registration_path, class: "btn register-btn")
+      (button_to "Get Started", new_user_registration_path, class: "btn register-btn",data:{turbo:false})
     else
    # this combine the register and the login together and the br moves the login to the next line
 button_to "Log out", destroy_user_session_path, method: :delete, class: "btn logout-btn"

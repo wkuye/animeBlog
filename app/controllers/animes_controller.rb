@@ -1,6 +1,6 @@
 class AnimesController< ApplicationController
-  before_action :set_animes, only: %i[show ]
-  access all: [:show, :index], user: {except: [:destroy, :create, :edit, :new]}, site_admin: :all
+  before_action :set_animes, only: %i[show  edit update destroy]
+  access all: [:show, :index ], user: {except: [:destroy, :create, :edit, :new, ]}, site_admin: :all
   def show
     unless current_user.is_a?(GuestUser)
       @user_collections = current_user.collection
@@ -9,6 +9,41 @@ class AnimesController< ApplicationController
  @reviews=Review.where(anime_id: @anime.id).order(created_at: :desc).all
  @review  = @anime.reviews.build  # for the form
   end
+
+  def edit
+ 
+  end
+
+  def new
+   @anime= Anime.new
+   @genres= Genre.all
+  end
+
+  # animes_controller.rb
+def create
+  @anime = Anime.new(anime_params)
+  if @anime.save
+    respond_to do |format|
+      format.html { redirect_to animes_path, notice: "Anime created successfully." }
+      format.turbo_stream
+    end
+  else
+    respond_to do |format|
+      format.html { render :new, status: :unprocessable_entity }
+    end
+  end
+end
+
+
+def destroy
+    @anime.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to animes_url, notice: "Anime was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
 
      def index
   @genres = Genre.all
@@ -20,6 +55,8 @@ class AnimesController< ApplicationController
     @animes = @animes.where(year: params[:year])
   end
 
+  
+  
   # GENRE FILTER
   if params[:genre].present?
     genre = Genre.find_by(genre_type: params[:genre])
@@ -41,10 +78,22 @@ class AnimesController< ApplicationController
     end
 
   respond_to do |format|
-    format.html
-    format.turbo_stream { render layout: false }
+      format.turbo_stream
+      format.html
   end
      end
+
+      def update
+    respond_to do |format|
+      if @anime.update(anime_params)
+        format.html { redirect_to anime_path(@anime.slug), notice: "Anime was successfully updated." }
+
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+
+      end
+       end
+      end
 
 
 
@@ -63,11 +112,7 @@ class AnimesController< ApplicationController
  
   end
 
-  def load_more_anime
-    excluded_overview_id = params[:excluded_overview_id].to_i if params[:excluded_overview_id].present?
-    loaded_overview_ids = (params[:loaded_overview_ids] || []).map(&:to_i)
-    # Ensure that the initially excluded anime is also removed from this query
-    animes = Anime.where.not(id: loaded_overview_ids + [excluded_overview_id]).limit(6)
-    render json: animes
+  def anime_params
+      params.require(:anime).permit(:title, :description, :main_image, :thumb_image, :airing, :episodes, :thumb_video_url, :year, :rating, :genre_ids)
   end
 end

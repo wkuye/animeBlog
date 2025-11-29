@@ -4,6 +4,10 @@ class GenresController < ApplicationController
   layout "genre"
   def index
     @genres = Genre.all
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+  end
   end
 
   def new

@@ -4,22 +4,37 @@
     <div class="sized-box"></div>
     <div class="nav-card_container">
       <div class="nav-index0" style="height: 300px;">
+        <div 
+  class="review-bottomsheet <%= "active" if @review.errors.any? %>" 
+  data-controller="review-bottomsheet" 
+  data-review-bottomsheet-target="sheet" 
+>
+  
+  <%= render 'shared/review_modal' %>
+ </div>
         <div class="anime-trailer" style="width: 100%">
           <%= render partial: "shared/home_video_thumb", locals: {id:@anime.id} %>
           </div>
           <div class="btn trailer-btn">
             <%=content_tag(:i , " Watch Trailer", class:"fa fa-play-circle", )%>
           </div>
-        <div class="nav-container""> 
+        <div class="nav-container"> 
           <div class="nav-logo">
             <h3>Anime B</h3>
           </div>
           <nav class="nav">
             <%= render "shared/application_nav" %>
           </nav>
-          <div class="auth-links">
-            <%= login_helper %>
-          </div>
+              <div class="link-prof">
+ <div class="auth-links">
+              <%= login_helper %>
+            </div>
+            <div class="profile-avatar">
+              <%=link_to  profile_path(current_user.slug) , class:"prav-link" do%>
+              <%=profile_avatar(current_user.profile_picture)  %>
+              <%end%>
+            </div>
+         </div>
         </div>
         <hr></hr>
       </div>
@@ -29,7 +44,15 @@
   <%=image_tag(@anime.thumb_image, class:'cover-img')%> 
 </div>
 <div class="card-row">
-<h1><%=@anime.title%></h1>
+  <div class="name-header">
+    <h1><%=@anime.title%></h1> 
+    <% if current_user.has_role?(:site_admin)  %>
+      <%= link_to edit_anime_path(@anime), class:"edit-anime-link" do %>
+  <%=content_tag(:i,"", class:"fa-solid fa-pencil pencil" )%>
+    <% end %> 
+  
+<%end%>
+  </div>
 <div class="star">
   <%= content_tag(:i, " #{@anime.rating}", class: "fas fa-star star-icons") %> 
   
@@ -52,14 +75,7 @@
 <%=render 'shared/review_tab' %> 
   </div>
 </div>
-<div 
-  class="review-bottomsheet <%= "active" if @review.errors.any? %>" 
-  data-controller="review-bottomsheet" 
-  data-review-bottomsheet-target="sheet" 
->
-  
-  <%= render 'shared/review_modal' %>
- </div>
+
 
      </div>
     </div>

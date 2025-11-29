@@ -19,6 +19,41 @@
         class: "nav-link #{'active' if current_page?(genres_path)}",
         aria_current: ('page' if current_page?(genres_path)) %>
        
+ <div class= <%=!current_user.is_a?(GuestUser)? "search-wrapper" : "search-wrapper-logged-out"%> data-controller="livesearch reset_form">
+
+  <%= form_with url: search_path,
+      method: :get,
+      data: {
+        turbo_frame: "global-search-results",
+        turbo_stream: true,
+      },
+      html: { id: "search-form" } do |f| %>
+
+    <%= f.text_field :query,
+        placeholder: "Search",
+        class: "search-input",
+        autocomplete: "off",
+        data: {
+          action: "input->livesearch#query turbo:submit-end->reset_form#reset",
+          livesearch_target: "input"
+        } %>
+
+        
+
+  <% end %>
+  <%=content_tag(:i , "", class:"fa-solid fa-magnifying-glass search-icon")%>
+
+  <div class="dropdown-results" data-livesearch-target="results">
+    <turbo-frame id="global-search-results" target="_top"></turbo-frame>
+  </div>
+
+</div>
+
+
+
+
+
+
         <!-- <%=profile_pic(current_user.id) if !current_user.is_a?(GuestUser)%> -->
  
         

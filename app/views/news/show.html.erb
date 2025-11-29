@@ -1,4 +1,6 @@
-<div class="news-container">
+<div class="row row-news">
+  <div class="col-md-8">
+    <div class="news-container">
     <div class="image-container">
            <img src="<%=@news.image%>" alt="Description of image" class="news_image">
            <h1><%=@news.title%></h1>
@@ -7,4 +9,23 @@
       <h4>Description</h4>
       <p><%=@news.description%></p>
     </div>
+</div>
+  </div>
+  <div class="col-md-4 second">
+    <h3 class="second-head">Related Articles</h3>
+    <%@related_news.each do |relatednews|%>
+<div class="news-card">
+  <h3><%=relatednews.title%></h3>
+  <div class="pic-des">
+    <%=image_tag(relatednews.image, class:"related-image")%>
+    <span class="related-text">
+  <%= truncate(relatednews.description, length: 100, omission: "...") %>
+</span>
+
+
+  </div>
+  <hr>
+</div>
+    <%end%>
+  </div>
 </div>

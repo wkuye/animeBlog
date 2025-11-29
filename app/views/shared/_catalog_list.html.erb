@@ -1,4 +1,8 @@
 <div class="anime-card" style="width:170px; margin-bottom:30px;" data-id="<%= anime.id %>">
+  <%= button_to anime_path(anime), method: :delete, data: { turbo:false ,confirm: "Are you sure?" }, class: "delete-btn" do %>
+  <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
+<% end %>
+
   <div class="anime-card-wrapper">
     <%= link_to anime_path(anime.slug), data: { turbo: false } do %> <!-- Don’t try to do a frame visit; just load the full page normally. -->
       <img src="<%= anime.thumb_image %>" class="card-image">

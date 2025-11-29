@@ -1,0 +1,7 @@
+<%= turbo_stream.append "anime_list" do %>
+  <%= render partial: "shared/catalog_list", locals: { anime: @anime } %>
+<% end %>
+
+<%= turbo_stream.replace "new-anime-form" do %>
+  <%= render partial: "form", locals: { object: Anime.new } %>
+<% end %>

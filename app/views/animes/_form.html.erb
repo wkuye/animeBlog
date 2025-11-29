@@ -1,0 +1,71 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.name.downcase %> from being saved:</h2>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: object, html:{class:"new-anime-form"},data: { turbo: false }, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder:"Give your blog a title"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, placeholder:"Give a breif summary about your blog"%>
+  </div>
+   <div class="field">
+    <%= form.label :main_image%>
+      <%= form.text_field :main_image%>
+    
+  </div>
+  <div class="field">
+      <%= form.label :thumb_image%>
+      <%= form.text_field :thumb_image%>
+  </div>
+  <div class="field">
+    <%= form.label :airing %>
+<%= form.select :airing, [["Airing", true], ["Not Airing", false]], include_blank: "Select status" %>
+
+  </div>
+  <div class="d-field">
+    <%= form.label :episodes %>
+    <%= form.text_area :episodes, placeholder:"the number of episodes", rows:15%>
+  </div>
+
+ <div class="d-field">
+    <%= form.label :thumb_video_url %>
+    <%= form.text_area :thumb_video_url, placeholder:"paste video url", rows:15%>
+  </div>
+
+ <div class="d-field">
+    <%= form.label :year %>
+    <%= form.text_area :year, placeholder:"Give year it was created"%>
+  </div>
+
+   <div class="d-field">
+    <%= form.label :rating %>
+    <%= form.text_area :rating, placeholder:"input rating"%>
+  </div>
+  <div class="d-field">
+ <% if @anime.new_record? %>
+  
+ <%= form.select :genre_ids, 
+      @genres.map { |g| [g.genre_type, g.id] }, 
+      include_blank: "Select status" %>
+
+  <%else%>
+  <%= form.hidden_field :genre_ids, value: @anime.genre_ids%>
+  <%end%>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit class:"submit"%>
+  </div>
+<% end %>
+

@@ -31,7 +31,16 @@
 
     <!-- Anime Catalog Section -->
     <div class="anime-index-container">
-      
+      <div class="create-anime">
+        
+        <% if current_user.has_role?(:site_admin) %>
+           <%= link_to new_anime_path,  class:"create-anime-link" do%>
+        <%=content_tag(:i,"", class:"fa-regular fa-file")%>
+        <%end%>
+        <% end %>
+        
+       
+      </div>
       <!-- Sort Header -->
 <div  class="sort-wrapper">
   <div class="catalog-sort-by" data-controller="sort" >

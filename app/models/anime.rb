@@ -1,9 +1,8 @@
 class Anime < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
-    has_many :anime_genres
+  has_many :anime_genres, dependent: :destroy
   has_many :genres, through: :anime_genres
-  belongs_to :genre
   has_many :reviews
   has_many :anime_collections
   has_many :collections, through: :anime_collections
@@ -15,4 +14,9 @@ class Anime < ApplicationRecord
     self.thumb_image ||= Placeholder.image_generator(200, 250)
     self.airing ||= false
   end
+
+  def should_generate_new_friendly_id?
+  slug.blank? || title_changed?
+  end
+
 end
