@@ -135,3 +135,28 @@ color: black;
     padding-left: 20px;
     margin-bottom: 10px;
 }
+
+.list{
+    display: flex;
+    flex-direction: column;
+}
+
+.show-more-button{
+    position: relative;
+    display: flex;
+    margin-left: 20px;
+    height: 40px;
+    width: 320px;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.show-more-button p{
+    padding: 0;
+    margin-top: 6px;
+}

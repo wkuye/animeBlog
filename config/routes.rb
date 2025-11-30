@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete '/profile/:id/delete_collection', to: 'pages#destroy', as: :delete_collection
   post "profile/:slug/add_collection", to: "pages#create_collection", as: :create_collection
   get "search", to: "search#index"
+  get "/show-news", to:"news#show_more_news", as: :show_news
 
 
 
