@@ -1,0 +1,46 @@
+<% if news.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.name.downcase %> from being saved:</h2>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: news, html:{class:"new-form"}, local: true) do |form| %>
+
+<div class="d-field">
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder:"Title for news",rows:15%>
+  </div>
+
+  <div class="d-field">
+    <%= form.label :image %>
+    <%= form.text_area :image, placeholder:"image link"%>
+  </div>
+
+  <div class="d-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, placeholder:"Give a breif summary about your news",rows:15%>
+  </div>
+
+  <div class="field">
+    <h2>Animes</h2>
+    
+    <%= link_to_add_association 'Add Anime', form, :news_animes, class:"add-anime", data: {association_insertion_method: 'after' } %>
+    <div class="anime-list">
+ <%=form.fields_for :news_animes do |f| %>
+  <%=render'type_news_anime_fields', f: f%>
+    <%end%>
+    </div>
+   
+  </div>
+  
+
+
+  <div class="actions">
+    <%= form.submit class:"submit"%>
+  </div>
+<% end %>

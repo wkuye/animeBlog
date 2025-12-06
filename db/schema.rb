@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_16_093916) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_04_223436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_16_093916) do
     t.integer "year"
     t.string "slug"
     t.float "rating"
+    t.bigint "news_id"
+    t.index ["news_id"], name: "index_animes_on_news_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -147,6 +149,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_16_093916) do
     t.string "slug"
   end
 
+  create_table "news_animes", force: :cascade do |t|
+    t.bigint "news_id", null: false
+    t.bigint "anime_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_news_animes_on_anime_id"
+    t.index ["news_id"], name: "index_news_animes_on_news_id"
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.bigint "anime_id", null: false
     t.float "rating"
@@ -204,9 +215,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_16_093916) do
   add_foreign_key "anime_collections", "collections"
   add_foreign_key "anime_genres", "animes"
   add_foreign_key "anime_genres", "genres"
+  add_foreign_key "animes", "news"
   add_foreign_key "collections", "users"
   add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
+  add_foreign_key "news_animes", "animes"
+  add_foreign_key "news_animes", "news"
   add_foreign_key "ratings", "animes"
   add_foreign_key "reviews", "animes"
   add_foreign_key "reviews", "users"

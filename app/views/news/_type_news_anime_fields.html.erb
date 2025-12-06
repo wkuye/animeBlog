@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <% anime = f.object.anime %>
+  <% if anime %>
+   <%= anime.title %></p>
+  <% else %>
+    <p><em>Anime not found</em></p>
+  <% end %>
+
+  <%= f.hidden_field :anime_id %>
+  <%= f.hidden_field :_destroy %>
+<div class="remove-btn">
+  <%= link_to_remove_association 'Remove', f%>
+</div>
+
+</div>

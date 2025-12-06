@@ -56,6 +56,11 @@
        <div class="news-container">  
     <div class="nav-header">
       <h6>News</h6>
+      <% if current_user.has_role?(:site_admin) %>
+           <%= link_to new_news_path,  class:"create-anime-link" do%>
+        <%=content_tag(:i,"", class:"fa-regular fa-file")%>
+        <%end%>
+        <% end %>
     </div>
     <div class="news-imagethumb">
       <img src="<%= news_thumb @news_int %>" alt="Description of image" class="news_image">

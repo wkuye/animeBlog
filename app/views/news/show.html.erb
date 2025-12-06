@@ -1,6 +1,19 @@
 <div class="row row-news">
   <div class="col-md-8">
+    
     <div class="news-container">
+      <%if current_user.has_role?(:site_admin) %>
+      <div class="admin-utils">
+        
+      <p><%=link_to "Back to home", root_path, class:"back-genre" %></p>
+<p><%=link_to "Edit News", edit_news_path(@news), class:"edit-genres"%></p>
+
+  <%=button_to @news, method: :delete, class:"delete-btn" do%>
+  <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
+  <%end%>
+
+      </div>
+      <%end%>
     <div class="image-container">
            <img src="<%=@news.image%>" alt="Description of image" class="news_image">
            <h1><%=@news.title%></h1>
@@ -8,6 +21,23 @@
     <div class="news-description">
       <h4>Description</h4>
       <p><%=@news.description%></p>
+   
+      <div class="news-anime">
+        <h3>Related Anime</h4>
+          <%if !@animes.present?%>
+          <div class="er">
+<p>No Anime Related</p>
+          </div>
+          
+          <%else%>
+         <div class="anime-grid" id="anime-list">
+            <% @animes.each do |anim| %>
+            <%= render partial: "shared/anime_list", locals: {anime: anim} %>
+            <% end %>
+           
+          </div>
+          <%end%>
+      </div>
     </div>
 </div>
   </div>
@@ -17,6 +47,7 @@
  <%@related_news.each do |relatednews|%>
     
 <div class="news-card" data-id=<%=relatednews.id%>>
+  <%= link_to news_path(relatednews), class:"card-link"  do%>
   <h3><%=relatednews.title%></h3>
   <div class="pic-des">
     <%=image_tag(relatednews.image, class:"related-image")%>
@@ -25,6 +56,7 @@
 </span>
   </div>
   <hr>
+  <%end%>
 </div>
     <%end%>
     </div>
@@ -32,5 +64,6 @@
     <div class="show-more-button" data-show-more-news-target="button" data-action="click->show-more-news#show" data-anime-id=<%=@news.id%> >
       <p>Show more News</p>
     </div>
+  
   </div>
 </div>

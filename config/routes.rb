@@ -22,7 +22,7 @@ patch '/profile/:slug/update_header', to: 'pages#update_header', as: :update_hea
 
 
 resources :news, param: :slug
-get "news/:id", to: "news#show"
+get "news/:slug", to: "news#show"
 
 resources :animes, param: :slug
 get "/load_more_anime_overview", to: "animes#load_more_anime"

@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+@import "font-awesome";
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +7,13 @@
   }
 
 html ,body{
-    background-color:white;
-    height: auto;
-    width: 100%;
+    background-color:transparent;
     min-height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-  
+    overflow-x: hidden;
 }
 
 .news-container{
@@ -84,7 +83,7 @@ color: black;
   }
   
   .second{
-    margin-top: 50px;
+    margin-top: 180px;
   }
  
 
@@ -111,6 +110,8 @@ color: black;
 
 .row-news{
     overflow-y: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .news-card hr{
@@ -133,7 +134,7 @@ color: black;
 
 .second-head{
     padding-left: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .list{
@@ -160,3 +161,300 @@ color: black;
     padding: 0;
     margin-top: 6px;
 }
+
+.back-genre{
+  color: #D5015B;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-genres{
+  color: #D5015B;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+
+.admin-utils{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 30px;
+}
+
+ .delete-btn{
+  background-color: transparent;
+  border: none;
+  color: red;
+  padding-bottom: 20px;
+}
+
+
+.new-form{
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-form .field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 70%;
+  margin-bottom: 10px;
+}
+.new-form .d-field{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.new-form .actions{
+  margin-bottom: 20px;
+  width: fit-content;
+  border: none;
+  margin-top: 20px;
+}
+.new-form .submit{
+background-color: rgb(109, 109, 231);
+border: none;
+width: 115px;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.blog-video{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+
+.news-body{
+  position: relative;
+height: 100%;
+width: 100%;
+  display: flex;
+  flex-direction: column;
+padding-left: 55px;
+margin-top: 80px;
+text-align: start;
+color: white;
+  scroll-behavior: smooth;
+  z-index: 2;
+}
+
+.add-anime{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #D5015B;
+}
+
+.add-anime-form{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+ 
+}
+
+.anime-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.save-btn{
+display: none;
+margin-top: 15px;
+margin-bottom: 10px;
+}
+
+.nested-fields{
+  display: flex;
+}
+
+.remove-btn{
+  margin-left: 15px;
+
+}
+
+.remove-btn a{
+  text-decoration: none;
+  color: #D5015B;
+}
+
+.n-news{
+flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+    padding-right: 30px;
+}
+
+.news-anime{
+  position: relative;
+  display: flex;
+  height: 320px;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+
+
+.anime-grid{
+  display: flex;
+  height: auto;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+
+.anime-card{
+  position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 228px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    animation: smoothFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    will-change: opacity, transform; 
+overflow: hidden;
+  }
+
+  .anime-card:hover .hover-video{
+opacity: 1;
+  }
+
+  .anime-card:hover .card-image{
+    opacity: 0;
+  }
+
+  .anime-card-wrapper {
+  position: relative; 
+  width: 100%;
+  height: 228px;
+  overflow: hidden;
+}
+
+   .card-image, .hover-video {
+    position: absolute;
+    width: 100%; 
+    height: 228px;
+    display: flex;
+    object-fit:cover;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow: hidden;
+  }
+
+
+
+  .hover-video{
+ opacity: 0;
+  }
+
+  .hover-video .iframe{
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-image{
+    object-fit:fill; 
+    opacity: 1;
+  }
+ 
+  .anime-card h3{
+    position: absolute;
+    top: 75%; 
+ left: 5%; 
+    margin: 0; 
+    color: white; 
+    text-align: start;
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .anime-card p{
+    position: absolute;
+    left: 5%;
+    bottom: 1px;
+    font-size: 11px;
+    color: white;
+  }
+  
+ 
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  .card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+  }
+
+  .anime_info h1{
+    margin-top: 75px;
+    font-weight: bold;
+  }
+
+
+.top-kon-rating{
+  display: flex;
+  width: 50px;
+  height: 30px;
+  position: absolute;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+  left: 50%;
+  background-color:#2C2C2C;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+   transform: translateX(-50%);
+   color: white;
+ }
+
+
+ .top-kon-rating .star-icon{
+  font-size: 9px;
+ }
+
+
+ .anime-card:hover .top-container-rating , .anime-card:hover .top-kon-rating{
+  opacity: 1;
+ }
+
+ .card-link{
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+ }
+
+ .er{
+  height: 150px;
+  width: 100%;
+  display: flex;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+ }

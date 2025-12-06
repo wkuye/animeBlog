@@ -39,7 +39,8 @@ export default class extends Controller {
     data.forEach(news => {
       const html = `
         <div class="news-card" data-id="${news.id}">
-          <h3>${news.title}</h3>
+        <a href="/news/${news.slug}" class="card-link">
+         <h3>${news.title}</h3>
           <div class="pic-des">
             <img src="${news.image}" class="related-image">
             <span class="related-text">
@@ -47,6 +48,9 @@ export default class extends Controller {
             </span>
           </div>
           <hr>
+        </a>
+         
+          
         </div>
       `
 

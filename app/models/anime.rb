@@ -4,6 +4,8 @@ class Anime < ApplicationRecord
   has_many :anime_genres, dependent: :destroy
   has_many :genres, through: :anime_genres
   has_many :reviews
+  has_many :news_animes
+  has_many :news, through: :news_animes
   has_many :anime_collections
   has_many :collections, through: :anime_collections
   includes Placeholder
