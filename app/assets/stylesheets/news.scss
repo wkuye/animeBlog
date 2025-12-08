@@ -266,6 +266,10 @@ color: white;
  
 }
 
+.no-click {
+  pointer-events: none;
+}
+
 .anime-link{
   position: absolute;
   top: 0;
