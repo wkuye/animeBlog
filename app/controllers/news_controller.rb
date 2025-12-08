@@ -12,8 +12,11 @@ before_action :set_news, only: %i[show edit update destroy]
  
 
  def destroy
-  
- end
+   @news.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "News was successfully destroyed." }
+    end
+  end
 
 
   def update

@@ -12,12 +12,18 @@
   
   <%= render 'shared/review_modal' %>
  </div>
-        <div class="anime-trailer" style="width: 100%">
-          <%= render partial: "shared/home_video_thumb", locals: {id:@anime.id} %>
-          </div>
+       <div class="anime-trailer">
+  <div class="video-wrapper">
+    <%= render partial: "shared/home_video_thumb", locals: { id: @anime.id } %>
+  </div>
+</div>
+<%= link_to @anime.thumb_video_url , class:"trailer-link" do %>
           <div class="btn trailer-btn">
+            
             <%=content_tag(:i , " Watch Trailer", class:"fa fa-play-circle", )%>
+      
           </div>
+              <%end%>
         <div class="nav-container"> 
           <div class="nav-logo">
             <h3>Anime B</h3>

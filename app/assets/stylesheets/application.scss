@@ -156,7 +156,7 @@ background-color: transparent;
   position: relative; /* Allow child elements to position absolutely */
   display: flex;
   flex-direction: column;
- 
+ width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: hidden; /* Prevent iframe from overflowing */
@@ -302,7 +302,7 @@ opacity: 1;
    .card-image, .hover-video {
     position: absolute;
     width: 100%; 
-    height: 228px;
+    height: 100%;
     display: flex;
     object-fit:cover;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -315,10 +315,24 @@ opacity: 1;
  opacity: 0;
   }
 
-  .hover-video .iframe{
-    width: 100%;
-    height: 100%;
-  }
+ .hover-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+  border: 0;
+}
+
+.trailer-link{
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color:inherit;
+}
 
   .card-image{
     object-fit:fill; 
@@ -337,6 +351,7 @@ opacity: 1;
   }
 
   .anime-card p{
+    color: white;
     position: absolute;
     left: 5%;
     bottom: 1px;
@@ -747,13 +762,8 @@ height: 250px;
 }
 
 .review-details
-
 .anime-link{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+ display: block;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
@@ -761,17 +771,30 @@ height: 250px;
 .anime-trailer{
   background-color: green;
   position: absolute;
-  width: 99vw;
+  display: flex;
+  width: 100%;
   height: 100vh;
   z-index: 0;
   overflow: hidden;
+  padding: 0;
 }
 
-.anime-trailer iframe{
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
+
+
 
 .trailer-btn{
   display: flex;
@@ -2447,6 +2470,11 @@ border: none;
   
 }
 
+.no-click {
+  pointer-events: none;
+}
+
+
 
 
 
@@ -2484,6 +2512,7 @@ border: none;
 @keyframes popIn {
   to { opacity: 1; transform: scale(1); }
 }
+
 
  
 

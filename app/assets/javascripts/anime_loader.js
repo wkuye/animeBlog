@@ -83,6 +83,8 @@ function renderAnimeCards(animeList) {
         const pageType = document.body.getAttribute("data-page-type");
 const isShowPage = pageType === "show";
         card.innerHTML = `
+        <div class="anime-card-wrapper">
+        <div class="hover-video">
            <iframe 
           width="${width}px" 
           height="${height}px"
@@ -91,6 +93,8 @@ const isShowPage = pageType === "show";
           allowfullscreen 
           frameborder="0">
         </iframe>
+        </div>
+        </div>
             <img src="${anime.thumb_image}" alt="${anime.title}" class="card-image">
             <h3>${anime.title}</h3>
             <p>${anime.year}</p>
