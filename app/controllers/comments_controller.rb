@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     CommentChannel.broadcast_to(
       blog,
       {
+      comment_user_id: @comment.user_id,
     profile_picture_url: url_for( current_user.profile_picture),
     sent_by: current_user.name,
     body: @comment.content

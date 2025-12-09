@@ -1,11 +1,17 @@
 <div class="socials">
-    <div class="telegram">
+    <%= link_to 'https://t.me/OlawaleKuye', class:"social-link" do %>
+    <div class="telegram" style="color: inherit;">
      <%= content_tag(:i, "", class: "fab fa-telegram fa-2x") %>
     </div>
-    <div class="discord">
+    <%end%>
+    <%= link_to 'https://discord.gg/NDnvXAxM', class:"social-link" do %>
+    <div class="discord" style="color: inherit;">
     <%= content_tag(:i, "", class: "fab fa-discord fa-2x") %>
     </div>
-    <div class="instagram">
+    <%end%>
+    <%= link_to 'https://www.instagram.com/wale.k7', class:"social-link" do %>
+    <div class="instagram" style="color: inherit;">
      <%= content_tag(:i, "", class: "fab fa-instagram fa-2x") %>
     </div>
+    <%end%>
  </div>

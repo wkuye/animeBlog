@@ -294,14 +294,19 @@ position: absolute;
 }
 
 .genre-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+  width: 100%;
+
+ 
 }
 
 .genre-column {
-  flex: 1 1 300px;
   text-align: start;
+ gap: 20px;
+ width: 250px;
+
  margin-bottom: 20px;
 }
 

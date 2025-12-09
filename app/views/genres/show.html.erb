@@ -26,11 +26,11 @@
 </div>
 <div class="genre-list">
   <% if @genre_letter.any? %>
-    <% @genre_letter.each_slice((@genre_letter.count / 2.0).ceil) do |column| %>
+    <% @genre_letter.each do |anime| %>
       <div class="genre-column">
-        <% column.each do |anime| %>
+        
         <%= link_to "#{anime.title}", anime_path(anime.slug) , class:"anime-title"%>
-        <% end %>
+      
       </div>
     <% end %>
   <% else %>

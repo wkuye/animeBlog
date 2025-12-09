@@ -26,29 +26,18 @@ document.addEventListener("turbo:load", () => {
       appendLine(data) {
         const html = this.createLine(data)
         commentsContainer.insertAdjacentHTML("beforeend", html)
-          document.querySelectorAll(".comment-card").forEach(card => {
-    // If card is new (e.g., just inserted), add animation class
-    const commentID= card.dataset.commentId;
-   const  UserID=card.dataset.currentUserId;
-   console.log("📩 commentID:", commentID)
-    console.log("📩 userID:", UserID)
-   if (commentID==UserID) {
-    card.classList.add("own-comment");
-   }else{
-    card.classList.add("other-comment");
-   }
-    if (!card.classList.contains("animate-in")) {
-      setTimeout(() => {
-        card.classList.add("animate-in");
-      }, 50); // small delay so the browser registers the transition
-    }
-  });
+       
       },
 
-     createLine(data) {
+ createLine(data) {
+   const currentUserId = commentsContainer.dataset.currentUserId
+  const isOwn = String(data.comment_user_id) === String(currentUserId)
+
+  console.log("user_id", data.comment_user_id)
+console.log("current_user_id", currentUserId)
   return `
     <div class="comments">
-      <div class="comment-card" 
+      <div class="comment-card ${isOwn ? 'own-comment' : 'other-comment'}"
            data-comment-id="${data.user_id}" 
            data-current-user-id="${data.current_user_id}">
         <div class="row">
@@ -58,9 +47,9 @@ document.addEventListener("turbo:load", () => {
             </div>
           </div>
           <div class="col-md-11">
-          <div class="texts">
-            <h3>${data.sent_by}</h3>
-            <p>${data.body}</p>
+            <div class="texts">
+              <h3>${data.sent_by}</h3>
+              <p>${data.body}</p>
             </div>
           </div>
         </div>
@@ -68,6 +57,7 @@ document.addEventListener("turbo:load", () => {
     </div>
   `
 }
+
 
     }
   )
