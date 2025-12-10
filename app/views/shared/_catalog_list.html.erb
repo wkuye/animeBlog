@@ -1,15 +1,17 @@
+<%= link_to anime_path(anime.slug), data: { turbo: false }, class:"search-link" do %> 
 <div class="anime-card" style="width:170px; margin-bottom:30px;" data-id="<%= anime.id %>">
+  
   <%= button_to anime_path(anime), method: :delete, data: { turbo:false ,confirm: "Are you sure?" }, class: "delete-btn" do %>
   <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
 <% end %>
 
   <div class="anime-card-wrapper">
-    <%= link_to anime_path(anime.slug), data: { turbo: false } do %> <!-- Don’t try to do a frame visit; just load the full page normally. -->
+    <!-- Don’t try to do a frame visit; just load the full page normally. -->
       <img src="<%= anime.thumb_image %>" class="card-image">
       <div class="hover-video">
         <%= render partial: "shared/home_video_thumb", locals: { id: anime.id } %>
       </div>
-    <% end %>
+   
   </div>
 
   <div class="top-kon-rating">
@@ -17,5 +19,7 @@
   </div>
 
   <h3><%= anime.title %></h3>
-  <p><%= anime.year %></p>
+  <p><%= anime.year %></p> 
+  
 </div>
+<% end %>
