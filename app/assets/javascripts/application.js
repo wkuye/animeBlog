@@ -1,8 +1,8 @@
 //= require jquery
+//= require popper
+//= require bootstrap
 //= require jquery_ujs
 //= require cocoon
-//= require popper
-//= require bootstrap-sprockets
 //= require anime_loader
 //= require anime_hover
 //= require anime

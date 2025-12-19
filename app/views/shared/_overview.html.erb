@@ -37,14 +37,25 @@
         <p><%=anime.description%></p>
       </div>
     </div>
-    <div class="special-overview" data-controller="hover">
-      <h2>Special for you</h2>
-      <div class="anime-grid" id="anime-list" style="margin-top: 50px; padding:0;" data-hover-target="list">
-        <% @animes.each do |anime_card| %>
-        <%= render partial: "shared/anime_list", locals: {anime: anime_card} %>
-        <% end %>
-      </div>
-      <button id="load-more-btn" data-hover-target="button" class="load-more-overview" onclick="loadMoreAnime()"><%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
-      </button>
+  <div class="special-overview" data-controller="hover">
+  <h2>Special for you</h2>
+
+  <div class="anime-grid-wrapper">
+    <div class="anime-grid" id="anime-list" style="margin-top: 50px; padding:0; width:100%;"  data-hover-target="list">
+      <% @animes.each do |anime_card| %>
+        <%= render partial: "shared/anime_list", locals: { anime: anime_card } %>
+      <% end %>
     </div>
+
+    <button
+      id="load-more-btn"
+      data-hover-target="button"
+      class="load-more-overview"
+      onclick="loadMoreAnime()"
+    >
+      <%= raw BootstrapIcons::BootstrapIcon.new("arrow-right").to_svg %>
+    </button>
+  </div>
+</div>
+
   </div>

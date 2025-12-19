@@ -1,25 +1,35 @@
-
-     <%= link_to "Home",  root_path , class: "nav-link  #{'active' if current_page?(root_path)}",
+<li class="nav-item" >
+<%= link_to "Home",  root_path , class: "nav-link  #{'active' if current_page?(root_path)}",
         aria_current: ('page' if current_page?(root_path)) %>
-   
-
-        <%= link_to "Contact", contact_path,
+</li>
+     
+   <li class="nav-item">
+<%= link_to "Contact", contact_path,
         class: "nav-link #{'active' if current_page?(contact_path)}",
         aria_current: ('page' if current_page?(contact_path)) %>
-   
-      <%= link_to "Animes", animes_path,
+   </li>
+
+        
+   <li class="nav-item">
+ <%= link_to "Animes", animes_path,
         class: "nav-link #{'active' if current_page?(animes_path)}",
         aria_current: ('page' if current_page?(animes_path)) %>
-
-        <%= link_to "Blogs", blogs_path,
+   </li>
+     
+<li class="nav-item">
+  <%= link_to "Blogs", blogs_path,
         class: "nav-link #{'active' if current_page?(blogs_path)}",
         aria_current: ('page' if current_page?(blogs_path)) %>
-    
-        <%= link_to "genre", genres_path,
+</li>
+        
+    <li class="nav-item">
+      <%= link_to "genre", genres_path,
         class: "nav-link #{'active' if current_page?(genres_path)}",
         aria_current: ('page' if current_page?(genres_path)) %>
+    </li>
+        
        
- <div class= <%=!current_user.is_a?(GuestUser)? "search-wrapper" : "search-wrapper-logged-out"%> data-controller="livesearch reset_form">
+ <div class= <%=!current_user.is_a?(GuestUser)? "search-wrapper" : "search-wrapper-logged-out"%> data-controller="livesearch reset_form" >
 
   <%= form_with url: search_path,
       method: :get,
@@ -27,7 +37,7 @@
         turbo_frame: "global-search-results",
         turbo_stream: true,
       },
-      html: { id: "search-form" } do |f| %>
+      html: { id: "search-form", class:"formula" } do |f| %>
 
     <%= f.text_field :query,
         placeholder: "Search",

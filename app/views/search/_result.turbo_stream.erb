@@ -2,7 +2,7 @@
 <% if !animes.empty?  %>
   <% animes.each do |anime| %>
   <%=link_to  anime_path(anime.slug), class:"search-result-item-link"  do%>
-    <div class="search-result-item">
+    <div class="search-result-item" style="width:100%">
 
      
       <img src="<%= anime.thumb_image %>" width="90" height="80px"  style="border-radius:40px; padding-left:10px; padding-top:10px; object-fit:cover;">

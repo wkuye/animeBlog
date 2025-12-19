@@ -7,26 +7,29 @@
     <div class="add-collection">
       <%= content_tag(:i, "  Add to Collection", class:"fa fa-plus collection-btn") %>
     </div>
-
-    <div 
-      class="collection-animation"
-      data-anime-collection-target="panel"
+<div class="collection-animation"  data-anime-collection-target="panel">
+   <div 
+      class="collection-animation-wrap"     
     >
-      <div class="first-dot" data-anime-collection-target="firstDot">
+    <div class="dot-wrap">
+       <div class="first-dot" data-anime-collection-target="firstDot">
         <%= image_tag(@anime.thumb_image, class:'image') %>
       </div>
-
-      <div class="second-dot" data-anime-collection-target="secondDot">
+    </div>
+       <div class="dot-wrap">
+        <div class="second-dot" data-anime-collection-target="secondDot">
         <%= image_tag(@anime.thumb_image, class:'image') %>
       </div>
+       </div>
 
-      <div 
-        class="user-collections" 
+        <div class="dot-wrap-coll"> <div class="user-collections" 
         data-anime-collection-target="userCollections"
-      >
+     style=" width: 100%;
+  min-width: 0;" >
         <% if @user_collections.present? %>
           <% @user_collections.each do |user_collection| %>
-            <div class="collection-container">
+            <div class="collection-container" style="  width: 100%; min-width: 0;
+">
               <div class="collection-pic">
                 <%= image_tag("#{collection_first_pic(user_collection.id)}", alt: "External Image", class:"image") %>
               </div>
@@ -51,7 +54,11 @@
             <p style="padding-top: 10px;">no collections found</p>
           </div>
         <% end %>
-      </div>
+      </div></div>
+
+      
     </div>
+</div>
+   
   <% end %>
 </div>

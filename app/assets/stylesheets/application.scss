@@ -34,6 +34,9 @@ background-color: transparent;
 }
 
 
+.na{
+  z-index: 1;
+}
 
 .nav-container {
   display: flex;
@@ -45,6 +48,7 @@ background-color: transparent;
  padding-top: 18px;
  z-index: 1;
 }
+
 
 
 
@@ -109,7 +113,7 @@ background-color: transparent;
   transition: color 0.3s ease;
 }
 
-.nav-link.active, .nav-link:hover {
+.nav-item .nav-link.active, .nav-link:hover {
   color: white;
  
 }
@@ -146,21 +150,19 @@ background-color: transparent;
   max-height: 100000px; 
 
   border-radius: 12px;
- overflow: hidden;
   background-color: transparent;
   margin-bottom: 20px
 }
 
 .nav-index0 {
-  height: 80vh;
-  position: relative; /* Allow child elements to position absolutely */
+  min-height: max-content;
+  position: relative;
   display: flex;
   flex-direction: column;
  width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  overflow: hidden; /* Prevent iframe from overflowing */
-
+  overflow: hidden;
 }
 
  .contact-bg{
@@ -171,15 +173,15 @@ z-index: -1;
   background-color: green;
 }
 
+
+
 .media-wrapper , .anime_image, .anime_video {
   position: absolute;
   width: 100%; 
-  height: 100vh;
+  height: 100%;
   display: flex;
   object-fit:cover;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  overflow: hidden;
-
 }
 
 .anime_video {
@@ -209,12 +211,14 @@ z-index: -1;
   display: flex;
   flex-direction: column;
   text-align: start;
-  position: absolute;
-  margin-top: 20vh;
+  position: relative;
+  height: 100%;
+  margin-top: 30px;
   align-items: flex-start;
   padding-left: 50px;
   max-width: 600px;  
-  
+  z-index: 1;
+   padding-bottom: 150px;
 }
 
 .anime_info h1{
@@ -232,11 +236,19 @@ z-index: -1;
   width: 105px;
   font-weight:500;
   height: 40px;
+ 
 }
 
 .learn-more:hover{
   color: white;
   background-color: rgb(105, 105, 209)
+}
+
+.special{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .special h6 {
@@ -245,6 +257,8 @@ z-index: -1;
   font-weight:bold;
  transform: translateY(-80px);
 }
+
+
 
 .nav-index1{
 height: auto;
@@ -266,6 +280,7 @@ width: 100%;
   height: auto;
   padding-right: 50px;
   gap: 20px;
+  z-index: 1;
 }
 
 
@@ -416,9 +431,16 @@ pointer-events: auto;
   }
   
   .logout-btn {
-    background-color: red;
+    background-color: black;
     color: white;
+    padding-right: 20px;
+    padding-top: 10px;
   }
+
+  .logout-btn:hover{
+    background-color: red;
+  }
+
 .collection-card{
   height:200px;
   width: 300px;
@@ -593,7 +615,6 @@ border-bottom-right-radius: 10px;
   top: 90px;
   padding-left: 50px;
   z-index: 1;
-
 }
 
 .news_image {
@@ -761,6 +782,15 @@ height: 250px;
   color: inherit;
 }
 
+.review-details{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+  justify-content: start;
+}
+
 .review-details
 .anime-link{
  display: block;
@@ -777,6 +807,12 @@ height: 250px;
   z-index: 0;
   overflow: hidden;
   padding: 0;
+}
+
+.trailer-wrap{
+  position:relative; display:flex; flex-grow:1; 
+  align-items: end;
+  justify-content: end;
 }
 
 .video-wrapper {
@@ -798,17 +834,17 @@ height: 250px;
 
 .trailer-btn{
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 50px;
   width: 180px;
-  position: absolute;
-  right: 50px;
-  bottom: 30px;
+  position: relative;
+align-items: center;
+justify-content: center;
   font-size: 12px;
   background-color: white;
   color: black;
   font-weight: bold;
+ margin-bottom: 30px;
+ margin-right: 20px;
 }
 
 .anime-description{
@@ -819,15 +855,19 @@ height: 250px;
   min-height: 80vh;
   background-color: #101010;
   z-index: 0;
+  
 }
 
 .card-title{
-  height: 40vh;
+ position:relative;
   display: flex;
- 
+ padding-bottom: 20px;
 }
 
+
+
 .cover-card, .cover-img{
+  position: relative;
   height: 350px;
   width: 300px;
 
@@ -835,7 +875,8 @@ height: 250px;
 }
 
 .cover-card{
-  transform: translateY(-70px) translateX(70px);
+  transform: translateY(-70px);
+  margin-left: 25px;
 }
 
 .cover-img{
@@ -850,7 +891,8 @@ width: 100%;
   height: 100%;
   width: 100%;
 align-items: start;
-padding-left: 150px;
+padding-left: 120px;
+padding-right: 15px;
 }
 
 .collection-wrapper {
@@ -1072,22 +1114,34 @@ border-radius: 10px;
   margin-top: 40px;
 }
 
+.anime-grid-wrapper {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  padding-top: 30px;
+  width:auto;
+}
 
-.load-more-overview{
+.load-more-overview {
   position: absolute;
+  right: -18px;     
+  top: 50%;
+  transform: translateY(-50%);
+
   width: 35px;
   height: 35px;
-  left: 1150px;
- margin-top: 170px;
-  border: 0px;
   border-radius: 50%;
-  background-color: white;
-  visibility: hidden;
-  opacity: 0;
+  background: white;
+  border: none;
   z-index: 10;
-  display: block;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
+
 
 .load-more-overview:hover{
   background-color: #848486;
@@ -1125,7 +1179,7 @@ border-bottom-right-radius: 10px;
  }
 
  .anime-tabs {
-  margin-top: 30px;
+  
   padding-left: 50px;
 }
 
@@ -1236,8 +1290,9 @@ border-radius: 50%;
   border-radius: 50%;
 }
  .name-time{
+  position: relative;
   display: flex;
-  height: 20px;
+  height:max-content;
   width: 100%;
  }
 
@@ -1245,21 +1300,26 @@ border-radius: 50%;
   font-size: small;
   font-weight: bold;
   margin-right: 12px;
+  margin-bottom: 0;
  }
 
  .name-time h4{
   font-size: small;
   color: #BEBEBE;
+  margin-bottom: 0;
  }
  .name-time .spoiler{
   color: #317737;
   font-size: small;
   margin-right: 12px;
   align-items: start;
+  margin-bottom: 0;
 
  }
 
  .user-comment{
+  position: relative;
+  display: block;
   text-align: start;
   font-size: small;
   color: #C5C5C5;
@@ -1426,31 +1486,49 @@ textarea {
   margin: 0;
   padding-left: 20px;
 }
-.collection-animation {
+
+.collection-animation-wrap{
+ position: relative;
+ height: 100%;
+ width: 100%;
   display: flex;
-  position: absolute;
   flex-direction: column;
+}
+
+.collection-animation{
+  position: absolute;
   left: 260px;
   height: auto;
   min-height: 200px;
-  width: max-content;
+ width: fit-content;
+  max-width: 100%;
   z-index: 5;
   opacity: 0;
-  pointer-events: none;
   transform: translateY(-10px);
   pointer-events: auto;
-  transition: 
+   transition: 
     opacity 0.5s ease 2.5s,
     transform 0.5s ease 2.5s;
+
 }
 
+.dot-wrap{
+  display: flex;
+  position:relative;
+  width: 100%;
+}
 
+.dot-wrap-coll{
+ padding-left:150px;
+  position:relative;
+  width: 400px;
+
+}
 
 
 /* First Dot Animation */
 .first-dot {
   position: relative;
-  margin-top: 20px;
   height: 25px;
   width: 30px;
   opacity: 0;
@@ -1478,7 +1556,6 @@ textarea {
   opacity: 0;
   transition: 
   opacity 0.7s ease,
-  transform 0.7s ease;
 }
 
 .second-dot .image{
@@ -1492,25 +1569,22 @@ textarea {
 .user-collections {
   position: relative;
   margin-top: 40px;
-  margin-left: 150px;
   max-height: 200px;
   background-color: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  width: 250px;
+  width: 100%;
+  min-width: 0;
   border-radius: 10px;
   overflow-y: auto;
   transform: translateY(20px);
   opacity: 0;
   transition: 
   opacity 0.7s ease,
-  transform 0.7s ease;
+  transform 0.7s ease
+  
 }
 
-.first-dot,
-.second-dot,
-.user-collections {
-  transform: scale(0) translateY(10px);
-}
+
 
 
 
@@ -1930,9 +2004,11 @@ filter: blur(3px) brightness(0.6);
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  z-index: 0;
 }
 
 .contact-form {
+  position: relative; display:flex; flex-direction:column;
  background: rgba(131, 128, 128, 0.1);
   padding: 2rem;
   border-radius: 12px;
@@ -1945,13 +2021,16 @@ filter: blur(3px) brightness(0.6);
 
 .contact-form ::placeholder{
   color: #B4B0A6;
+  width: 100%;
 }
 
 .contact-field {
   margin-bottom: 1.5rem;
   display: flex;
+  max-width: 500px;
   flex-direction: column;
   align-items: start;
+   position:relative;
 }
 
 .contact-field label {
@@ -1965,8 +2044,8 @@ filter: blur(3px) brightness(0.6);
   font-size: 1rem;
   border-radius: 8px;
   border: none;
+  width: 100%;
   outline: none;
-  width: 500px;
    background: rgba(255, 255, 255, 0.2);
 }
 
@@ -1991,10 +2070,10 @@ textarea.wide-input {
 }
 
 .profile-avatar{
+padding-left: 5px;
 height: 50px;
-width: 50px;
+width: 55px;
 border-radius: 50%;
-margin-left: 20px;
 }
 
 .profile-avatar img{
@@ -2006,6 +2085,7 @@ margin-left: 20px;
 
 .link-prof{
   display: flex;
+  padding-left: 20px;
 }
 
 .prav-link{
@@ -2374,11 +2454,26 @@ justify-content: space-between;
   background: #ff3377;
 }
 
-.search-wrapper {
-  position: relative;
-  width: 450px;
+.search-wrapper , .search-wrapper-logged-out{
+position: relative;
+  display: flex;
+  flex-grow: 1;
 padding-left: 30px;
+padding-right: 30px;
 border: none;
+}
+
+.cf{
+  padding-top: 20px;
+}
+
+.nn{
+  padding-left: 20px;  
+  width:100%;
+}
+
+.formula{
+  width: 100%;
 }
 
 .search-input {
@@ -2395,12 +2490,6 @@ border: none;
   z-index: 200;
 }
 
-.search-wrapper-logged-out{
-   position: relative;
-  width: 400px;
-padding-left: 30px;
-border: none;
-}
 
 
 
@@ -2423,19 +2512,18 @@ border: none;
 .dropdown-results {
   position: absolute;
   top: 45px;
-  width: 420px;
   background: #111;
   border: 1px solid #333;
   z-index: 200;
   max-height: 300px;
   overflow-y: auto;
   display: none;
+  width: 90%;
   pointer-events: auto;
 }
 
 .dropdown-results.show {
   display: block;
-
 }
 
 .search-result-item {
@@ -2444,6 +2532,7 @@ border: none;
   display: flex;
   cursor: pointer;
   z-index: 200;
+
   padding-bottom: 10px;
 }
 
@@ -2658,7 +2747,7 @@ $borderW: 2px;
 
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .nav-container {
     flex-direction: column;
     gap: 15px;
@@ -2669,11 +2758,131 @@ $borderW: 2px;
     flex-direction: column;
   }
 
-  .nav-index0{
-    height: 70vh;
-  }
 
   .auth-links {
     flex-direction: column;
   }
+
+  .anime-grid{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .anime-card{
+  position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 228px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    opacity: 0; 
+    animation: smoothFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    will-change: opacity, transform; 
+overflow: hidden;
+  }
+
+  .card-image{
+    object-fit:cover; 
+    opacity: 1;
+  }
+
+   .load-more{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 85%;
+ top: 1300px;
+  border: 0px;
+  border-radius: 50%;
+  background-color: white;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  display: block;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+
+   .load-more-overview{
+  position: absolute;
+  right: -18px;        
+  top: 1410px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  }
+
+  .collection-list{
+    display: flex;
+    flex-direction: column;
+     height: 620px;
+    position: relative;
+    width: 100%;
+    padding-left: 50px;
+  padding-right: 50px;
+  }
+
+  .collection-card{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .news-thumb-info h2 {
+  font-weight: bold;
+  text-align: start;
+  width: auto;
+}
+
+ .name-time{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  min-height: 20px;
+}
+
+
+
+.collection-animation {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  left: 0;
+  width: 120px;
+  min-height: 200px;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: auto;
+  transition:
+  opacity 0.5s ease 2.5s,
+    
+}
+
+.dot-wrap{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.dot-wrap-coll{
+  padding: 0;
+  width: 230px;
+  min-width: 0;
+}
+
+.first-dot, .second-dot{
+  margin: 0;
+}
+
 }

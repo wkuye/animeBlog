@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
   def index
     query = params[:query].to_s.strip
-    Rails.logger.debug "Search query: #{query}"
     @animes = unless !query.present?
                 Anime.where("title ILIKE ?", "%#{query}%")
     end
