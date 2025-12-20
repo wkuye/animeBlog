@@ -1,5 +1,5 @@
 <%= link_to anime_path(anime.slug), data: { turbo: false }, class:"search-link" do %> 
-<div class="anime-card" style="width:170px; margin-bottom:30px;" data-id="<%= anime.id %>">
+<div class="catalog-card"  data-id="<%= anime.id %>">
   
   <%= button_to anime_path(anime), method: :delete, data: { turbo:false ,confirm: "Are you sure?" }, class: "delete-btn" do %>
   <%=content_tag(:i, "", class:"fa-solid fa-trash")%>

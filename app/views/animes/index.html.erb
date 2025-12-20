@@ -5,29 +5,39 @@
 
   <div class="nav-card_container" style="background-color:#111111;">
     
-    <!-- Top Navigation -->
-    <div class="nav-container">
-      <div class="nav-logo">
-        <h3>Anime B</h3>
-      </div>
+     <div class="na">
+                  <nav class="navbar navbar-expand-lg " >
+  <div class="container-fluid cf">
+     <div class="nav-logo">
+              <h3>Anime B</h3>
+            </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav nn"  >
+        
+          <%= render "shared/application_nav" %>
 
-      <nav class="nav">
-        <%= render "shared/application_nav" %>
-      </nav>
-
-      <div class="link-prof">
-        <div class="auth-links">
-          <%= login_helper %>
-        </div>
-        <div class="profile-avatar">
-          <%= link_to profile_path(current_user.slug), class: "prav-link" do %>
-            <%= profile_avatar(current_user.profile_picture) %>
-          <% end %>
-        </div>
-      </div>
+        <li class="nav-item">
+ <div class="auth-links" style="padding-top: 5px;">
+              <%= login_helper %>
+            </div>
+        </li>
+        <li class="nav-item" style=" align-self:center; padding-top: 5px;">
+           <div class="profile-avatar" style="padding-left: 5px;">
+              <%=link_to  profile_path(current_user.slug) , class:"prav-link"  do%>
+              <%=profile_avatar(current_user.profile_picture)  %>
+              <%end%>
+            </div>
+        </li>
+      </ul>
     </div>
+  </div>
 
-    <hr>
+</nav>
+ <hr></hr>  
+          </div>
 
     <!-- Anime Catalog Section -->
     <div class="anime-index-container">
@@ -82,7 +92,7 @@
         <!-- Anime List -->
         <div class="col-md-10">
           <turbo-frame id="anime_list">
-            <div class="catalog-grid">
+            <div class="catalog-grid" style="overflow: hidden;">
               <% @animes.each do |anime| %>
                 <%= render 'shared/catalog_list', anime: anime %>
               <% end %>

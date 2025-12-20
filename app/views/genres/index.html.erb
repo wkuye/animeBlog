@@ -1,22 +1,39 @@
 <% content_for :title, "Genres" %>
 <div class="genres-container">
-  <div class="nav-container">
-            <div class="nav-logo">
+  <div class="nav-container" >
+           <div class="na">
+                  <nav class="navbar navbar-expand-lg " >
+  <div class="container-fluid cf" >
+     <div class="nav-logo">
               <h3>Anime B</h3>
             </div>
-            <nav class="nav">
-              <%= render "shared/application_nav" %>
-            </nav>
-              <div class="link-prof">
- <div class="auth-links">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav nn" >
+        
+          <%= render "shared/application_nav" %>
+
+        <li class="nav-item" >
+         <div class="auth-links" style="padding-top: 5px; display:flex; align-items:center; justify-content:center;">
               <%= login_helper %>
             </div>
-            <div class="profile-avatar">
+        </li>
+        <li class="nav-item" style=" align-self:center; padding-top: 5px;">
+           <div class="profile-avatar" style="padding-left: 5px;">
               <%=link_to  profile_path(current_user.slug) , class:"prav-link"  do%>
               <%=profile_avatar(current_user.profile_picture)  %>
               <%end%>
             </div>
-         </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+ <hr></hr>  
+          </div>
           </div>
           <div class="genre-body">
             <div class="genre-head">

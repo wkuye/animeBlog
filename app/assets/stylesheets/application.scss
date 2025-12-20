@@ -41,8 +41,6 @@ background-color: transparent;
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  
  padding-left: 35px;
  padding-right: 35px;
  padding-top: 18px;
@@ -287,7 +285,6 @@ width: 100%;
 .anime-card{
   position: relative;
     border-radius: 10px;
-    overflow: hidden;
     position: relative;
     height: 228px;
     display: flex;
@@ -296,7 +293,7 @@ width: 100%;
     opacity: 0; 
     animation: smoothFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
     will-change: opacity, transform; 
-overflow: hidden;
+    overflow: hidden;
   }
 
   .anime-card:hover .hover-video{
@@ -304,6 +301,14 @@ opacity: 1;
   }
 
   .anime-card:hover .card-image{
+    opacity: 0;
+  }
+
+    .catalog-card:hover .hover-video{
+opacity: 1;
+  }
+
+  .catalog-card:hover .card-image{
     opacity: 0;
   }
 
@@ -353,6 +358,8 @@ opacity: 1;
     object-fit:fill; 
     opacity: 1;
   }
+
+  
  
   .anime-card h3{
     position: absolute;
@@ -373,6 +380,25 @@ opacity: 1;
     font-size: 11px;
   }
   
+
+  .catalog-card h3{
+    position: absolute;
+    top: 75%; 
+ left: 5%; 
+    margin: 0; 
+    color: white; 
+    text-align: start;
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .catalog-card p{
+    color: white;
+    position: absolute;
+    left: 5%;
+    bottom: 1px;
+    font-size: 11px;
+  }
  
   .card img {
     width: 100%;
@@ -2578,7 +2604,21 @@ border: none;
   pointer-events: none;
 }
 
-
+.catalog-card{
+  position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 228px;
+    display: flex;
+    flex-direction: column;
+   width:170px; 
+   margin-bottom:30px;
+    opacity: 0; 
+    animation: smoothFakeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    will-change: opacity, transform; 
+overflow: hidden;
+  }
 
 
 
@@ -2737,13 +2777,25 @@ $borderW: 2px;
   @keyframes smoothFadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.95); /* Start lower and slightly smaller */
+        transform: translateY(30px) scale(0.95); 
     }
     to {
         opacity: 1;
         transform: translateY(-40px) scale(1); /* Settle into place */
     }
 }
+
+ @keyframes smoothFakeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0x) scale(1); /* Settle into place */
+    }
+}
+
 
 
 /* Responsive Design */
@@ -2850,6 +2902,59 @@ overflow: hidden;
   min-height: 20px;
 }
 
+
+
+.collection-animation {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  left: 0;
+  width: 120px;
+  min-height: 200px;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: auto;
+  transition:
+  opacity 0.5s ease 2.5s,
+    
+}
+
+.dot-wrap{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.dot-wrap-coll{
+  padding: 0;
+  width: 230px;
+  min-width: 0;
+}
+
+.first-dot, .second-dot{
+  margin: 0;
+}
+
+.catalog-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+
+}
+
+@media (min-width: 800px) and (max-width: 1190px) {
+  /* Tablet styles */
+  .catalog-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+}
+
+
+
+@media (max-width: 1200px) {
 
 
 .collection-animation {
