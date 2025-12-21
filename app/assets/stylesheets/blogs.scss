@@ -58,6 +58,10 @@ padding-right: 30px;
 border: none;
 }
 
+.link{
+  position: relative; width:max-content; display:flex; justify-self:center
+}
+
 
 .nav-container {
   position: relative;
@@ -102,6 +106,10 @@ border: none;
 .login-btn {
   background-color: rgb(84, 74, 74);
   color: white;
+}
+
+.login-btn:hover{
+  background-color: blueviolet;
 }
 
 .register-btn {
@@ -493,6 +501,9 @@ border-radius: 10px;
     background-color: red;
   }
 
+.register-btn:hover{
+  background-color: greenyellow;
+}
 
  
 

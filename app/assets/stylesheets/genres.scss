@@ -40,6 +40,10 @@ width: 55px;
 border-radius: 50%;
 }
 
+.link{
+  position: relative; width:max-content; display:flex; justify-self:center
+}
+
 .profile-avatar img{
   height: 100%;
   width: 100%;
@@ -162,6 +166,7 @@ align-items: center;
   grid-template-columns: repeat(3, 1fr);
   height: 100%;
   width: 100%;
+  gap: 20px;
   justify-items: center;
 }
 
@@ -177,6 +182,7 @@ align-items: center;
   flex-direction: column;
   height: 290px;
   margin-top: 80px;
+  margin-bottom: 20px;
   width: 350px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -218,7 +224,7 @@ position: absolute;
   width: 82%;  
   z-index: -2;
   opacity: 0;
-  bottom: 130px; /* Offset vertically (or adjust) */
+  bottom: 45%; /* Offset vertically (or adjust) */
    right: 41% ; /* Offset horizontally (or adjust) */
    transition: 0.7s ease-in 0.3s;
 }
@@ -231,7 +237,7 @@ position: absolute;
   width: 65%;  
   opacity: 0;
   z-index: -3;
-  bottom: 180px; /* Offset vertically (or adjust) */
+  bottom: 65%; /* Offset vertically (or adjust) */
   right: 33%; /* Offset horizontally (or adjust) */
   transition: 0.7s ease-in 0.5s;
 }
@@ -344,8 +350,13 @@ padding-right: 30px;
 border: none;
 }
 
+.login-btn:hover{
+  background-color: blueviolet;
+}
+
+
 .logout-btn {
-    background-color: black;
+    background-color: gray;
     color: white;
     padding-right: 20px;
     padding-top: 10px;
@@ -354,6 +365,10 @@ border: none;
   .logout-btn:hover{
     background-color: red;
   }
+
+  .register-btn:hover{
+  background-color: greenyellow;
+}
 
 .anime-title{
   color: #D5015B;
@@ -622,6 +637,30 @@ margin-bottom: 10px;
   display: block;
 }
 
+@media (min-width: 800px) and (max-width: 1190px) {
+  .genre-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+  justify-items: center;
+
+}
+
+.genre-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  margin-top: 80px;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+}
+
 @media (max-width: 800px) {
     .genre-grid{
   height: 100%;
@@ -639,7 +678,7 @@ margin-bottom: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 290px;
+  height: 310px;
   margin-top: 80px;
   width: 100%;
   border-top-left-radius: 10px;

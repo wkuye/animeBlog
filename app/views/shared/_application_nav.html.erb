@@ -1,31 +1,41 @@
 <li class="nav-item" >
-<%= link_to "Home",  root_path , class: "nav-link  #{'active' if current_page?(root_path)}",
+  <div class="link">
+    <%= link_to "Home",  root_path , class: "nav-link  #{'active' if current_page?(root_path)}",
         aria_current: ('page' if current_page?(root_path)) %>
+  </div>
+
 </li>
      
    <li class="nav-item">
-<%= link_to "Contact", contact_path,
+    <div class="link"><%= link_to "Contact", contact_path,
         class: "nav-link #{'active' if current_page?(contact_path)}",
         aria_current: ('page' if current_page?(contact_path)) %>
+        </div>
+
    </li>
 
         
    <li class="nav-item">
- <%= link_to "Animes", animes_path,
+    <div class="link"><%= link_to "Animes", animes_path,
         class: "nav-link #{'active' if current_page?(animes_path)}",
         aria_current: ('page' if current_page?(animes_path)) %>
+        </div>
+ 
    </li>
      
 <li class="nav-item">
-  <%= link_to "Blogs", blogs_path,
+  <div class="link"><%= link_to "Blogs", blogs_path,
         class: "nav-link #{'active' if current_page?(blogs_path)}",
         aria_current: ('page' if current_page?(blogs_path)) %>
+        </div>
+  
 </li>
         
     <li class="nav-item">
-      <%= link_to "genre", genres_path,
+      <div class="link"><%= link_to "genre", genres_path,
         class: "nav-link #{'active' if current_page?(genres_path)}",
-        aria_current: ('page' if current_page?(genres_path)) %>
+        aria_current: ('page' if current_page?(genres_path)) %></div>
+      
     </li>
         
        

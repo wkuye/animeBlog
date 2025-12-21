@@ -7,10 +7,10 @@
     <h2><%=genre.genre_type%></h2>
     <p><%=genre_anime_count(genre.id)%> shows</p>
     </div>
-    <div class="second-genre-card">
+    <div class="second-genre-card" style="bottom: 45%;">
    <%=image_tag second_image(genre.id), class:"genre-image"%>
 </div>
-     <div class="third-genre-card">
+     <div class="third-genre-card" style="bottom: 65%;">
    <%=image_tag third_image(genre.id), class:"genre-image"%>
 </div>
 <%=link_to genre_show_path(genre.slug), class:"genre-show-link" do%>

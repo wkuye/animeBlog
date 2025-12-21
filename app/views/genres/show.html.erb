@@ -3,7 +3,7 @@
   <div class="admin-utils">
 <p><%=link_to "Back to genre", genres_path, class:"back-genre" %></p>
 <p><%=link_to "Edit genre", edit_genre_path(@genre), class:"edit-genres"%></p>
-  <%= button_to @genre, method: :delete, class:"delete-btn" do%>
+  <%= button_to @genre, method: :delete, class:"delete-btn", data: { turbo:false ,confirm: "Are you sure?" }  do%>
   <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
   <%end%>
   </div>

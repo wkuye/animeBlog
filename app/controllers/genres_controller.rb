@@ -4,10 +4,7 @@ class GenresController < ApplicationController
   layout "genre"
   def index
     @genres = Genre.all
-    respond_to do |format|
-      format.turbo_stream
-      format.html
-  end
+
   end
 
   def new
@@ -30,7 +27,7 @@ end
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to genres_url(@genres), notice: "Genre was successfully created." }
+        format.html { redirect_to genres_path, notice: "Genre was successfully created." }
 
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,9 +52,9 @@ end
     end
   end
   def destroy
-    @genre.destroy
+    @genre.destroy!
     respond_to do |format|
-      format.html { redirect_to genres_path, notice: "Genre was successfully destroyed." }
+      format.html { redirect_to genres_url, notice: "Genre was successfully destroyed." }
     end
   end
 
