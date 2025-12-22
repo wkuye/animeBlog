@@ -67,7 +67,8 @@ end
 gem "jquery-rails"
 gem 'Wale_view_tool' 
 gem 'petergate', '~> 3.0'
-gem 'bootstrap-icons'
+gem "bootstrap-icons-rails"
+
 gem 'rails-ujs'
 # Gemfile
 gem "font-awesome-sass", "~> 6.0"
