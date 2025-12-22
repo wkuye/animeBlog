@@ -87,8 +87,8 @@ GEM
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
-    bootstrap-icons (1.0.14)
-      nokogiri (~> 1)
+    bootstrap_icons_rails (1.113.02)
+      railties (>= 4.2)
     brakeman (6.2.1)
       racc
     builder (3.3.0)
@@ -395,7 +395,7 @@ DEPENDENCIES
   Wale_view_tool
   bootsnap
   bootstrap (~> 5.3.3)
-  bootstrap-icons
+  bootstrap_icons_rails
   brakeman
   capybara
   carrierwave
