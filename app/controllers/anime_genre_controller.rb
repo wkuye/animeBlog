@@ -1,4 +1,4 @@
-class AnimeGenresController < ApplicationController
+class AnimeGenreController < ApplicationController
   def create
     @genre = Genre.find(params[:slug])
     @anime_genre = @genre.anime_genres.build(anime_genre_params)
