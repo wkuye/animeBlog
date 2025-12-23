@@ -67,8 +67,8 @@ end
 gem "jquery-rails"
 gem 'Wale_view_tool' 
 gem 'petergate', '~> 3.0'
-gem "bootstrap_icons_rails"
-gem "bootstrap-icons"
+gem 'bootstrap-icons-helper'
+
 
 gem 'rails-ujs'
 # Gemfile
