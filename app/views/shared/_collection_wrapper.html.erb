@@ -4,10 +4,10 @@
   data-action="mouseenter->anime-collection#show mouseleave->anime-collection#hide"
 >
   <% if !current_user.is_a?(GuestUser) %>
-    <div class="add-collection">
+    <div class="add-collection" >
       <%= content_tag(:i, "  Add to Collection", class:"fa fa-plus collection-btn") %>
     </div>
-<div class="collection-animation"  data-anime-collection-target="panel">
+<div class="collection-animation"   data-anime-collection-target="panel">
    <div 
       class="collection-animation-wrap"     
     >
@@ -16,19 +16,20 @@
         <%= image_tag(@anime.thumb_image, class:'image') %>
       </div>
     </div>
-       <div class="dot-wrap">
+       <div class="dot-wrap" >
         <div class="second-dot" data-anime-collection-target="secondDot">
         <%= image_tag(@anime.thumb_image, class:'image') %>
       </div>
        </div>
 
-        <div class="dot-wrap-coll"> <div class="user-collections" 
+        <div class="dot-wrap-coll" style=""> 
+          <div class="user-collections" 
         data-anime-collection-target="userCollections"
      style=" width: 100%;
   min-width: 0;" >
         <% if @user_collections.present? %>
           <% @user_collections.each do |user_collection| %>
-            <div class="collection-container" style="  width: 100%; min-width: 0;
+            <div class="collection-container" style="  width: 100%;
 ">
               <div class="collection-pic">
                 <%= image_tag("#{collection_first_pic(user_collection.id)}", alt: "External Image", class:"image") %>
@@ -54,7 +55,8 @@
             <p style="padding-top: 10px;">no collections found</p>
           </div>
         <% end %>
-      </div></div>
+      </div>
+    </div>
 
       
     </div>

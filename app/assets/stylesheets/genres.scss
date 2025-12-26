@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 
  body {
 //  height: 350vh;
-min-height: 100vh;
+min-height: 70vh;
 height: auto;
   font-family: Arial, sans-serif;
   display: flex;
@@ -659,6 +659,14 @@ margin-bottom: 10px;
   border-bottom-left-radius: 10px;
 }
 
+.show-image-wrapper{
+  display: flex;
+  width: 100%;
+  position: relative;
+   justify-content: start;
+    align-items: start;
+}
+
 }
 
 @media (max-width: 800px) {
@@ -686,4 +694,22 @@ margin-bottom: 10px;
 }
 
 
+}
+
+@media(max-width: 386px){
+
+  .show-image-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: start;
+    padding-right: 30px;
+
+  }
+
+
+.genre-show-image{
+  object-fit:fill;
+  border-radius: 10px;
+ width: 100%;
+  }
 }

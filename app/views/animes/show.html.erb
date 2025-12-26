@@ -63,10 +63,10 @@
       </div>
       <div class="anime-description">
 <div class="card-title" > 
-<div class="cover-card" style="background-color: chartreuse;">
+<div class="cover-card" >
   <%=image_tag(@anime.thumb_image, class:'cover-img')%> 
 </div>
-<div class="card-row">
+<div class="card-row" style="position: relative;">
   <div class="name-header">
     <h1><%=@anime.title%></h1> 
     <% if current_user.has_role?(:site_admin)  %>

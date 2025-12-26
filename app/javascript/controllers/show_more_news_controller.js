@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["list", "button"];
 
   connect() {
-    console.log("connected")
   }
 
   show(event) {
@@ -30,7 +29,6 @@ export default class extends Controller {
     fetch(`/show-news?${params.toString()}`)
       .then(r => r.json())
       .then(data => {
-        console.log("returned:", data)
         this.appendNews(data)
       })
   }

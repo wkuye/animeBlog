@@ -5,12 +5,7 @@ export default class extends Controller {
   static targets = ["list", "button"]
 
   connect() {
-    console.log("hover_effects controller connected!")
-
-    if (!this.hasListTarget || !this.hasButtonTarget) {
-      console.warn("Missing targets: list or button")
-      return
-    }
+ 
 
     this.hideTimeout = null
 

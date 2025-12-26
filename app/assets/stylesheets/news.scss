@@ -41,6 +41,7 @@ html ,body{
 }
 
 .image-container .news_image{
+  position: absolute;
 height: 100%;
 width: 100%;
 object-fit: cover;
@@ -49,12 +50,9 @@ border-top-left-radius: 12px;
 }
 
 .image-container h1{
-    position: absolute;
-    top: 70px;
-    left: 30px;
-    width: 500px;
-    font-weight: bold;
-    color: white;
+position: relative; width:500px; margin-top:70px;
+margin-left: 30px;
+color: white;
 }
 
 .news-description{
@@ -94,11 +92,9 @@ color: black;
 .news-card{
     display: flex;
     flex-direction: column;
-    max-height:  160px;
     height: auto;
     overflow-y: hidden;
-    
-    margin-bottom: 10px;
+    padding-bottom: 20px;
     padding-left: 20px;
 }
 
@@ -462,3 +458,17 @@ border-bottom-right-radius: 10px;
   justify-content: center;
   font-weight: bold;
  }
+
+ @media (max-width:768px) {
+    .second{
+    margin-top: 18px;
+  }
+ }
+@media (min-width:768px) and (max-width:981px){
+.image-container h1{
+position: relative; width:auto; margin-top:30px;
+margin-left: 20px;
+}
+}
+
+ 

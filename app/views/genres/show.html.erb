@@ -9,7 +9,10 @@
   </div>
 <%end%>
 <h1><%=@genre.genre_type %></h1>
-<%=image_tag random_image(@genre.id), class:"genre-show-image", height:"290px", width:"300px" %>
+<div class="show-image-wrapper">
+  <%=image_tag random_image(@genre.id), class:"genre-show-image", height:"290px", width:"300px" %>
+</div>
+
 <h2>About <%=@genre.genre_type%></h2>
 <p class="g-bod"><%=@genre.body%></p>
 <h2>Animes</h2>

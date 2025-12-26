@@ -1,8 +1,8 @@
 <div class="news-grid" >
     <% @news.each do |newsdet| %>
       <div class="news-card" news-id="<%=newsdet.id%>">
-        <img src="<%= newsdet.image %>" alt="<%= newsdet.title %>" class="news-card-image">
-        <div class="news-card-overlay">
+        <img src="<%= newsdet.image %>" alt="<%= newsdet.title %>" class="news-card-image" >
+        <div class="news-card-overlay" >
           <p class="news-time"><%= time_ago_in_words(newsdet.created_at) %> ago</p>
           <h3 class="news-card-title"><%= newsdet.title %></h3>
         </div>

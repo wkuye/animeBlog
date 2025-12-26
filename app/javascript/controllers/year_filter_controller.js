@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["button"]
 
   connect() {
-    console.log("Year filter controller connected!")
     this.syncActiveWithURL()
     document.addEventListener("turbo:frame-load", () => this.syncActiveWithURL())
     window.addEventListener("popstate", () => this.syncActiveWithURL())

@@ -7,10 +7,6 @@ export default class extends Controller {
   connect() {
     console.log("dropdown controller connected!")
 
-    if (!this.hasMenuTarget) {
-      console.warn("Missing target: menu")
-      return
-    }
    
   }
 

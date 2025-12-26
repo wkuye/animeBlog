@@ -15,7 +15,7 @@
       </div>
       <%end%>
     <div class="image-container">
-           <img src="<%=@news.image%>" alt="Description of image" class="news_image">
+           <img src="<%=@news.image%>" alt="Description of image"  class="news_image">
            <h1><%=@news.title%></h1>
     </div>
     <div class="news-description">
@@ -46,12 +46,12 @@
     <div class="list" data-show-more-news-target="list" >
  <%@related_news.each do |relatednews|%>
     
-<div class="news-card" data-id=<%=relatednews.id%>>
+<div class="news-card"  data-id=<%=relatednews.id%>>
   <%= link_to news_path(relatednews), class:"card-link"  do%>
   <h3><%=relatednews.title%></h3>
   <div class="pic-des">
     <%=image_tag(relatednews.image, class:"related-image")%>
-    <span class="related-text">
+    <span class="related-text" >
   <%= truncate(relatednews.description, length: 100, omission: "...") %>
 </span>
   </div>

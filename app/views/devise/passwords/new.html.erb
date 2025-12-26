@@ -4,20 +4,26 @@
   <div class="logo-2"><%=image_tag 'naruto.png'%></div>
   <div class="logo-3"><%=image_tag 'dbz.png'%></div>
   <h2>Forgot your password?</h2>
-
+ <div class="form-wrapper" style=" width:100%; margin-bottom:50px"> 
+      <div class="contact-form" style="display: flex; width:100%;  padding-left:55px;">
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
   
-    <div class="forgotten-field">
+    <div class="card-body">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-field" %>
     </div>
   
-    <div class="actions-f">
+    <div class="actions" style="margin-bottom: 10px;">
       <%= f.submit "reset password instructions", class:"login-btn" %>
     </div>
+     <div class="actions" style="display: flex; flex-direction:column; max-width:450px; ">
+    <%= render "devise/shared/links" %>
+  </div>
   <% end %>
+ 
   
-  <%= render "devise/shared/links" %>
+</div>
+ </div>
 </div>
 

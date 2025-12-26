@@ -15,7 +15,6 @@ export default class extends Controller {
 
       this.resultsTarget.classList.add("show")
       const value = this.inputTarget.value.trim()
-console.log("value:", value)
     clearTimeout(this.timer)
 
   this.timer = setTimeout(() => {
