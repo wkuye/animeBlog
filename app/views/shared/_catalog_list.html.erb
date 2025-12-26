@@ -1,8 +1,9 @@
 <%= link_to anime_path(anime.slug), data: { turbo: false }, class:"search-link" do %> 
 <div class="catalog-card"  data-id="<%= anime.id %>">
-  
+   <%if current_user.has_role?(:site_admin)%>
   <%= button_to anime_path(anime), method: :delete, data: { turbo:false ,confirm: "Are you sure?" }, class: "delete-btn" do %>
   <%=content_tag(:i, "", class:"fa-solid fa-trash")%>
+  <%end%>
 <% end %>
 
   <div class="anime-card-wrapper">
