@@ -620,13 +620,13 @@ border-radius: 50%;
   color: #B8BDC7;       /* optional: placeholder color */
 }
 
+
 .search-icon {
   position: absolute;
-  top: 50%;
+  top: 28%;
   left: 42px;
   width: 20px;
   height: 20px;
-  transform: translateY(-50%);
   color: #B8BDC7;
   pointer-events: none; /* so typing still works */
 }

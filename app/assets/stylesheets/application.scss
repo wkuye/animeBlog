@@ -173,6 +173,13 @@ background-color: transparent;
   overflow: hidden;
 }
 
+.mid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
  .contact-bg{
   position: absolute;
 border-radius: 12px;
@@ -183,7 +190,7 @@ z-index: -1;
 
 
 
-.media-wrapper , .anime_image, .anime_video {
+.media-wrapper  {
   position: absolute;
   width: 100%; 
   height: 100%;
@@ -192,24 +199,37 @@ z-index: -1;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.anime_video {
-  opacity: 0;
+.anime_video, .anime_image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   pointer-events: none; /* Prevent accidental clicks */
 }
 
+.anime_video{
+  display: none;
+}
+
+.anime_image{
+  display: flex;
+}
+
 .anime_video iframe{
-  height: 100%;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-.media-wrapper:hover .anime_image {
-  opacity: 0;
-  transform: scale(1.05); /* Subtle zoom for effect */
+.mid:hover .anime_image {
+  display: none;
+  transform: scale(1.05); 
 
 }
 
-.media-wrapper:hover .anime_video {
-  opacity: 1;
+.mid:hover .anime_video {
+  display: flex;
   transform: scale(1.05); /* Matches image zoom for consistency */
 
 }
@@ -220,8 +240,7 @@ z-index: -1;
   flex-direction: column;
   text-align: start;
   position: relative;
-  height: 100%;
-  margin-top: 30px;
+  margin-top: 45px;
   align-items: flex-start;
   padding-left: 50px;
   max-width: 600px;  
@@ -422,10 +441,6 @@ opacity: 1;
     font-size: 1.2rem;
   }
 
-  .anime_info h1{
-    margin-top: 75px;
-    font-weight: bold;
-  }
 
 
   .load-more{
@@ -2890,6 +2905,11 @@ $borderW: 2px;
     text-align: center;
   }
 
+
+
+
+
+
   .nav {
     flex-direction: column;
   }
@@ -3229,6 +3249,10 @@ overflow: hidden;
 overflow: hidden;
   }
 }
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 800px) {
