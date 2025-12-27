@@ -92,6 +92,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+ config.action_cable.url = "wss://warm-peak-67983.herokuapp.com/cable"
+ config.action_cable.allowed_request_origins = [
+   "https://warm-peak-67983.herokuapp.com"
+  ]
+
+config.force_ssl = true
+
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
