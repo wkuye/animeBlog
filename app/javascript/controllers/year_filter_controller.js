@@ -1,12 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="year-filter"
 export default class extends Controller {
   static targets = ["button"]
 
   connect() {
     this.syncActiveWithURL()
-    document.addEventListener("turbo:frame-load", () => this.syncActiveWithURL())
     window.addEventListener("popstate", () => this.syncActiveWithURL())
   }
 
@@ -14,8 +12,7 @@ export default class extends Controller {
     this.buttonTargets.forEach(btn => btn.classList.remove("active"))
     const clicked = event.currentTarget
     clicked.classList.add("active")
-    const selectedYear = clicked.dataset.year
-    this.filterByYear(selectedYear)
+    this.filterByYear(clicked.dataset.year)
   }
 
   filterByYear(year) {
@@ -27,7 +24,10 @@ export default class extends Controller {
       params.set("year", year)
     }
 
-    const url = `/animes?${params.toString()}`
+    const query = params.toString()
+    const url = `/animes${query ? `?${query}` : ""}`
+
+    history.pushState({}, "", url)
     Turbo.visit(url, { frame: "anime_list" })
   }
 

@@ -2,16 +2,17 @@
     <div class="content" >
       <h1  class= "home-header">Profile</h1>
       <div class="nav-card_container" style="min-height: 80vh;">
-        <div class="nav-index0" style="height: 35vh;">
+        <div class="nav-index0" style="height: 45vh;">
      
-  <div class="image-wrapper">
-             <% if current_user.header_image.attached? %>
-      <%= image_tag current_user.header_image, class: "anime_image" %>
-    <% else %>
-      <%= image_tag "back.jpeg", class: "anime_image" %>
-    <% end %>
-            
-          </div>
+<div class="image-wrapper" >  
+   <% if current_user.header_image.attached? %>
+        <%= image_tag current_user.header_image, class: "header-img" %>
+      <% else %>
+        <%= image_tag "back.jpeg", class: "anime_image" %>
+      <% end %>
+ 
+</div>
+
 
            <div class="na">
                   <nav class="navbar navbar-expand-lg " >
@@ -47,11 +48,30 @@
  <hr></hr>  
           </div>
         
-         <div class="collection-bottomsheet">
-          <%= render 'shared/collection_modal' %>
-        </div>
+       
         <% if !current_user.is_a?(GuestUser) %>
       <div class="nav-index1">
+       <div class="header-upload">
+  <%= form_with model: current_user,
+                url: update_header_path(current_user.slug),
+                method: :patch,
+                html: { multipart: true },
+                data: { turbo: false } do |f| %>
+
+    <!-- Icon -->
+    <label for="header_icon_input" class="upload-icon">
+      
+      <%=content_tag(:i,"", class:"fa fa-camera")%>
+    </label>
+
+    <!-- Hidden file input -->
+    <%= f.file_field :header_image,
+          id: "header_icon_input",
+          hidden: true,
+          onchange: "this.form.submit()" %>
+  <% end %>
+</div>
+
     <div class="profile-collection">
        <ul class="tab-header" style="padding-top: 30px;">
     <li class="active"><%=content_tag(:i,"",class:"fa-regular fa-folder")%> Collections <%=@collection_count%></li>
